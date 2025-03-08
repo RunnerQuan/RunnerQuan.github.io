@@ -9,7 +9,7 @@
     
     <title>
         
-            Welcome to my blog |
+            从零开始搭建一个博客 |
         
         RunnerQuan&#39;s Blog
     </title>
@@ -268,7 +268,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Welcome to my blog
+                        从零开始搭建一个博客
                     </div>
                 
 
@@ -296,13 +296,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-03-07 21:40:36</span>
+                <span class="datetime">2025-03-08 15:50:30</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Mar 08 2025 10:27:14 GMT+0800">2025-03-08 10:27:14</span>
+                    <span class="datetime" data-updated="Sat Mar 08 2025 15:52:09 GMT+0800">2025-03-08 15:52:09</span>
                 </span>
             
         
@@ -325,9 +325,6 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Hexo/">Hexo</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Introduction/">Introduction</a></li>
-                        
-                    
                 </ul>
             </span>
         
@@ -335,12 +332,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>65 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>804 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -362,28 +359,47 @@
                     
 
                     
-                         <div style="text-align: center">
+                         <h1 id="从零开始搭建一个博客"><a href="#从零开始搭建一个博客" class="headerlink" title="从零开始搭建一个博客"></a>从零开始搭建一个博客</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个计算机专业的学生，每当我遇到一些问题时，在 Google 等搜索引擎上寻找解答，往往别人的技术博客都能解开我的疑惑，让我豁然开朗。当我看到别人精美、炫酷的博客网站时，我也心生羡慕，感慨他们强大的 UI 设计能力，于是我心想：我自己是不是也可以做一个技术博客？但是这个念想也仅仅只是在看到别人美观的个人主页后突然迸发，随后一闪而过、烟消云散，我也一直没有付诸行动。然而，在大三下学期开学，一个偶然的机缘巧合，让我开始了我的技术博客搭建与创作之旅。</p>
+<p>2025年2月，我选修了一门专业选修课《云计算技术》，第一节实验课的作业就包含了搭建一个个人博客并部署到云服务器上，于是乎我就在网络上搜索有关博客搭建的相关知识，确定了博客使用的框架—— <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" >Hexo<i class="fas fa-external-link-alt"></i></a>，以及博客主题—— <a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/" >Keep<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>之所以选择 Hexo 框架，是因为它简洁而高效；而基于 Hexo 框架的Keep 主题的简约优雅正合我心意。</p>
+<h2 id="Hexo框架"><a href="#Hexo框架" class="headerlink" title="Hexo框架"></a>Hexo框架</h2><p><a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" >Hexo官网<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p><strong>Hexo是什么？</strong></p>
+<ul>
+<li>一个快速、简洁且高效的博客框架</li>
+<li><em>超快速度</em><ul>
+<li>Node.js 所带来的超快生成速度。 上百个页面在几秒内完成渲染</li>
+</ul>
+</li>
+<li><em>支持 Markdown</em><ul>
+<li>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件</li>
+</ul>
+</li>
+<li><em>一键部署</em><ul>
+<li>只需一条指令即可部署到 GitHub Pages, Heroku 或其他平台</li>
+</ul>
+</li>
+<li><em>插件</em><ul>
+<li>强大的 API 带来无限的可能。 支持数种模板引擎（EJS，Pug，Nunjucks等）。 可以与现有的NPM包 (Babel, PostCSS, Less&#x2F;Sass 等) 轻松地集成</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>浏览Hexo官网，了解Hexo框架的特性，在本机运行下面的指令，即可启动Hexo默认的博客程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
-<p><em><strong>Welcome to my blog!</strong></em></p>
-<p><em><strong>欢迎来到我的博客！</strong></em></p>
-<p>我是RunnerQuan，来自中山大学软件工程学院（<strong>SYSU-SSE</strong>），目前是一名大三的学生，这是我的第一篇博文。</p>
-<p>我喜欢跑步、健身和打羽毛球。</p>
-<p><em>自律即自由！</em></p>
-</div>
 
-<div style="text-align: center">
-    <img    
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/RunnerQuan/picx-images-hosting/raw/master/20250308/picx-Z30_2970.2h8geh5wn5.webp"
-                         
-         style="width: 70%; 
-                max-width: 800px; 
-                display: block; 
-                margin: 0 auto;" 
-         alt="my_picture"
-                 >
-</div>
+
+<h2 id="Keep-主题博客启动"><a href="#Keep-主题博客启动" class="headerlink" title="Keep 主题博客启动"></a>Keep 主题博客启动</h2><p>这是 Keep 主题的官网链接 <a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/" >Keep 主题使用手册 | Hexo 主题 Keep 官方文档<i class="fas fa-external-link-alt"></i></a>，它的使用手册写得非常详尽，作为零基础的小白，我能根据手册成功搭建。</p>
+<p>我是直接在本地下载官方文档里的<a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/basis/get-start/starter-template.html" >“启动模板“<i class="fas fa-external-link-alt"></i></a>（可以不用下载单独下载 Keep 主题，因为启动模板里面就包含了），然后按照里面的流程进行博客的配置和启动。</p>
+<h2 id="使用-Github-Actions-自动部署-Hexo-博客"><a href="#使用-Github-Actions-自动部署-Hexo-博客" class="headerlink" title="使用 Github Actions 自动部署 Hexo 博客"></a>使用 Github Actions 自动部署 Hexo 博客</h2><p>下一步，我是完全依照下面这篇文章进行的，过程也是非常的顺利。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6943895271751286821" >如何使用 GitHub Actions 自动部署 Hexo 博客<i class="fas fa-external-link-alt"></i></a></p>
+<p>然后就得到了我的第一个博客网站：<a class="link"   target="_blank" rel="noopener" href="https://runnerquan.github.io/" >RunnerQuan’s Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p>接着，我们就要考虑在云服务器上部署我们的博客。</p>
+<h2 id="在云服务器上部署-Hexo-博客"><a href="#在云服务器上部署-Hexo-博客" class="headerlink" title="在云服务器上部署 Hexo 博客"></a>在云服务器上部署 Hexo 博客</h2><p>这一步我也是按照下面这篇博文的流程进行的</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.laoda.de/archives/hexo-building" >将Hexo部署到阿里云轻量服务器（保姆级教程）<i class="fas fa-external-link-alt"></i></a></p>
+<p>最后，我的博客就搭建完成啦！</p>
+
                     
                 </div>
 
@@ -393,11 +409,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Welcome to my blog
+                从零开始搭建一个博客
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2025/03/07/welcome-to-my-blog/
+                2025/03/08/build-a-blog-from-scratch/
             </div>
         </div>
 
@@ -413,7 +429,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2025-03-07 21:40</div>
+                <div class="content">2025-03-08 15:50</div>
             </div>
 
 
@@ -452,10 +468,6 @@
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Hexo/">Hexo</a>
                                     </li>
                                 
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Introduction/">Introduction</a>
-                                    </li>
-                                
                             </ul>
                         
                     </div>
@@ -492,22 +504,22 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/blog/2025/03/08/build-a-blog-from-scratch/"
-                                   title="从零开始搭建一个博客"
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/blog/2025/03/07/welcome-to-my-blog/"
+                                   title="Welcome to my blog"
                                 >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">从零开始搭建一个博客</span>
-                                        <span class="post-nav-item">上一篇</span>
+                                        <span class="post-nav-title-item text-ellipsis">Welcome to my blog</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
-                        
                         
                     </div>
                 
@@ -528,7 +540,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">从零开始搭建一个博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E6%A1%86%E6%9E%B6"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.2.1.</span> <span class="nav-text">下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keep-%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%90%AF%E5%8A%A8"><span class="nav-number">1.3.</span> <span class="nav-text">Keep 主题博客启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Github-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.4.</span> <span class="nav-text">使用 Github Actions 自动部署 Hexo 博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.5.</span> <span class="nav-text">在云服务器上部署 Hexo 博客</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -706,7 +718,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">从零开始搭建一个博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E6%A1%86%E6%9E%B6"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.2.1.</span> <span class="nav-text">下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keep-%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E5%90%AF%E5%8A%A8"><span class="nav-number">1.3.</span> <span class="nav-text">Keep 主题博客启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Github-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.4.</span> <span class="nav-text">使用 Github Actions 自动部署 Hexo 博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.5.</span> <span class="nav-text">在云服务器上部署 Hexo 博客</span></a></li></ol></li></ol>
     </div>
 </div>
 
