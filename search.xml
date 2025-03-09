@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>从零开始搭建一个博客</title>
-    <url>/blog/2025/03/08/build-a-blog-from-scratch/</url>
+    <url>/2025/03/08/build-a-blog-from-scratch/</url>
     <content><![CDATA[<h1 id="从零开始搭建一个博客"><a href="#从零开始搭建一个博客" class="headerlink" title="从零开始搭建一个博客"></a>从零开始搭建一个博客</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个计算机专业的学生，每当我遇到一些问题时，在 Google 等搜索引擎上寻找解答，往往别人的技术博客都能解开我的疑惑，让我豁然开朗。当我看到别人精美、炫酷的博客网站时，我也心生羡慕，感慨他们强大的 UI 设计能力，于是我心想：我自己是不是也可以做一个技术博客？但是这个念想也仅仅只是在看到别人美观的个人主页后突然迸发，随后一闪而过、烟消云散，我也一直没有付诸行动。然而，在大三下学期开学，一个偶然的机缘巧合，让我开始了我的技术博客搭建与创作之旅。</p>
 <p>2025年2月，我选修了一门专业选修课《云计算技术》，第一节实验课的作业就包含了搭建一个个人博客并部署到云服务器上，于是乎我就在网络上搜索有关博客搭建的相关知识，确定了博客使用的框架—— <a class="link"   href="https://hexo.io/zh-cn/" >Hexo<i class="fas fa-external-link-alt"></i></a>，以及博客主题—— <a class="link"   href="https://keep-docs.xpoet.cn/" >Keep<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>之所以选择 Hexo 框架，是因为它简洁而高效；而基于 Hexo 框架的Keep 主题的简约优雅正合我心意。</p>
@@ -53,7 +53,7 @@
   </entry>
   <entry>
     <title>Welcome to my blog</title>
-    <url>/blog/2025/03/07/welcome-to-my-blog/</url>
+    <url>/2025/03/07/welcome-to-my-blog/</url>
     <content><![CDATA[<div style="text-align: center">
 
 <p><em><strong>Welcome to my blog!</strong></em></p>
