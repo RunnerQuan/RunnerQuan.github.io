@@ -9,7 +9,7 @@
     
     <title>
         
-            归档: 2025 |
+            how-to-highlight-in-markdown |
         
         RunnerQuan&#39;s Blog
     </title>
@@ -96,7 +96,7 @@
                         </li>
                     
                         
-                        <li class="menu-item flex-start border-box active">
+                        <li class="menu-item flex-start border-box">
                             <a class="menu-text-color border-box" href="/archives">
                                 
                                     <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
@@ -181,7 +181,7 @@
                 </li>
             
                 
-                <li class="drawer-menu-item border-box not-sub-menu active">
+                <li class="drawer-menu-item border-box not-sub-menu">
                     <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
                             
@@ -259,53 +259,280 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="archives-container">
-        <div class="archives-timeline border-box">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
             
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2025</span>
-            </div>
-            <ul class="archive-item-body border-box">
+
+            <div class="post-content-bottom border-box">
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">03-21</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2025/03/21/how-to-highlight-in-markdown/"
-                        >how-to-highlight-in-markdown</a>
-                    </li>
+                    <div class="post-title">
+                        how-to-highlight-in-markdown
+                    </div>
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">03-08</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2025/03/08/build-a-blog-from-scratch/"
-                        >从零开始搭建一个博客</a>
-                    </li>
+
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">03-07</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2025/03/07/welcome-to-my-blog/"
-                        >Welcome to my blog</a>
-                    </li>
-                
-            </ul>
-        </section>
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">RunnerQuan</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-03-21 13:18:20</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Mar 21 2025 13:37:53 GMT+0800">2025-03-21 13:37:53</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Hexo/">Hexo</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Hexo/">Hexo</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>312 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
     
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="如何使用-markdown-进行荧光高亮"><a class="markdownIt-Anchor" href="#如何使用-markdown-进行荧光高亮"></a> 如何使用 Markdown 进行荧光高亮</h1>
+<p>在使用 Markdown 做笔记时，为了能让重点突出，我经常会使用本地的 Typora 编辑器支持双等号的高亮逻辑：<code>==想要高亮的文本==</code>。但是 Markdown 的基本语法不支持文字高亮，而且我将笔记上传到我的 Hexo 博客时发现并没有高亮显示出来，我便上网搜集到了解决方法。</p>
+<h2 id="修改渲染器让-hexo-博客支持等号高亮"><a class="markdownIt-Anchor" href="#修改渲染器让-hexo-博客支持等号高亮"></a> 修改渲染器让 Hexo 博客支持等号高亮</h2>
+<ol>
+<li>
+<p>将 Hexo 渲染器换成 hexo-renderer-markdown-it-plus，并且安装两个依赖 markdown-it 和 markdown-it-mark</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install markdown-it --save</span><br><span class="line">npm install markdown-it-mark --save</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改 Hexo 博客目录里的配置文件 <code>_config.yml</code>，添加一下内容：</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;markdown-it&quot;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;markdown-it-mark&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="使用-html-实现高亮无需修改博客配置"><a class="markdownIt-Anchor" href="#使用-html-实现高亮无需修改博客配置"></a> 使用 HTML 实现高亮（无需修改博客配置）</h2>
+<ol>
+<li>
+<p>使用 HTML 标签 <code>&lt;mark&gt;...&lt;/mark&gt;</code>：可以在标签中添加参数，指定高亮的颜色。</p>
+<p><code>&lt;mark style=&quot;background-color: green; color: white;&quot;&gt;绿色高亮&lt;/mark&gt;</code></p>
+<p>上述代码的效果就是这样（绿底白字）：<mark style="background-color: green; color: white;">绿色高亮</mark></p>
+</li>
+<li>
+<p>使用 <code>&lt;span&gt;</code> 标签：</p>
+<p><code>&lt;span style=&quot;background-color: #FFFF00&quot;&gt;高亮文本&lt;/span&gt;</code></p>
+<p><span style="background-color: #FFFF00">高亮文本</span></p>
+</li>
+</ol>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                how-to-highlight-in-markdown
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/03/21/how-to-highlight-in-markdown/
+            </div>
         </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">RunnerQuan</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-03-21 13:18</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-    
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Hexo/">Hexo</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/03/08/build-a-blog-from-scratch/"
+                                   title="从零开始搭建一个博客"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">从零开始搭建一个博客</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
 
 
 
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-markdown-%E8%BF%9B%E8%A1%8C%E8%8D%A7%E5%85%89%E9%AB%98%E4%BA%AE"><span class="nav-number">1.</span> <span class="nav-text"> 如何使用 Markdown 进行荧光高亮</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%B8%B2%E6%9F%93%E5%99%A8%E8%AE%A9-hexo-%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E7%AD%89%E5%8F%B7%E9%AB%98%E4%BA%AE"><span class="nav-number">1.1.</span> <span class="nav-text"> 修改渲染器让 Hexo 博客支持等号高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-html-%E5%AE%9E%E7%8E%B0%E9%AB%98%E4%BA%AE%E6%97%A0%E9%9C%80%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text"> 使用 HTML 实现高亮（无需修改博客配置）</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
 </div>
 
 
@@ -357,6 +584,31 @@
 
     <!-- post tools -->
     
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
 
     <!-- side tools -->
     <div class="side-tools">
@@ -387,6 +639,10 @@
     </ul>
 
     <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         
@@ -444,8 +700,18 @@
 
     <!-- tablet toc -->
     
-</main>
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-markdown-%E8%BF%9B%E8%A1%8C%E8%8D%A7%E5%85%89%E9%AB%98%E4%BA%AE"><span class="nav-number">1.</span> <span class="nav-text"> 如何使用 Markdown 进行荧光高亮</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%B8%B2%E6%9F%93%E5%99%A8%E8%AE%A9-hexo-%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E7%AD%89%E5%8F%B7%E9%AB%98%E4%BA%AE"><span class="nav-number">1.1.</span> <span class="nav-text"> 修改渲染器让 Hexo 博客支持等号高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-html-%E5%AE%9E%E7%8E%B0%E9%AB%98%E4%BA%AE%E6%97%A0%E9%9C%80%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text"> 使用 HTML 实现高亮（无需修改博客配置）</span></a></li></ol></li></ol>
+    </div>
+</div>
 
+            </div>
+        </div>
+    
+</main>
 
 
 
@@ -487,6 +753,32 @@
     
 
     <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
     
 
     <!-- categories page -->
