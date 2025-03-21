@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Welcome to my blog</title>
+    <url>/2025/03/07/welcome-to-my-blog/</url>
+    <content><![CDATA[<div style="text-align: center">
+
+<p><em><strong>Welcome to my blog!</strong></em></p>
+<p><em><strong>欢迎来到我的博客！</strong></em></p>
+<p>我是RunnerQuan，来自中山大学软件工程学院（<strong>SYSU-SSE</strong>），目前是一名大三的学生，这是我的第一篇博文。</p>
+<p>我喜欢跑步、健身和打羽毛球。</p>
+<p>&#x3D;&#x3D;<em>自律即自由！</em>&#x3D;&#x3D;</p>
+</div>
+
+<div style="text-align: center">
+    <img    
+                       lazyload
+                       alt="image"
+                       data-src="https://github.com/RunnerQuan/picx-images-hosting/raw/master/20250308/picx-Z30_2970.2h8geh5wn5.webp"
+                         
+         style="width: 70%; 
+                max-width: 800px; 
+                display: block; 
+                margin: 0 auto;" 
+         alt="my_picture"
+                 >
+</div>]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Introduction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>从零开始搭建一个博客</title>
     <url>/2025/03/08/build-a-blog-from-scratch/</url>
     <content><![CDATA[<h1 id="从零开始搭建一个博客"><a href="#从零开始搭建一个博客" class="headerlink" title="从零开始搭建一个博客"></a>从零开始搭建一个博客</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个计算机专业的学生，每当我遇到一些问题时，在 Google 等搜索引擎上寻找解答，往往别人的技术博客都能解开我的疑惑，让我豁然开朗。当我看到别人精美、炫酷的博客网站时，我也心生羡慕，感慨他们强大的 UI 设计能力，于是我心想：我自己是不是也可以做一个技术博客？但是这个念想也仅仅只是在看到别人美观的个人主页后突然迸发，随后一闪而过、烟消云散，我也一直没有付诸行动。然而，在大三下学期开学，一个偶然的机缘巧合，让我开始了我的技术博客搭建与创作之旅。</p>
@@ -38,7 +71,7 @@
 <p>我是直接在本地下载官方文档里的<a class="link"   href="https://keep-docs.xpoet.cn/basis/get-start/starter-template.html" >“启动模板“<i class="fas fa-external-link-alt"></i></a>（可以不用下载单独下载 Keep 主题，因为启动模板里面就包含了），然后按照里面的流程进行博客的配置和启动。</p>
 <h2 id="使用-Github-Actions-自动部署-Hexo-博客"><a href="#使用-Github-Actions-自动部署-Hexo-博客" class="headerlink" title="使用 Github Actions 自动部署 Hexo 博客"></a>使用 Github Actions 自动部署 Hexo 博客</h2><p>下一步，我是完全依照下面这篇文章进行的，过程也是非常的顺利。</p>
 <p><a class="link"   href="https://juejin.cn/post/6943895271751286821" >如何使用 GitHub Actions 自动部署 Hexo 博客<i class="fas fa-external-link-alt"></i></a></p>
-<p>然后就得到了我的第一个博客网站：<a class="link"   href="https://runnerquan.github.io/" >RunnerQuan’s Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p>然后就得到了我的第一个博客网站：<a href="https://runnerquan.github.io/">RunnerQuan’s Blog</a></p>
 <p>接着，我们就要考虑在云服务器上部署我们的博客。</p>
 <h2 id="在云服务器上部署-Hexo-博客"><a href="#在云服务器上部署-Hexo-博客" class="headerlink" title="在云服务器上部署 Hexo 博客"></a>在云服务器上部署 Hexo 博客</h2><p>这一步我也是按照下面这篇博文的流程进行的</p>
 <p><a class="link"   href="https://blog.laoda.de/archives/hexo-building" >将Hexo部署到阿里云轻量服务器（保姆级教程）<i class="fas fa-external-link-alt"></i></a></p>
@@ -49,39 +82,6 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome to my blog</title>
-    <url>/2025/03/07/welcome-to-my-blog/</url>
-    <content><![CDATA[<div style="text-align: center">
-
-<p><em><strong>Welcome to my blog!</strong></em></p>
-<p><em><strong>欢迎来到我的博客！</strong></em></p>
-<p>我是RunnerQuan，来自中山大学软件工程学院（<strong>SYSU-SSE</strong>），目前是一名大三的学生，这是我的第一篇博文。</p>
-<p>我喜欢跑步、健身和打羽毛球。</p>
-<p><em>自律即自由！</em></p>
-</div>
-
-<div style="text-align: center">
-    <img    
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/RunnerQuan/picx-images-hosting/raw/master/20250308/picx-Z30_2970.2h8geh5wn5.webp"
-                         
-         style="width: 70%; 
-                max-width: 800px; 
-                display: block; 
-                margin: 0 auto;" 
-         alt="my_picture"
-                 >
-</div>]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Introduction</tag>
       </tags>
   </entry>
 </search>
