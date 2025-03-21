@@ -1,75 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>how-to-highlight-in-markdown</title>
-    <url>/2025/03/21/how-to-highlight-in-markdown/</url>
-    <content><![CDATA[<h1 id="如何使用-markdown-进行荧光高亮"><a class="markdownIt-Anchor" href="#如何使用-markdown-进行荧光高亮"></a> 如何使用 Markdown 进行荧光高亮</h1>
-<p>在使用 Markdown 做笔记时，为了能让重点突出，我经常会使用本地的 Typora 编辑器支持双等号的高亮逻辑：<code>==想要高亮的文本==</code>。但是 Markdown 的基本语法不支持文字高亮，而且我将笔记上传到我的 Hexo 博客时发现并没有高亮显示出来，我便上网搜集到了解决方法。</p>
-<h2 id="修改渲染器让-hexo-博客支持等号高亮"><a class="markdownIt-Anchor" href="#修改渲染器让-hexo-博客支持等号高亮"></a> 修改渲染器让 Hexo 博客支持等号高亮</h2>
-<ol>
-<li>
-<p>将 Hexo 渲染器换成 hexo-renderer-markdown-it-plus，并且安装两个依赖 markdown-it 和 markdown-it-mark</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install markdown-it --save</span><br><span class="line">npm install markdown-it-mark --save</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>修改 Hexo 博客目录里的配置文件 <code>_config.yml</code>，添加一下内容：</p>
- <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;markdown-it&quot;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;markdown-it-mark&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="使用-html-实现高亮无需修改博客配置"><a class="markdownIt-Anchor" href="#使用-html-实现高亮无需修改博客配置"></a> 使用 HTML 实现高亮（无需修改博客配置）</h2>
-<ol>
-<li>
-<p>使用 HTML 标签 <code>&lt;mark&gt;...&lt;/mark&gt;</code>：可以在标签中添加参数，指定高亮的颜色。</p>
-<p><code>&lt;mark style=&quot;background-color: green; color: white;&quot;&gt;绿色高亮&lt;/mark&gt;</code></p>
-<p>上述代码的效果就是这样（绿底白字）：<mark style="background-color: green; color: white;">绿色高亮</mark></p>
-</li>
-<li>
-<p>使用 <code>&lt;span&gt;</code> 标签：</p>
-<p><code>&lt;span style=&quot;background-color: #FFFF00&quot;&gt;高亮文本&lt;/span&gt;</code></p>
-<p><span style="background-color: #FFFF00">高亮文本</span></p>
-</li>
-</ol>
-<p><strong>参考</strong>：<a class="link"   href="https://blog.kukmoon.com/2bbbe6e54c9b/" >MarkDown 高亮 (Highlighter) 的三种方法 - 谷中望月<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome to my blog</title>
-    <url>/2025/03/07/welcome-to-my-blog/</url>
-    <content><![CDATA[<div style="text-align: center">
-<p><em><strong>Welcome to my blog!</strong></em></p>
-<p><em><strong>欢迎来到我的博客！</strong></em></p>
-<p>我是RunnerQuan，来自中山大学软件工程学院（<strong>SYSU-SSE</strong>），目前是一名大三的学生，这是我的第一篇博文。</p>
-<p>我喜欢跑步、健身和打羽毛球。</p>
-<p><mark><em>自律即自由！</em></mark></p>
-</div>
-<div style="text-align: center">
-    <img    
-                       lazyload
-                       alt="image"
-                       data-src="https://github.com/RunnerQuan/picx-images-hosting/raw/master/20250308/picx-Z30_2970.2h8geh5wn5.webp"
-                         
-         style="width: 70%; 
-                max-width: 800px; 
-                display: block; 
-                margin: 0 auto;" 
-         alt="my_picture"
-                 >
-</div>]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Introduction</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>从零开始搭建一个博客</title>
     <url>/2025/03/08/build-a-blog-from-scratch/</url>
     <content><![CDATA[<h1 id="从零开始搭建一个博客"><a class="markdownIt-Anchor" href="#从零开始搭建一个博客"></a> 从零开始搭建一个博客</h1>
@@ -120,6 +51,73 @@
 <p>这一步我也是按照下面这篇博文的流程进行的</p>
 <p><a class="link"   href="https://blog.laoda.de/archives/hexo-building" >将Hexo部署到阿里云轻量服务器（保姆级教程）<i class="fas fa-external-link-alt"></i></a></p>
 <p>最后，我的博客就搭建完成啦！</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Welcome to my blog</title>
+    <url>/2025/03/07/welcome-to-my-blog/</url>
+    <content><![CDATA[<div style="text-align: center">
+<p><em><strong>Welcome to my blog!</strong></em></p>
+<p><em><strong>欢迎来到我的博客！</strong></em></p>
+<p>我是RunnerQuan，来自中山大学软件工程学院（<strong>SYSU-SSE</strong>），目前是一名大三的学生，这是我的第一篇博文。</p>
+<p>我喜欢跑步、健身和打羽毛球。</p>
+<p><mark><em>自律即自由！</em></mark></p>
+</div>
+<div style="text-align: center">
+    <img    
+                       lazyload
+                       alt="image"
+                       data-src="https://github.com/RunnerQuan/picx-images-hosting/raw/master/20250308/picx-Z30_2970.2h8geh5wn5.webp"
+                         
+         style="width: 70%; 
+                max-width: 800px; 
+                display: block; 
+                margin: 0 auto;" 
+         alt="my_picture"
+                 >
+</div>]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Introduction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用 Markdown 进行荧光高亮</title>
+    <url>/2025/03/21/how-to-highlight-in-markdown/</url>
+    <content><![CDATA[<p>在使用 Markdown 做笔记时，为了能让重点突出，我经常会使用本地的 Typora 编辑器支持双等号的高亮逻辑：<code>==想要高亮的文本==</code>。但是 Markdown 的基本语法不支持文字高亮，而且我将笔记上传到我的 Hexo 博客时发现并没有高亮显示出来，我便上网搜集到了解决方法。</p>
+<h1 id="修改渲染器让-hexo-博客支持等号高亮"><a class="markdownIt-Anchor" href="#修改渲染器让-hexo-博客支持等号高亮"></a> 修改渲染器让 Hexo 博客支持等号高亮</h1>
+<ol>
+<li>
+<p>将 Hexo 渲染器换成 hexo-renderer-markdown-it-plus，并且安装两个依赖 markdown-it 和 markdown-it-mark</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install markdown-it --save</span><br><span class="line">npm install markdown-it-mark --save</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改 Hexo 博客目录里的配置文件 <code>_config.yml</code>，添加一下内容：</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;markdown-it&quot;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;markdown-it-mark&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="使用-html-实现高亮无需修改博客配置"><a class="markdownIt-Anchor" href="#使用-html-实现高亮无需修改博客配置"></a> 使用 HTML 实现高亮（无需修改博客配置）</h1>
+<ol>
+<li>
+<p>使用 HTML 标签 <code>&lt;mark&gt;...&lt;/mark&gt;</code>：可以在标签中添加参数，指定高亮的颜色。</p>
+<p><code>&lt;mark style=&quot;background-color: green; color: white;&quot;&gt;绿色高亮&lt;/mark&gt;</code></p>
+<p>上述代码的效果就是这样（绿底白字）：<mark style="background-color: green; color: white;">绿色高亮</mark></p>
+</li>
+<li>
+<p>使用 <code>&lt;span&gt;</code> 标签：</p>
+<p><code>&lt;span style=&quot;background-color: #FFFF00&quot;&gt;高亮文本&lt;/span&gt;</code></p>
+<p><span style="background-color: #FFFF00">高亮文本</span></p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Hexo</category>
