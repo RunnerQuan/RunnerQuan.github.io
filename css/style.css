@@ -285,11 +285,11 @@
   }
 }
 :root {
-  --primary-color: #3498db;
-  --primary-color-light-1: #48a2df;
-  --primary-color-light-2: #5dade2;
-  --primary-color-dark-1: #258bcf;
-  --primary-color-dark-2: #217bb8;
+  --primary-color: #f5f5f5;
+  --primary-color-light-1: #f6f6f6;
+  --primary-color-light-2: #f7f7f7;
+  --primary-color-dark-1: #ddd;
+  --primary-color-dark-2: #c4c4c4;
   --background-color-1: #fff;
   --background-color-1-transparent: rgba(255,255,255,0.6);
   --background-color-2: #f7f7f7;
@@ -305,14 +305,14 @@
   --badge-color: #f0f0f0;
   --badge-background-color: #9393a1;
   --border-color: #b3b3b3;
-  --selection-color: #48a2df;
+  --selection-color: #f6f6f6;
   --shadow-color: rgba(0,0,0,0.16);
   --shadow-hover-color: rgba(0,0,0,0.22);
   --scrollbar-color: #686877;
   --scrollbar-background-color: #e6e6e6;
   --toc-scrollbar-color: rgba(80,80,92,0.1);
   --copyright-icon-bg-color: rgba(80,80,92,0.12);
-  --avatar-background-color: #258bcf;
+  --avatar-background-color: #ddd;
   --header-transparent-background-1: rgba(255,255,255,0.28);
   --header-transparent-background-2: rgba(255,255,255,0.4);
   --pjax-progress-bar-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
@@ -335,11 +335,11 @@
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --primary-color: #3498db;
-    --primary-color-light-1: #48a2df;
-    --primary-color-light-2: #5dade2;
-    --primary-color-dark-1: #258bcf;
-    --primary-color-dark-2: #217bb8;
+    --primary-color: #f5f5f5;
+    --primary-color-light-1: #f6f6f6;
+    --primary-color-light-2: #f7f7f7;
+    --primary-color-dark-1: #ddd;
+    --primary-color-dark-2: #c4c4c4;
     --background-color-1: #fff;
     --background-color-1-transparent: rgba(255,255,255,0.6);
     --background-color-2: #f7f7f7;
@@ -355,14 +355,14 @@
     --badge-color: #f0f0f0;
     --badge-background-color: #9393a1;
     --border-color: #b3b3b3;
-    --selection-color: #48a2df;
+    --selection-color: #f6f6f6;
     --shadow-color: rgba(0,0,0,0.16);
     --shadow-hover-color: rgba(0,0,0,0.22);
     --scrollbar-color: #686877;
     --scrollbar-background-color: #e6e6e6;
     --toc-scrollbar-color: rgba(80,80,92,0.1);
     --copyright-icon-bg-color: rgba(80,80,92,0.12);
-    --avatar-background-color: #258bcf;
+    --avatar-background-color: #ddd;
     --header-transparent-background-1: rgba(255,255,255,0.28);
     --header-transparent-background-2: rgba(255,255,255,0.4);
     --pjax-progress-bar-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
@@ -386,11 +386,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #3498db;
-    --primary-color-light-1: #48a2df;
-    --primary-color-light-2: #5dade2;
-    --primary-color-dark-1: #258bcf;
-    --primary-color-dark-2: #217bb8;
+    --primary-color: #f5f5f5;
+    --primary-color-light-1: #f6f6f6;
+    --primary-color-light-2: #f7f7f7;
+    --primary-color-dark-1: #ddd;
+    --primary-color-dark-2: #c4c4c4;
     --background-color-1: #22272e;
     --background-color-1-transparent: rgba(34,39,46,0.6);
     --background-color-2: #292f38;
@@ -406,14 +406,14 @@
     --badge-color: #343c47;
     --badge-background-color: #ced6dc;
     --border-color: #596678;
-    --selection-color: #2386c9;
+    --selection-color: #c5c5c5;
     --shadow-color: rgba(120,120,120,0.18);
     --shadow-hover-color: rgba(120,120,120,0.24);
     --scrollbar-color: #505b6c;
     --scrollbar-background-color: #1d2127;
     --toc-scrollbar-color: rgba(173,186,197,0.1);
     --copyright-icon-bg-color: rgba(173,186,197,0.12);
-    --avatar-background-color: #1e6fa6;
+    --avatar-background-color: #b1b1b1;
     --header-transparent-background-1: rgba(34,39,46,0.28);
     --header-transparent-background-2: rgba(34,39,46,0.4);
     --pjax-progress-bar-color: linear-gradient(45deg, #ea404a, #ea722f, #e9a71f, #67e559, #18ecec, #1b85f1, #ee1dee);
@@ -436,11 +436,11 @@
   }
 }
 .light-mode {
-  --primary-color: #3498db;
-  --primary-color-light-1: #48a2df;
-  --primary-color-light-2: #5dade2;
-  --primary-color-dark-1: #258bcf;
-  --primary-color-dark-2: #217bb8;
+  --primary-color: #f5f5f5;
+  --primary-color-light-1: #f6f6f6;
+  --primary-color-light-2: #f7f7f7;
+  --primary-color-dark-1: #ddd;
+  --primary-color-dark-2: #c4c4c4;
   --background-color-1: #fff;
   --background-color-1-transparent: rgba(255,255,255,0.6);
   --background-color-2: #f7f7f7;
@@ -456,14 +456,14 @@
   --badge-color: #f0f0f0;
   --badge-background-color: #9393a1;
   --border-color: #b3b3b3;
-  --selection-color: #48a2df;
+  --selection-color: #f6f6f6;
   --shadow-color: rgba(0,0,0,0.16);
   --shadow-hover-color: rgba(0,0,0,0.22);
   --scrollbar-color: #686877;
   --scrollbar-background-color: #e6e6e6;
   --toc-scrollbar-color: rgba(80,80,92,0.1);
   --copyright-icon-bg-color: rgba(80,80,92,0.12);
-  --avatar-background-color: #258bcf;
+  --avatar-background-color: #ddd;
   --header-transparent-background-1: rgba(255,255,255,0.28);
   --header-transparent-background-2: rgba(255,255,255,0.4);
   --pjax-progress-bar-color: linear-gradient(45deg, #f10006, #ef5b00, #e59c01, #19ca05, #00cab5, #0264c8, #c303c3);
@@ -485,11 +485,11 @@
   --keep-danger-border-color: rgba(244,63,94,0.6);
 }
 .dark-mode {
-  --primary-color: #3498db;
-  --primary-color-light-1: #48a2df;
-  --primary-color-light-2: #5dade2;
-  --primary-color-dark-1: #258bcf;
-  --primary-color-dark-2: #217bb8;
+  --primary-color: #f5f5f5;
+  --primary-color-light-1: #f6f6f6;
+  --primary-color-light-2: #f7f7f7;
+  --primary-color-dark-1: #ddd;
+  --primary-color-dark-2: #c4c4c4;
   --background-color-1: #22272e;
   --background-color-1-transparent: rgba(34,39,46,0.6);
   --background-color-2: #292f38;
@@ -505,14 +505,14 @@
   --badge-color: #343c47;
   --badge-background-color: #ced6dc;
   --border-color: #596678;
-  --selection-color: #2386c9;
+  --selection-color: #c5c5c5;
   --shadow-color: rgba(120,120,120,0.18);
   --shadow-hover-color: rgba(120,120,120,0.24);
   --scrollbar-color: #505b6c;
   --scrollbar-background-color: #1d2127;
   --toc-scrollbar-color: rgba(173,186,197,0.1);
   --copyright-icon-bg-color: rgba(173,186,197,0.12);
-  --avatar-background-color: #1e6fa6;
+  --avatar-background-color: #b1b1b1;
   --header-transparent-background-1: rgba(34,39,46,0.28);
   --header-transparent-background-2: rgba(34,39,46,0.4);
   --pjax-progress-bar-color: linear-gradient(45deg, #ea404a, #ea722f, #e9a71f, #67e559, #18ecec, #1b85f1, #ee1dee);
@@ -1307,8 +1307,8 @@ img[lazyload]::after {
   --toolbar-foreground: #50505c;
   --toolbar-background: #f0f0f0;
   --code-foreground: #585865;
-  --code-background: rgba(52,152,219,0.15);
-  --code-border-color: #71b7e6;
+  --code-background: rgba(245,245,245,0.15);
+  --code-border-color: #f8f8f8;
   --highlight-background: #fafafa;
   --highlight-foreground: #535360;
   --highlight-comment: #8e908c;
@@ -1333,8 +1333,8 @@ img[lazyload]::after {
     --toolbar-foreground: #50505c;
     --toolbar-background: #f0f0f0;
     --code-foreground: #585865;
-    --code-background: rgba(52,152,219,0.15);
-    --code-border-color: #71b7e6;
+    --code-background: rgba(245,245,245,0.15);
+    --code-border-color: #f8f8f8;
     --highlight-background: #fafafa;
     --highlight-foreground: #535360;
     --highlight-comment: #8e908c;
@@ -1360,8 +1360,8 @@ img[lazyload]::after {
     --toolbar-foreground: #adbac5;
     --toolbar-background: #313842;
     --code-foreground: #b5c1cb;
-    --code-background: rgba(52,152,219,0.15);
-    --code-border-color: #185d8a;
+    --code-background: rgba(245,245,245,0.15);
+    --code-border-color: #939393;
     --highlight-background: #1f242a;
     --highlight-foreground: #afbbc6;
     --highlight-comment: #969896;
@@ -1386,8 +1386,8 @@ img[lazyload]::after {
   --toolbar-foreground: #50505c;
   --toolbar-background: #f0f0f0;
   --code-foreground: #585865;
-  --code-background: rgba(52,152,219,0.15);
-  --code-border-color: #71b7e6;
+  --code-background: rgba(245,245,245,0.15);
+  --code-border-color: #f8f8f8;
   --highlight-background: #fafafa;
   --highlight-foreground: #535360;
   --highlight-comment: #8e908c;
@@ -1411,8 +1411,8 @@ img[lazyload]::after {
   --toolbar-foreground: #adbac5;
   --toolbar-background: #313842;
   --code-foreground: #b5c1cb;
-  --code-background: rgba(52,152,219,0.15);
-  --code-border-color: #185d8a;
+  --code-background: rgba(245,245,245,0.15);
+  --code-border-color: #939393;
   --highlight-background: #1f242a;
   --highlight-foreground: #afbbc6;
   --highlight-comment: #969896;
@@ -1754,8 +1754,8 @@ figure.highlight .shrink-line:hover::before {
   --toolbar-foreground: #50505c;
   --toolbar-background: #f0f0f0;
   --code-foreground: #585865;
-  --code-background: rgba(52,152,219,0.15);
-  --code-border-color: #71b7e6;
+  --code-background: rgba(245,245,245,0.15);
+  --code-border-color: #f8f8f8;
   --highlight-background: #fafafa;
   --highlight-foreground: #535360;
   --highlight-comment: #8e908c;
@@ -1780,8 +1780,8 @@ figure.highlight .shrink-line:hover::before {
     --toolbar-foreground: #50505c;
     --toolbar-background: #f0f0f0;
     --code-foreground: #585865;
-    --code-background: rgba(52,152,219,0.15);
-    --code-border-color: #71b7e6;
+    --code-background: rgba(245,245,245,0.15);
+    --code-border-color: #f8f8f8;
     --highlight-background: #fafafa;
     --highlight-foreground: #535360;
     --highlight-comment: #8e908c;
@@ -1807,8 +1807,8 @@ figure.highlight .shrink-line:hover::before {
     --toolbar-foreground: #adbac5;
     --toolbar-background: #313842;
     --code-foreground: #b5c1cb;
-    --code-background: rgba(52,152,219,0.15);
-    --code-border-color: #185d8a;
+    --code-background: rgba(245,245,245,0.15);
+    --code-border-color: #939393;
     --highlight-background: #1f242a;
     --highlight-foreground: #afbbc6;
     --highlight-comment: #969896;
@@ -1833,8 +1833,8 @@ figure.highlight .shrink-line:hover::before {
   --toolbar-foreground: #50505c;
   --toolbar-background: #f0f0f0;
   --code-foreground: #585865;
-  --code-background: rgba(52,152,219,0.15);
-  --code-border-color: #71b7e6;
+  --code-background: rgba(245,245,245,0.15);
+  --code-border-color: #f8f8f8;
   --highlight-background: #fafafa;
   --highlight-foreground: #535360;
   --highlight-comment: #8e908c;
@@ -1858,8 +1858,8 @@ figure.highlight .shrink-line:hover::before {
   --toolbar-foreground: #adbac5;
   --toolbar-background: #313842;
   --code-foreground: #b5c1cb;
-  --code-background: rgba(52,152,219,0.15);
-  --code-border-color: #185d8a;
+  --code-background: rgba(245,245,245,0.15);
+  --code-border-color: #939393;
   --highlight-background: #1f242a;
   --highlight-foreground: #afbbc6;
   --highlight-comment: #969896;
