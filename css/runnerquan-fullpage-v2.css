@@ -1,0 +1,88 @@
+:root{
+  --rq-cockpit-image:url("/images/runnerquan-cockpit.png");
+  --rq-moon-image:url("/images/runnerquan-moon.svg");
+}
+html.rq-fullpage-root{scroll-behavior:smooth;scroll-snap-type:y mandatory;overscroll-behavior-y:none;background:#000}
+body.rq-home-page{margin:0;background:#000!important;overflow-x:hidden}
+.rq-fullpage-panel{position:relative;width:100%;height:100svh;min-height:42rem;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;isolation:isolate}
+.rq-home-page .rq-nav{position:fixed;top:0;left:50%;z-index:90;width:min(92vw,1280px);height:5rem;margin:0;transform:translateX(-50%);border:0;background:linear-gradient(180deg,rgba(0,0,0,.68),transparent);transition:.25s}
+.rq-home-page .rq-nav.rq-nav-scrolled{border-bottom:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.72);backdrop-filter:blur(15px)}
+
+.rq-hero-stage{background:radial-gradient(circle at 68% 40%,rgba(255,255,255,.06),transparent 25%),radial-gradient(circle at 14% 72%,rgba(255,255,255,.04),transparent 28%),#000}
+.rq-hero-stage .rq-hero{position:relative;display:flex;align-items:center;width:100%;max-width:none;height:100%;min-height:0;margin:0;padding:6rem 5vw 3rem;overflow:hidden}
+.rq-hero-stage .rq-hero:before{content:"";position:absolute;inset:0;z-index:-2;opacity:.34;background:radial-gradient(circle,rgba(255,255,255,.65) 0 1px,transparent 1.4px) 0 0/4rem 4rem,radial-gradient(circle,rgba(255,255,255,.32) 0 1px,transparent 1.4px) 1rem 2rem/5.7rem 5.7rem;mask-image:linear-gradient(90deg,#000 0 76%,transparent 100%)}
+.rq-hero-copy{position:relative;z-index:12;width:min(43rem,46vw);padding-left:max(0rem,1vw);opacity:0;transform:translate3d(-2rem,0,0);transition:opacity .9s ease .15s,transform .9s cubic-bezier(.2,.8,.2,1) .15s}
+.rq-hero-stage.is-active-panel .rq-hero-copy{opacity:1;transform:none}
+.rq-hero h1{font-size:clamp(3.2rem,6.5vw,7.4rem)!important;line-height:.98!important;letter-spacing:0!important;text-shadow:0 0 2rem rgba(255,255,255,.12)}
+.rq-hero-cn{max-width:34rem;line-height:1.7}
+.rq-cockpit{position:absolute!important;top:50%;right:-5.5vw;z-index:4;width:min(76vw,98rem);height:auto!important;min-width:0;aspect-ratio:1774/887;margin:0!important;opacity:.78;transform:translate3d(calc(var(--rq-hero-x,0)*-12px),calc(-50% + var(--rq-hero-y,0)*-9px),0) scale(.96);transform-origin:61% 48%;background:var(--rq-cockpit-image) center/contain no-repeat;filter:contrast(1.14) brightness(.88);will-change:transform,filter,opacity;transition:opacity 1s ease .12s,transform 1.2s cubic-bezier(.2,.8,.2,1) .12s}
+.rq-hero-stage.is-active-panel .rq-cockpit{opacity:1;transform:translate3d(calc(var(--rq-hero-x,0)*-12px),calc(-50% + var(--rq-hero-y,0)*-9px),0) scale(1)}
+.rq-cockpit:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 0 43%,rgba(255,255,255,.05) 48%,transparent 54%),repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 4px);mix-blend-mode:screen;mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 100%)}
+.rq-cockpit .rq-stars,.rq-cockpit .rq-window,.rq-cockpit .rq-console{display:none!important}
+.rq-scene-moon{display:none!important;position:absolute;left:49.35%;top:43.4%;z-index:5;width:10.6%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(var(--rq-moon-scale,1));background:var(--rq-moon-image) center/contain no-repeat;filter:grayscale(1) contrast(1.18) drop-shadow(0 0 1.2rem rgba(255,255,255,.26));animation:rqV2Moon 6.5s ease-in-out infinite;will-change:transform}
+.rq-scene-moon:after{content:"";position:absolute;inset:-18%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 66%);filter:blur(.6rem)}
+.rq-hero-orbit{left:69%!important;top:43%!important;opacity:0!important;transform:translate(-50%,-50%) scale(.65)!important;transition:opacity .7s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rq-hero-stage.is-active-panel .rq-hero-orbit{opacity:.38!important;transform:translate(-50%,-50%) scale(1)!important}
+.rq-hero-scroll{bottom:1.3rem!important}
+
+.rq-orbit-mission{display:grid;align-items:center;padding:6rem 6vw 3rem;background:radial-gradient(circle at 8% 40%,rgba(255,255,255,.08),transparent 26%),linear-gradient(180deg,#020202,#080808 55%,#020202)}
+.rq-orbit-mission-moon,.rq-orbit-about-moon{background:var(--rq-moon-image) center/contain no-repeat!important;filter:grayscale(1) contrast(1.18) drop-shadow(0 0 4rem rgba(255,255,255,.16))}
+.rq-orbit-mission-moon{left:-14vw!important;top:50%!important;width:min(66vw,68rem)!important;opacity:.72!important;transform:translate3d(0,-50%,0) rotate(-10deg) scale(.92)!important;transition:transform 1.15s cubic-bezier(.2,.8,.2,1),opacity .9s}
+.rq-orbit-mission.is-active-panel .rq-orbit-mission-moon{opacity:1!important;transform:translate3d(3vw,-50%,0) rotate(0) scale(1)!important}
+.rq-orbit-mission-copy{width:min(40rem,43vw)!important;margin-left:auto}
+
+.rq-orbit-warp-stage{height:100svh!important;background:#000}
+.rq-orbit-warp{position:absolute!important;inset:0;height:auto!important}
+.rq-orbit-warp-lines{inset:-25%!important;opacity:.7}
+.rq-orbit-warp-lines i{opacity:.1!important;transform:rotate(calc(var(--i)*12.86deg)) translateX(5vw) scaleX(.4)!important;transition:opacity .9s,transform 1.25s cubic-bezier(.12,.7,.18,1)}
+.rq-orbit-warp-stage.is-active-panel .rq-orbit-warp-lines i{opacity:.65!important;transform:rotate(calc(var(--i)*12.86deg)) translateX(13vw) scaleX(1.55)!important}
+
+.rq-home-page .rq-section{display:flex;flex-direction:column;justify-content:center;width:100%;max-width:none;margin:0;padding:6.3rem 5vw 2.5rem;background:radial-gradient(circle at 83% 16%,rgba(255,255,255,.04),transparent 22%),#020202}
+.rq-home-page .rq-section-head{flex:0 0 auto;width:min(100%,1280px);margin:0 auto 1rem}
+.rq-home-page .rq-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));flex:1 1 auto;width:min(100%,1280px);max-height:72vh;margin:0 auto;gap:0;border-top:1px solid rgba(255,255,255,.24);border-left:1px solid rgba(255,255,255,.24)}
+.rq-home-page .rq-project-card{min-height:0;padding:1.25rem 1.3rem 1.1rem;border:0;border-right:1px solid rgba(255,255,255,.24);border-bottom:1px solid rgba(255,255,255,.24);border-radius:0;background:radial-gradient(circle at calc(50% + var(--rq-x,0)*30%),calc(50% + var(--rq-y,0)*30%),rgba(255,255,255,.08),transparent 44%),rgba(8,8,8,.92);transform:perspective(950px) rotateX(calc(var(--rq-y,0)*-2.2deg)) rotateY(calc(var(--rq-x,0)*2.2deg))}
+.rq-home-page .rq-project-card:hover{z-index:2;border-color:#fff;transform:perspective(950px) translateY(-4px) rotateX(calc(var(--rq-y,0)*-2.2deg)) rotateY(calc(var(--rq-x,0)*2.2deg))}
+.rq-home-page .rq-project-card>i{margin-bottom:.75rem;font-size:1.65rem}
+.rq-home-page .rq-project-card h3{margin-bottom:.45rem;font-size:clamp(1.05rem,1.5vw,1.45rem)}
+.rq-home-page .rq-project-card p{min-height:0;display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3;font-size:.87rem;line-height:1.42}
+.rq-home-page .rq-tags{margin-top:.75rem}.rq-home-page .rq-tags span{font-size:.7rem}
+
+.rq-orbit-story-wrap{display:contents}
+.rq-orbit-story{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:7vw;width:min(90vw,1280px)!important;margin:0 auto!important;padding:6rem 0 3rem!important;border:0!important;background:#000}
+.rq-orbit-story:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 25% 50%,rgba(255,255,255,.055),transparent 26%),linear-gradient(180deg,#000,#050505,#000)}
+.rq-orbit-story-visual{height:min(56vh,34rem)!important;transform:translateX(-3rem) scale(.92)!important;opacity:.4;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.rq-orbit-story.is-active-panel .rq-orbit-story-visual{transform:none!important;opacity:1}
+.rq-orbit-radar{opacity:.45;transform:scale(.82);transition:opacity .8s,transform 1s cubic-bezier(.2,.8,.2,1)}
+.rq-orbit-story.is-active-panel .rq-orbit-radar{opacity:1;transform:scale(1)}
+
+.rq-home-page #blog .rq-blog-list{display:grid;grid-template-columns:1fr;width:min(100%,1280px);max-height:68vh;margin:0 auto;gap:0;border-top:1px solid rgba(255,255,255,.18)}
+.rq-home-page #blog .rq-blog-row{min-height:0;padding:1.15rem 1rem;border:0;border-bottom:1px solid rgba(255,255,255,.18);border-radius:0;background:transparent}
+.rq-home-page #blog .rq-blog-row:hover{padding-left:1.6rem;background:#0a0a0a}
+
+.rq-orbit-about{display:grid!important;grid-template-columns:1fr 1fr!important;align-items:center!important;width:100%!important;max-width:none!important;min-height:42rem!important;margin:0!important;padding:6rem 7vw 3rem!important;border:0!important;background:radial-gradient(circle at 84% 48%,rgba(255,255,255,.07),transparent 30%),#000}
+.rq-orbit-about-copy{position:relative;z-index:4;width:min(42rem,45vw)}
+.rq-orbit-about-moon{right:-11vw!important;top:50%!important;width:min(67vw,66rem)!important;opacity:.55!important;transform:translate3d(4vw,-50%,0) rotate(8deg) scale(.92)!important;transition:transform 1.1s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.rq-orbit-about.is-active-panel .rq-orbit-about-moon{opacity:.9!important;transform:translate3d(0,-50%,0) rotate(0) scale(1)!important}
+.rq-orbit-footer{display:grid!important;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:2rem;padding:6rem 6vw 3rem!important;color:#000!important;background:#f0f0f0!important}
+.rq-orbit-footer:before{content:"END / KEEP BUILDING";position:absolute;left:6vw;top:18%;color:rgba(0,0,0,.14);font-family:var(--rq-pixel);font-size:clamp(2rem,8vw,8rem);white-space:nowrap}
+.rq-orbit-footer a{position:relative;z-index:1;color:#000!important}.rq-orbit-footer p,.rq-orbit-footer span{position:relative;z-index:1}.rq-orbit-footer p{text-align:center}.rq-orbit-footer span{text-align:right}
+
+.rq-orbit-progress{z-index:85!important}.rq-orbit-reveal{opacity:0;transform:translateY(2.5rem);transition:opacity .72s ease var(--rq-delay,0ms),transform .72s cubic-bezier(.2,.8,.2,1) var(--rq-delay,0ms)}
+.rq-fullpage-panel.is-active-panel .rq-orbit-reveal,.rq-orbit-reveal.is-visible{opacity:1;transform:none}
+
+@keyframes rqV2Moon{0%,100%{transform:translate(-50%,-50%) scale(var(--rq-moon-scale,1)) translateY(-2px)}50%{transform:translate(-50%,-50%) scale(var(--rq-moon-scale,1)) translateY(7px)}}
+
+@media(max-width:1180px){.rq-cockpit{right:-13vw;width:86vw}.rq-hero-copy{width:48vw}}
+@media(max-width:980px){
+  html.rq-fullpage-root{scroll-snap-type:y proximity}
+  .rq-fullpage-panel{height:auto;min-height:100svh;overflow:visible}
+  .rq-hero-stage .rq-hero{padding:6rem 1.2rem 3rem}.rq-hero-copy{width:min(38rem,92vw)}.rq-hero h1{font-size:clamp(3rem,12vw,5.4rem)!important}
+  .rq-cockpit{top:57%;right:-44vw;width:135vw;opacity:.48}.rq-hero-stage.is-active-panel .rq-cockpit{opacity:.62}.rq-hero-orbit,.rq-hero-scroll{display:none!important}
+  .rq-orbit-mission{padding:6rem 1.2rem 3rem}.rq-orbit-mission-moon{left:-48vw!important;width:118vw!important;opacity:.5!important}.rq-orbit-mission-copy{width:min(35rem,88vw)!important}
+  .rq-home-page .rq-project-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(12rem,auto));max-height:none}.rq-home-page #projects{height:auto;min-height:100svh;padding-bottom:5rem}
+  .rq-orbit-story{grid-template-columns:1fr!important;gap:2rem;width:calc(100vw - 2rem)!important;padding:6rem 0 4rem!important}.rq-orbit-story:nth-child(2) .rq-orbit-story-copy{order:2}.rq-orbit-story-visual{height:18rem!important}.rq-orbit-radar{width:17rem!important}
+  .rq-orbit-about{grid-template-columns:1fr!important;padding:6rem 1.4rem 4rem!important}.rq-orbit-about-copy{width:min(35rem,90vw)}.rq-orbit-about-moon{right:-52vw!important;width:120vw!important;opacity:.38!important}
+  .rq-orbit-progress{display:none!important}.rq-orbit-footer{grid-template-columns:1fr;min-height:70svh!important}.rq-orbit-footer p,.rq-orbit-footer span{text-align:left}
+}
+@media(max-width:640px){.rq-home-page .rq-project-grid{grid-template-columns:1fr;grid-template-rows:auto}.rq-home-page .rq-project-card{min-height:13rem}.rq-orbit-about-actions{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html.rq-fullpage-root{scroll-behavior:auto}.rq-scene-moon{animation:none!important}.rq-orbit-reveal,.rq-hero-copy,.rq-cockpit,.rq-orbit-mission-moon,.rq-orbit-about-moon{opacity:1!important;transform:none!important}}
