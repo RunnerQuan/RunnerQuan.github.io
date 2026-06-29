@@ -54,18 +54,18 @@ body.rq-home-page,
   width: 100vw !important;
   max-width: none !important;
   margin: 0 !important;
-  padding: 5.6rem max(10vw, 6rem) 2.5rem !important;
+  padding: 5.6rem max(7.5vw, 4.5rem) 2.5rem !important;
 }
 
 .rq-home-page .rq-hero-copy {
-  width: min(38rem, 36vw) !important;
+  width: min(34rem, 34vw) !important;
   margin: 0 !important;
   padding-left: 0 !important;
   font-family: var(--rq-mono) !important;
 }
 
 .rq-home-page .rq-hero h1 {
-  font-size: clamp(3rem, 4.65vw, 5.35rem) !important;
+  font-size: clamp(2.75rem, 4.05vw, 4.65rem) !important;
   line-height: 1.02 !important;
   letter-spacing: 0 !important;
   font-family: var(--rq-pixel) !important;
@@ -83,15 +83,16 @@ body.rq-home-page,
 }
 
 .rq-home-page .rq-actions a {
-  min-height: 2.55rem !important;
-  padding: 0 1rem !important;
-  font-size: 0.9rem !important;
+  min-height: 3.05rem !important;
+  padding: 0 1.45rem !important;
+  font-size: 1.02rem !important;
+  border-width: 1.5px !important;
 }
 
 .rq-home-page .rq-cockpit {
   top: 50% !important;
-  right: max(7vw, 4.5rem) !important;
-  width: min(59vw, 74rem) !important;
+  right: max(1.4vw, 1.2rem) !important;
+  width: min(66vw, 86rem) !important;
   filter: contrast(1.22) brightness(1.12) !important;
 }
 
@@ -661,6 +662,367 @@ body.rq-home-page,
     filter: brightness(1.35);
     transform: translateY(-0.55rem);
   }
+}
+
+.rq-agent-coremap {
+  position: relative !important;
+  width: min(38vw, 35rem) !important;
+  aspect-ratio: 1 !important;
+  margin: auto !important;
+  isolation: isolate !important;
+  opacity: 0.96 !important;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px) 0 0 / 2.05rem 2.05rem,
+    linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px) 0 0 / 2.05rem 2.05rem,
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.16), transparent 15%),
+    radial-gradient(circle at 76% 24%, rgba(255,255,255,0.08), transparent 20%),
+    rgba(4,4,4,0.26) !important;
+  clip-path: polygon(50% 0, 88% 12%, 100% 50%, 88% 88%, 50% 100%, 12% 88%, 0 50%, 12% 12%) !important;
+  border: 1px solid rgba(255,255,255,0.24) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.055),
+    inset 0 0 5rem rgba(255,255,255,0.06),
+    0 0 4rem rgba(255,255,255,0.05) !important;
+}
+
+.rq-agent-coremap::before,
+.rq-agent-coremap::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 11% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.rq-agent-coremap::before {
+  border: 1px dashed rgba(255,255,255,0.22) !important;
+  clip-path: polygon(50% 0, 92% 24%, 92% 76%, 50% 100%, 8% 76%, 8% 24%) !important;
+  background:
+    conic-gradient(from 0deg, transparent 0 42%, rgba(255,255,255,0.28) 48%, transparent 58%),
+    repeating-radial-gradient(circle, transparent 0 3.2rem, rgba(255,255,255,0.12) 3.26rem 3.34rem) !important;
+  animation: rqCoremapRotate 10s linear infinite !important;
+}
+
+.rq-agent-coremap::after {
+  inset: 5% !important;
+  background:
+    linear-gradient(115deg, transparent 0 45%, rgba(255,255,255,0.18) 49%, transparent 55%),
+    radial-gradient(circle at 50% 50%, transparent 0 24%, rgba(255,255,255,0.16) 24.5% 25%, transparent 25.5%) !important;
+  mix-blend-mode: screen !important;
+  animation: rqCoremapSweep 4.5s ease-in-out infinite !important;
+}
+
+.rq-coremap-center,
+.rq-coremap-node,
+.rq-agent-coremap b,
+.rq-agent-coremap em {
+  position: absolute !important;
+  z-index: 2 !important;
+}
+
+.rq-coremap-center {
+  left: 50% !important;
+  top: 50% !important;
+  width: 8rem !important;
+  height: 8rem !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(255,255,255,0.44) !important;
+  border-radius: 50% !important;
+  color: rgba(255,255,255,0.88) !important;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.18), transparent 72%),
+    rgba(0,0,0,0.36) !important;
+  font: 0.76rem/1.35 var(--rq-mono) !important;
+  text-align: center !important;
+  letter-spacing: 0.16em !important;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 0 2.6rem rgba(255,255,255,0.16) !important;
+  animation: rqCoremapPulse 3s ease-in-out infinite !important;
+}
+
+.rq-coremap-node {
+  width: 4.4rem !important;
+  min-height: 2.15rem !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(255,255,255,0.34) !important;
+  background: rgba(255,255,255,0.06) !important;
+  color: rgba(255,255,255,0.84) !important;
+  font: 0.68rem/1 var(--rq-mono) !important;
+  letter-spacing: 0.12em !important;
+  font-style: normal !important;
+  box-shadow: inset 0 0 1.2rem rgba(255,255,255,0.04) !important;
+  animation: rqCoremapNode 4.8s ease-in-out infinite !important;
+}
+
+.rq-coremap-node-1 { left: 49% !important; top: 8% !important; transform: translateX(-50%) !important; animation-delay: 0s !important; }
+.rq-coremap-node-2 { right: 13% !important; top: 27% !important; animation-delay: 0.4s !important; }
+.rq-coremap-node-3 { right: 15% !important; bottom: 24% !important; animation-delay: 0.8s !important; }
+.rq-coremap-node-4 { left: 50% !important; bottom: 8% !important; transform: translateX(-50%) !important; animation-delay: 1.2s !important; }
+.rq-coremap-node-5 { left: 13% !important; top: 42% !important; animation-delay: 1.6s !important; }
+
+.rq-agent-coremap b {
+  left: 50% !important;
+  top: 50% !important;
+  width: 37% !important;
+  height: 1px !important;
+  transform-origin: left center !important;
+  background: linear-gradient(90deg, rgba(255,255,255,0.62), transparent) !important;
+  opacity: 0.42 !important;
+}
+
+.rq-agent-coremap b:nth-of-type(1) { transform: rotate(-88deg) !important; }
+.rq-agent-coremap b:nth-of-type(2) { transform: rotate(-34deg) !important; }
+.rq-agent-coremap b:nth-of-type(3) { transform: rotate(35deg) !important; }
+.rq-agent-coremap b:nth-of-type(4) { transform: rotate(91deg) !important; }
+.rq-agent-coremap b:nth-of-type(5) { transform: rotate(178deg) !important; }
+.rq-agent-coremap b:nth-of-type(6) { transform: rotate(218deg) !important; opacity: 0.24 !important; }
+
+.rq-agent-coremap em {
+  inset: 18% !important;
+  border: 1px solid rgba(255,255,255,0.13) !important;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%) !important;
+  font-style: normal !important;
+  animation: rqCoremapDiamond 7s linear infinite !important;
+}
+
+.rq-footer-signal {
+  right: max(5vw, 3rem) !important;
+  top: 29% !important;
+  width: min(42vw, 39rem) !important;
+  height: 24rem !important;
+  display: block !important;
+  opacity: 0.72 !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.075) 0 1px, transparent 1px) 0 0 / 2rem 2rem,
+    linear-gradient(0deg, rgba(255,255,255,0.055) 0 1px, transparent 1px) 0 0 / 2rem 2rem,
+    radial-gradient(circle at 65% 45%, rgba(255,255,255,0.16), transparent 22%),
+    rgba(5,5,5,0.18) !important;
+  clip-path: polygon(7% 0, 100% 0, 100% 72%, 91% 100%, 0 100%, 0 18%) !important;
+}
+
+.rq-footer-signal::before {
+  background:
+    conic-gradient(from 0deg at 68% 48%, transparent 0 72%, rgba(255,255,255,0.26), transparent 88%),
+    radial-gradient(circle at 68% 48%, transparent 0 17%, rgba(255,255,255,0.19) 17.3% 17.8%, transparent 18.1% 29%, rgba(255,255,255,0.13) 29.2% 29.7%, transparent 30%),
+    linear-gradient(115deg, transparent 0 47%, rgba(255,255,255,0.18) 50%, transparent 53%) !important;
+  opacity: 0.72 !important;
+  animation: rqFooterScope 6s linear infinite !important;
+}
+
+.rq-footer-signal::after {
+  border: 0 !important;
+  transform: none !important;
+  background:
+    linear-gradient(90deg, transparent 0 9%, rgba(255,255,255,0.42) 9% 9.4%, transparent 9.8% 100%),
+    linear-gradient(0deg, transparent 0 70%, rgba(255,255,255,0.18) 70.2% 70.6%, transparent 71%),
+    repeating-linear-gradient(0deg, transparent 0 1.1rem, rgba(255,255,255,0.07) 1.14rem 1.18rem) !important;
+  opacity: 0.48 !important;
+}
+
+.rq-footer-core {
+  position: absolute !important;
+  right: 21% !important;
+  top: 38% !important;
+  z-index: 2 !important;
+  width: 7.4rem !important;
+  height: 7.4rem !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(255,255,255,0.36) !important;
+  border-radius: 50% !important;
+  color: rgba(255,255,255,0.82) !important;
+  background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 72%) !important;
+  font: 0.72rem/1.35 var(--rq-mono) !important;
+  text-align: center !important;
+  letter-spacing: 0.12em !important;
+  transform: translate(50%, -50%) !important;
+}
+
+.rq-footer-signal i {
+  position: absolute !important;
+  left: 8% !important;
+  bottom: calc(16% + var(--i, 0) * 1.65rem) !important;
+  z-index: 2 !important;
+  width: calc(36% + var(--w, 1) * 4%) !important;
+  height: 1px !important;
+  border: 0 !important;
+  background: linear-gradient(90deg, rgba(255,255,255,0.46), transparent) !important;
+  box-shadow: 0 0 0.9rem rgba(255,255,255,0.14) !important;
+  animation: rqFooterLines 3.8s ease-in-out infinite !important;
+}
+
+.rq-footer-signal i:nth-of-type(1) { --i: 0; --w: 2; animation-delay: 0s !important; }
+.rq-footer-signal i:nth-of-type(2) { --i: 1; --w: 6; animation-delay: 0.18s !important; }
+.rq-footer-signal i:nth-of-type(3) { --i: 2; --w: 4; animation-delay: 0.36s !important; }
+.rq-footer-signal i:nth-of-type(4) { --i: 3; --w: 8; animation-delay: 0.54s !important; }
+.rq-footer-signal i:nth-of-type(5) { --i: 4; --w: 3; animation-delay: 0.72s !important; }
+.rq-footer-signal i:nth-of-type(6) { --i: 5; --w: 7; animation-delay: 0.9s !important; }
+.rq-footer-signal i:nth-of-type(7) { --i: 6; --w: 5; animation-delay: 1.08s !important; }
+.rq-footer-signal i:nth-of-type(8) { --i: 7; --w: 9; animation-delay: 1.26s !important; }
+
+.rq-footer-signal b {
+  position: absolute !important;
+  z-index: 2 !important;
+  width: 0.55rem !important;
+  height: 0.55rem !important;
+  border: 1px solid rgba(255,255,255,0.42) !important;
+  background: rgba(255,255,255,0.16) !important;
+  box-shadow: 0 0 1.2rem rgba(255,255,255,0.22) !important;
+  animation: rqFooterNodes 3.2s ease-in-out infinite !important;
+}
+
+.rq-footer-signal b:nth-of-type(1) { left: 18% !important; top: 22% !important; }
+.rq-footer-signal b:nth-of-type(2) { left: 42% !important; top: 48% !important; animation-delay: 0.35s !important; }
+.rq-footer-signal b:nth-of-type(3) { right: 24% !important; top: 24% !important; animation-delay: 0.7s !important; }
+.rq-footer-signal b:nth-of-type(4) { right: 11% !important; bottom: 22% !important; animation-delay: 1.05s !important; }
+
+@keyframes rqCoremapRotate { to { transform: rotate(360deg); } }
+@keyframes rqCoremapDiamond { to { transform: rotate(-360deg); } }
+@keyframes rqCoremapSweep {
+  0%, 100% { opacity: 0.16; transform: translateX(-5%) skewX(-8deg); }
+  50% { opacity: 0.55; transform: translateX(5%) skewX(-8deg); }
+}
+@keyframes rqCoremapPulse {
+  0%, 100% { box-shadow: 0 0 1.2rem rgba(255,255,255,0.08); }
+  50% { box-shadow: 0 0 3.4rem rgba(255,255,255,0.22); }
+}
+@keyframes rqCoremapNode {
+  0%, 100% { opacity: 0.64; transform: translateY(0); }
+  45% { opacity: 1; transform: translateY(-0.35rem); }
+}
+@keyframes rqFooterScope { to { transform: rotate(360deg); } }
+@keyframes rqFooterLines {
+  0%, 100% { opacity: 0.28; transform: scaleX(0.82); }
+  50% { opacity: 0.82; transform: scaleX(1); }
+}
+@keyframes rqFooterNodes {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.45); }
+}
+
+.rq-home-page .rq-orbit-story[data-orbit-section="agent"] {
+  width: min(1480px, calc(100vw - 7rem)) !important;
+  grid-template-columns: minmax(21rem, 0.3fr) minmax(0, 0.7fr) !important;
+  gap: clamp(2.5rem, 5vw, 6rem) !important;
+}
+
+.rq-home-page .rq-orbit-story[data-orbit-section="agent"] .rq-orbit-story-copy {
+  width: min(29rem, 100%) !important;
+}
+
+.rq-home-page .rq-orbit-story[data-orbit-section="agent"] h2 {
+  font-size: clamp(2.75rem, 4.2vw, 4.9rem) !important;
+  line-height: 0.98 !important;
+}
+
+.rq-home-page .rq-agent-coremap {
+  width: min(61vw, 58rem) !important;
+  height: min(31vw, 22rem) !important;
+  aspect-ratio: auto !important;
+  justify-self: end !important;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.095) 0 1px, transparent 1px) 0 0 / 1.7rem 1.7rem,
+    linear-gradient(0deg, rgba(255,255,255,0.07) 0 1px, transparent 1px) 0 0 / 1.7rem 1.7rem,
+    radial-gradient(circle at 53% 50%, rgba(255,255,255,0.2), transparent 14%),
+    linear-gradient(90deg, transparent 0 5%, rgba(255,255,255,0.07) 11%, transparent 22% 100%),
+    rgba(3,3,3,0.22) !important;
+  clip-path: polygon(3% 0, 96% 0, 100% 14%, 100% 86%, 96% 100%, 4% 100%, 0 84%, 0 15%) !important;
+}
+
+.rq-home-page .rq-agent-coremap::before {
+  inset: 17% 32% 17% 30% !important;
+  border-style: solid !important;
+  clip-path: polygon(50% 0, 84% 18%, 100% 50%, 84% 82%, 50% 100%, 16% 82%, 0 50%, 16% 18%) !important;
+  background:
+    conic-gradient(from 0deg, transparent 0 58%, rgba(255,255,255,0.34) 64%, transparent 72%),
+    repeating-radial-gradient(circle, transparent 0 1.55rem, rgba(255,255,255,0.18) 1.62rem 1.7rem) !important;
+}
+
+.rq-home-page .rq-agent-coremap::after {
+  inset: 8% !important;
+  background:
+    linear-gradient(90deg, transparent 0 21%, rgba(255,255,255,0.34) 21.1% 21.35%, transparent 21.5% 100%),
+    linear-gradient(90deg, transparent 0 77%, rgba(255,255,255,0.24) 77.1% 77.35%, transparent 77.5% 100%),
+    linear-gradient(115deg, transparent 0 47%, rgba(255,255,255,0.2) 50%, transparent 54%),
+    repeating-linear-gradient(0deg, transparent 0 0.9rem, rgba(255,255,255,0.065) 0.95rem 1rem) !important;
+}
+
+.rq-home-page .rq-coremap-center {
+  left: 53% !important;
+  width: 7.4rem !important;
+  height: 7.4rem !important;
+  clip-path: polygon(50% 0, 86% 18%, 100% 50%, 86% 82%, 50% 100%, 14% 82%, 0 50%, 14% 18%) !important;
+  border-radius: 0 !important;
+}
+
+.rq-home-page .rq-coremap-node {
+  width: 4.65rem !important;
+  min-height: 2rem !important;
+  background: rgba(255,255,255,0.045) !important;
+}
+
+.rq-home-page .rq-coremap-node-1 { left: 16% !important; top: 16% !important; transform: none !important; }
+.rq-home-page .rq-coremap-node-2 { right: 7% !important; top: 15% !important; }
+.rq-home-page .rq-coremap-node-3 { right: 6% !important; bottom: 18% !important; }
+.rq-home-page .rq-coremap-node-4 { left: 76% !important; bottom: 8% !important; transform: none !important; }
+.rq-home-page .rq-coremap-node-5 { left: 8% !important; top: 55% !important; }
+
+.rq-home-page .rq-agent-coremap b {
+  width: 45% !important;
+  background:
+    linear-gradient(90deg, transparent 0 6%, rgba(255,255,255,0.55) 6% 12%, transparent 12% 18%, rgba(255,255,255,0.45) 18% 100%) !important;
+}
+
+.rq-home-page .rq-agent-coremap b:nth-of-type(1) { transform: rotate(0deg) translateX(-39%) !important; }
+.rq-home-page .rq-agent-coremap b:nth-of-type(2) { transform: rotate(0deg) translateX(4%) translateY(-3.5rem) !important; }
+.rq-home-page .rq-agent-coremap b:nth-of-type(3) { transform: rotate(0deg) translateX(4%) translateY(3.5rem) !important; }
+.rq-home-page .rq-agent-coremap b:nth-of-type(4) { transform: rotate(24deg) translateX(-39%) !important; }
+.rq-home-page .rq-agent-coremap b:nth-of-type(5) { transform: rotate(-24deg) translateX(-39%) !important; }
+.rq-home-page .rq-agent-coremap b:nth-of-type(6) { transform: rotate(90deg) translateX(-26%) !important; }
+
+.rq-home-page .rq-agent-coremap em {
+  inset: 14% 24% !important;
+  clip-path: polygon(50% 0, 89% 14%, 100% 50%, 89% 86%, 50% 100%, 11% 86%, 0 50%, 11% 14%) !important;
+}
+
+.rq-orbit-footer::after {
+  content: "" !important;
+  position: absolute !important;
+  left: max(4vw, 2.5rem) !important;
+  top: 48% !important;
+  z-index: 0 !important;
+  width: min(39vw, 35rem) !important;
+  height: 15rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  opacity: 0.42 !important;
+  background:
+    radial-gradient(ellipse at 12% 52%, rgba(255,255,255,0.16), transparent 18%),
+    repeating-radial-gradient(ellipse at 12% 52%, transparent 0 1.4rem, rgba(255,255,255,0.18) 1.45rem 1.52rem, transparent 1.6rem 2.75rem),
+    repeating-linear-gradient(165deg, transparent 0 1.15rem, rgba(255,255,255,0.12) 1.2rem 1.28rem, transparent 1.35rem 2.2rem) !important;
+  transform: skewY(-7deg) !important;
+  animation: rqFooterWave 6.2s ease-in-out infinite !important;
+}
+
+.rq-home-page .rq-footer-signal {
+  left: 48% !important;
+  right: auto !important;
+  top: 34% !important;
+  width: min(48vw, 45rem) !important;
+  height: 22rem !important;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 92% 100%, 11% 100%, 0 76%) !important;
+}
+
+.rq-home-page .rq-footer-core {
+  right: 28% !important;
+}
+
+@keyframes rqFooterWave {
+  0%, 100% { opacity: 0.26; transform: translateY(0) skewY(-7deg); }
+  50% { opacity: 0.52; transform: translateY(-0.6rem) skewY(-7deg); }
 }
 
 @media (max-width: 1180px) {

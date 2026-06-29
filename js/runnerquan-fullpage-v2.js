@@ -125,16 +125,14 @@
                 <h2>The agentic<br>product journey.</h2>
                 <p>让模型不只生成答案，也能理解上下文、调用工具、承担任务，并在人的判断下完成闭环。</p>
               </div>
-              <div class="rq-orbit-radar rq-agent-graph" aria-hidden="true">
-                <span class="rq-agent-core">CTX</span>
-                <i class="rq-agent-node rq-agent-node-1">LLM</i>
-                <i class="rq-agent-node rq-agent-node-2">TOOL</i>
-                <i class="rq-agent-node rq-agent-node-3">TASK</i>
-                <i class="rq-agent-node rq-agent-node-4">HITL</i>
-                <b class="rq-agent-link rq-agent-link-1"></b>
-                <b class="rq-agent-link rq-agent-link-2"></b>
-                <b class="rq-agent-link rq-agent-link-3"></b>
-                <b class="rq-agent-link rq-agent-link-4"></b>
+              <div class="rq-agent-coremap" aria-hidden="true">
+                <span class="rq-coremap-center">AGENT<br>CORE</span>
+                <i class="rq-coremap-node rq-coremap-node-1">CTX</i>
+                <i class="rq-coremap-node rq-coremap-node-2">LLM</i>
+                <i class="rq-coremap-node rq-coremap-node-3">TOOL</i>
+                <i class="rq-coremap-node rq-coremap-node-4">MEM</i>
+                <i class="rq-coremap-node rq-coremap-node-5">HITL</i>
+                <b></b><b></b><b></b><b></b><b></b><b></b>
                 <em></em>
               </div>
             </article>
@@ -189,7 +187,9 @@
             <span>SYS READY / KEEP BUILDING</span>
           </div>
           <div class="rq-footer-signal" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <span class="rq-footer-core">BUILD<br>LOOP</span>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <b></b><b></b><b></b><b></b>
           </div>
         </footer>`
       );
