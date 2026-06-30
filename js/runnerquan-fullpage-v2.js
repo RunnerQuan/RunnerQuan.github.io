@@ -125,15 +125,23 @@
                 <h2>The agentic<br>product journey.</h2>
                 <p>让模型不只生成答案，也能理解上下文、调用工具、承担任务，并在人的判断下完成闭环。</p>
               </div>
-              <div class="rq-agent-coremap" aria-hidden="true">
-                <span class="rq-coremap-center">AGENT<br>CORE</span>
-                <i class="rq-coremap-node rq-coremap-node-1">CTX</i>
-                <i class="rq-coremap-node rq-coremap-node-2">LLM</i>
-                <i class="rq-coremap-node rq-coremap-node-3">TOOL</i>
-                <i class="rq-coremap-node rq-coremap-node-4">MEM</i>
-                <i class="rq-coremap-node rq-coremap-node-5">HITL</i>
-                <b></b><b></b><b></b><b></b><b></b><b></b>
-                <em></em>
+              <div class="rq-agent-orchestrator" aria-hidden="true">
+                <div class="rq-agent-orbit"><span></span><span></span><span></span></div>
+                <div class="rq-agent-core">AGENT<br>CORE</div>
+                <div class="rq-agent-flow"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="rq-agent-node rq-agent-node-ctx"><b>01</b><span>CTX</span></div>
+                <div class="rq-agent-node rq-agent-node-llm"><b>02</b><span>LLM</span></div>
+                <div class="rq-agent-node rq-agent-node-tool"><b>03</b><span>TOOL</span></div>
+                <div class="rq-agent-node rq-agent-node-mem"><b>04</b><span>MEM</span></div>
+                <div class="rq-agent-node rq-agent-node-hitl"><b>05</b><span>HITL</span></div>
+                <div class="rq-agent-terminal">
+                  <b>RUN / PRODUCT LOOP</b>
+                  <span>context.pack()</span>
+                  <span>model.plan()</span>
+                  <span>tool.call()</span>
+                  <span>memory.write()</span>
+                  <span>human.approve()</span>
+                </div>
               </div>
             </article>
           </section>`
@@ -173,6 +181,10 @@
       shell.insertAdjacentHTML(
         'beforeend',
         `<footer class="rq-orbit-footer" data-orbit-section="footer">
+          <div class="rq-footer-signal" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <i></i><i></i><i></i>
+          </div>
           <div class="rq-footer-brand">
             <a href="#orbit-home">RunnerQuan</a>
             <p>Code the unknown. Build the future.</p>
@@ -185,11 +197,6 @@
           <div class="rq-footer-meta">
             <span>© ${new Date().getFullYear()} RunnerQuan</span>
             <span>SYS READY / KEEP BUILDING</span>
-          </div>
-          <div class="rq-footer-signal" aria-hidden="true">
-            <span class="rq-footer-core">BUILD<br>LOOP</span>
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-            <b></b><b></b><b></b><b></b>
           </div>
         </footer>`
       );
