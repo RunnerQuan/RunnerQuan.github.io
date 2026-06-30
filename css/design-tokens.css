@@ -48,6 +48,7 @@
 }
 
 html {
+  display: block !important;
   background: var(--rq-read-bg);
   color: var(--rq-text);
   scroll-behavior: smooth;
