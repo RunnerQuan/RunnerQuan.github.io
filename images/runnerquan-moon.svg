@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Textured moon">
+<defs>
+  <radialGradient id="m" cx="34%" cy="27%" r="72%">
+    <stop offset="0" stop-color="#f4f4f4"/><stop offset=".35" stop-color="#c9c9c9"/><stop offset=".72" stop-color="#858585"/><stop offset="1" stop-color="#343434"/>
+  </radialGradient>
+  <radialGradient id="c" cx="38%" cy="34%" r="70%">
+    <stop offset="0" stop-color="#d9d9d9"/><stop offset=".55" stop-color="#797979"/><stop offset="1" stop-color="#303030"/>
+  </radialGradient>
+  <clipPath id="clip"><circle cx="256" cy="256" r="218"/></clipPath>
+</defs>
+<circle cx="256" cy="256" r="218" fill="url(#m)"/>
+<g clip-path="url(#clip)">
+  <ellipse cx="164" cy="150" rx="48" ry="36" fill="url(#c)" stroke="#4d4d4d" stroke-width="8"/>
+  <ellipse cx="334" cy="169" rx="62" ry="45" fill="url(#c)" stroke="#4a4a4a" stroke-width="9"/>
+  <ellipse cx="220" cy="279" rx="72" ry="54" fill="url(#c)" stroke="#505050" stroke-width="9"/>
+  <ellipse cx="356" cy="322" rx="52" ry="40" fill="url(#c)" stroke="#4f4f4f" stroke-width="8"/>
+  <ellipse cx="146" cy="352" rx="45" ry="37" fill="url(#c)" stroke="#555" stroke-width="8"/>
+  <ellipse cx="285" cy="402" rx="58" ry="29" fill="#6c6c6c" opacity=".55"/>
+  <circle cx="110" cy="232" r="18" fill="#393939"/><circle cx="268" cy="112" r="14" fill="#3e3e3e"/>
+  <circle cx="406" cy="248" r="20" fill="#383838"/><circle cx="259" cy="343" r="13" fill="#464646"/>
+  <circle cx="193" cy="420" r="17" fill="#3f3f3f"/><circle cx="355" cy="401" r="12" fill="#424242"/>
+  <path d="M91 242c21-78 83-142 170-176" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" opacity=".22"/>
+  <path d="M128 449c88 47 208 31 277-35" fill="none" stroke="#171717" stroke-width="24" opacity=".18"/>
+  <g fill="#bdbdbd" opacity=".45">
+    <rect x="119" y="119" width="10" height="10"/><rect x="182" y="191" width="8" height="8"/><rect x="290" y="93" width="9" height="9"/>
+    <rect x="388" y="212" width="11" height="11"/><rect x="311" y="246" width="8" height="8"/><rect x="204" y="359" width="10" height="10"/>
+    <rect x="372" y="372" width="8" height="8"/><rect x="133" y="307" width="9" height="9"/>
+  </g>
+</g>
+<circle cx="256" cy="256" r="218" fill="none" stroke="#efefef" stroke-opacity=".3" stroke-width="5"/>
+</svg>

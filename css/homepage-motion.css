@@ -1,0 +1,122 @@
+.rq-motion-ready .rq-orbit-reveal,
+.rq-motion-ready .rq-project-card,
+.rq-motion-ready .rq-blog-row {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.rq-motion-ready .rq-orbit-reveal.is-visible,
+.rq-motion-ready .rq-project-card.is-visible,
+.rq-motion-ready .rq-blog-row.is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--rq-duration-slow) ease var(--rq-delay, 0ms),
+    transform var(--rq-duration-slow) var(--rq-ease) var(--rq-delay, 0ms);
+}
+
+.rq-agent-orchestrator.is-running::before {
+  animation: rq-agent-scan 5.8s linear infinite;
+}
+
+.rq-agent-orchestrator.is-running .rq-agent-orbit span {
+  animation: rq-agent-orbit 12s linear infinite;
+}
+
+.rq-agent-orchestrator.is-running .rq-agent-orbit span:nth-child(2) {
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
+.rq-agent-orchestrator.is-running .rq-agent-node {
+  animation: rq-agent-node 5.6s ease-in-out infinite;
+}
+
+.rq-agent-orchestrator.is-running .rq-agent-node-ctx { animation-delay: 0s; }
+.rq-agent-orchestrator.is-running .rq-agent-node-llm { animation-delay: 0.7s; }
+.rq-agent-orchestrator.is-running .rq-agent-node-tool { animation-delay: 1.4s; }
+.rq-agent-orchestrator.is-running .rq-agent-node-mem { animation-delay: 2.1s; }
+.rq-agent-orchestrator.is-running .rq-agent-node-hitl { animation-delay: 2.8s; }
+
+.rq-agent-orchestrator.is-running .rq-agent-flow i {
+  animation: rq-agent-flow 5.6s ease-in-out infinite;
+}
+
+.rq-agent-orchestrator.is-running .rq-agent-flow i:nth-child(1) { animation-delay: 0s; }
+.rq-agent-orchestrator.is-running .rq-agent-flow i:nth-child(2) { animation-delay: 0.7s; }
+.rq-agent-orchestrator.is-running .rq-agent-flow i:nth-child(3) { animation-delay: 1.4s; }
+.rq-agent-orchestrator.is-running .rq-agent-flow i:nth-child(4) { animation-delay: 2.1s; }
+.rq-agent-orchestrator.is-running .rq-agent-flow i:nth-child(5) { animation-delay: 2.8s; }
+
+.rq-agent-orchestrator.is-running .rq-agent-terminal span {
+  animation: rq-agent-line 5.6s steps(2, end) infinite;
+}
+
+.rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(1) { animation-delay: 0s; }
+.rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(2) { animation-delay: 0.7s; }
+.rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(3) { animation-delay: 1.4s; }
+.rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(4) { animation-delay: 2.1s; }
+.rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(5) { animation-delay: 2.8s; }
+
+.rq-footer-signal.is-running span {
+  animation: rq-footer-signal 4.8s ease-in-out infinite;
+}
+
+.rq-footer-signal.is-running span:nth-child(2) { animation-delay: 0.25s; }
+.rq-footer-signal.is-running span:nth-child(3) { animation-delay: 0.5s; }
+.rq-footer-signal.is-running span:nth-child(4) { animation-delay: 0.75s; }
+.rq-footer-signal.is-running span:nth-child(5) { animation-delay: 1s; }
+.rq-footer-signal.is-running span:nth-child(6) { animation-delay: 1.25s; }
+
+@keyframes rq-agent-scan {
+  0% { transform: translateX(-100%); opacity: 0; }
+  12% { opacity: 0.35; }
+  54% { opacity: 0.35; }
+  70%, 100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes rq-agent-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rq-agent-node {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.26); background: rgba(255, 255, 255, 0.045); transform: translateY(0); }
+  18% { border-color: rgba(255, 255, 255, 0.86); background: rgba(255, 255, 255, 0.13); transform: translateY(-0.28rem); }
+  36% { border-color: rgba(255, 255, 255, 0.34); background: rgba(255, 255, 255, 0.06); transform: translateY(0); }
+}
+
+@keyframes rq-agent-flow {
+  0%, 100% { opacity: 0.15; transform: translate(-12%, -50%) scaleX(0.4); }
+  18% { opacity: 1; transform: translate(18%, -50%) scaleX(1); }
+  34% { opacity: 0.2; transform: translate(32%, -50%) scaleX(0.55); }
+}
+
+@keyframes rq-agent-line {
+  0%, 100% { opacity: 0.42; }
+  18% { opacity: 1; }
+  34% { opacity: 0.58; }
+}
+
+@keyframes rq-footer-signal {
+  0%, 100% { transform: scaleY(0.82); opacity: 0.52; }
+  44% { transform: scaleY(1.08); opacity: 0.92; }
+  72% { transform: scaleY(0.94); opacity: 0.68; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rq-motion-ready .rq-orbit-reveal,
+  .rq-motion-ready .rq-project-card,
+  .rq-motion-ready .rq-blog-row {
+    opacity: 1;
+    transform: none;
+  }
+
+  .rq-agent-orchestrator.is-running::before,
+  .rq-agent-orchestrator.is-running .rq-agent-orbit span,
+  .rq-agent-orchestrator.is-running .rq-agent-node,
+  .rq-agent-orchestrator.is-running .rq-agent-flow i,
+  .rq-agent-orchestrator.is-running .rq-agent-terminal span,
+  .rq-footer-signal.is-running span {
+    animation: none;
+  }
+}
