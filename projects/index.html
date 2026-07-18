@@ -16,6 +16,8 @@
   <meta name="twitter:title" content="Projects | RunnerQuan">
   <meta name="twitter:description" content="RunnerQuan 的项目档案：AI 产品、Agent 工作流、分布式系统、MoonBit 工具和可复用开发 Skill。">
   <link rel="icon" href="/images/newlogo.png">
+  <link rel="preload" href="/fonts/runnerquan/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/runnerquan/share-tech-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <title>Projects | RunnerQuan</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font/css/fontawesome.min.css">
@@ -43,9 +45,27 @@
     </header>
     <main class="rq-projects-main">
       <section class="rq-projects-hero">
-        <p class="rq-projects-kicker">PROJECT ARCHIVE</p>
-        <h1>Projects</h1>
-        <p>把 AI-native 产品、系统工程和可复用工具整理成一个可以继续扩展的作品档案。</p>
+        <div class="rq-projects-hero-copy">
+          <p class="rq-projects-kicker">PROJECT ARCHIVE</p>
+          <h1>Projects</h1>
+          <p>把 AI-native 产品、系统工程和可复用工具整理成一个可以继续扩展的作品档案。</p>
+        </div>
+        <div class="rq-projects-hero-visual" aria-label="Featured project screenshots">
+    <div class="rq-projects-hero-orbit" aria-hidden="true"></div>
+    <a class="rq-projects-hero-card" href="https://github.com/RunnerQuan/Posturefit" target="_blank" rel="noopener" style="--i:0; --rq-image-focus:50% 48%">
+      <img src="/images/projects/posturefit.png" alt="PostureFit AI posture coach landing page" loading="eager" decoding="async">
+      <span>PostureFit</span>
+    </a><a class="rq-projects-hero-card" href="https://github.com/RunnerQuan/BiasBreaker-Career" target="_blank" rel="noopener" style="--i:1; --rq-image-focus:50% 38%">
+      <img src="/images/projects/biasbreaker-career.png" alt="BiasBreaker Career resume analysis product page" loading="lazy" decoding="async">
+      <span>BiasBreaker Career</span>
+    </a><a class="rq-projects-hero-card" href="https://github.com/RunnerQuan/Quan-RPC-Framework" target="_blank" rel="noopener" style="--i:2; --rq-image-focus:50% 50%">
+      <img src="/images/projects/quan-rpc.png" alt="Quan-RPC framework architecture diagram" loading="lazy" decoding="async">
+      <span>Quan-RPC</span>
+    </a><a class="rq-projects-hero-card" href="https://github.com/RunnerQuan/talentflow" target="_blank" rel="noopener" style="--i:3; --rq-image-focus:28% 46%">
+      <img src="/images/projects/talentflow.png" alt="TalentFlow AI recruiting decision platform interface" loading="lazy" decoding="async">
+      <span>TalentFlow</span>
+    </a>
+  </div>
       </section>
 
       <section class="rq-projects-section" aria-labelledby="open-source-title">
@@ -55,7 +75,7 @@
           <p>按项目推进顺序纵向展开，每一段都保留真实截图、工程线索和可访问的仓库入口。</p>
         </div>
         <div class="rq-project-showcase-stack">
-          <article class="rq-project-showcase rq-reveal" style="--rq-project-index:0; --rq-project-image: url('/images/projects/posturefit.png'); --rq-image-focus: 50% 48%">
+          <article id="project-01" class="rq-project-showcase rq-reveal" data-rq-project-name="PostureFit" style="--rq-project-index:0; --rq-project-image: url('/images/projects/posturefit.png'); --rq-image-focus: 50% 48%">
     <div class="rq-project-shot">
       <img src="/images/projects/posturefit.png" alt="PostureFit AI posture coach landing page" loading="eager" decoding="async">
     </div>
@@ -79,7 +99,7 @@
     <a href="https://github.com/RunnerQuan/Posturefit" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:1; --rq-project-image: url('/images/projects/biasbreaker-career.png'); --rq-image-focus: 50% 38%">
+  </article><article id="project-02" class="rq-project-showcase rq-reveal" data-rq-project-name="BiasBreaker Career" style="--rq-project-index:1; --rq-project-image: url('/images/projects/biasbreaker-career.png'); --rq-image-focus: 50% 38%">
     <div class="rq-project-shot">
       <img src="/images/projects/biasbreaker-career.png" alt="BiasBreaker Career resume analysis product page" loading="eager" decoding="async">
     </div>
@@ -103,7 +123,7 @@
     <a href="https://github.com/RunnerQuan/BiasBreaker-Career" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:2; --rq-project-image: url('/images/projects/quan-rpc.png'); --rq-image-focus: 50% 50%">
+  </article><article id="project-03" class="rq-project-showcase rq-reveal" data-rq-project-name="Quan-RPC" style="--rq-project-index:2; --rq-project-image: url('/images/projects/quan-rpc.png'); --rq-image-focus: 50% 50%">
     <div class="rq-project-shot">
       <img src="/images/projects/quan-rpc.png" alt="Quan-RPC framework architecture diagram" loading="lazy" decoding="async">
     </div>
@@ -127,7 +147,7 @@
     <a href="https://github.com/RunnerQuan/Quan-RPC-Framework" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:3; --rq-project-image: url('/images/projects/talentflow.png'); --rq-image-focus: 28% 46%">
+  </article><article id="project-04" class="rq-project-showcase rq-reveal" data-rq-project-name="TalentFlow" style="--rq-project-index:3; --rq-project-image: url('/images/projects/talentflow.png'); --rq-image-focus: 28% 46%">
     <div class="rq-project-shot">
       <img src="/images/projects/talentflow.png" alt="TalentFlow AI recruiting decision platform interface" loading="lazy" decoding="async">
     </div>
@@ -151,7 +171,7 @@
     <a href="https://github.com/RunnerQuan/talentflow" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:4; --rq-project-image: url('/images/projects/moonlimit.png'); --rq-image-focus: 50% 34%">
+  </article><article id="project-05" class="rq-project-showcase rq-reveal" data-rq-project-name="MoonLimit" style="--rq-project-index:4; --rq-project-image: url('/images/projects/moonlimit.png'); --rq-image-focus: 50% 34%">
     <div class="rq-project-shot">
       <img src="/images/projects/moonlimit.png" alt="MoonLimit documentation page on mooncakes.io" loading="lazy" decoding="async">
     </div>
@@ -175,7 +195,7 @@
     <a href="https://github.com/RunnerQuan/moonlimit" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:5; --rq-project-image: url('/images/projects/ai-writing-saas-skill.png'); --rq-image-focus: 50% 28%">
+  </article><article id="project-06" class="rq-project-showcase rq-reveal" data-rq-project-name="AI Writing SaaS Skill" style="--rq-project-index:5; --rq-project-image: url('/images/projects/ai-writing-saas-skill.png'); --rq-image-focus: 50% 28%">
     <div class="rq-project-shot">
       <img src="/images/projects/ai-writing-saas-skill.png" alt="AI Writing SaaS Skill dark landing page" loading="lazy" decoding="async">
     </div>
