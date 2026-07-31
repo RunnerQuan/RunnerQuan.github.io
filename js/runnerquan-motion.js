@@ -17,6 +17,52 @@
       document.body.append(layer);
     }
 
+    let routeStage = layer.querySelector('.rq-page-transition-stage');
+    if (!routeStage) {
+      routeStage = document.createElement('div');
+      routeStage.className = 'rq-page-transition-stage';
+
+      const routeMeta = document.createElement('span');
+      routeMeta.className = 'rq-page-transition-meta';
+      routeMeta.textContent = 'ROUTE / 00';
+
+      const routeTitle = document.createElement('strong');
+      routeTitle.className = 'rq-page-transition-title';
+      routeTitle.textContent = 'HOME';
+
+      const routePath = document.createElement('span');
+      routePath.className = 'rq-page-transition-path';
+      routePath.textContent = '/';
+
+      const routeSignal = document.createElement('i');
+      routeSignal.className = 'rq-page-transition-signal';
+
+      routeStage.append(routeMeta, routeTitle, routePath, routeSignal);
+      layer.append(routeStage);
+    }
+
+    const routeNames = [
+      { match: (path) => path === '/', index: '00', title: 'HOME' },
+      { match: (path) => path.startsWith('/projects'), index: '01', title: 'PROJECTS' },
+      { match: (path) => path.startsWith('/blog') || path.startsWith('/archives'), index: '02', title: 'BLOG' },
+      { match: (path) => path.startsWith('/about'), index: '03', title: 'ABOUT' },
+      { match: (path) => path.startsWith('/contact'), index: '04', title: 'CONTACT' },
+      { match: (path) => /^\/\d{4}\//.test(path), index: '05', title: 'ARTICLE' },
+      { match: (path) => path.startsWith('/tags') || path.startsWith('/categories'), index: '06', title: 'ARCHIVE' }
+    ];
+
+    const setRouteTarget = (destination) => {
+      const route = routeNames.find((item) => item.match(destination.pathname)) || {
+        index: '07',
+        title: 'PAGE'
+      };
+      const path = decodeURIComponent(destination.pathname || '/');
+
+      routeStage.querySelector('.rq-page-transition-meta').textContent = `ROUTE / ${route.index}`;
+      routeStage.querySelector('.rq-page-transition-title').textContent = route.title;
+      routeStage.querySelector('.rq-page-transition-path').textContent = path;
+    };
+
     window.requestAnimationFrame(() => {
       document.body.classList.add('rq-page-entered');
       document.body.classList.remove('rq-page-leaving');
@@ -25,12 +71,14 @@
     window.addEventListener('pageshow', () => {
       document.body.classList.add('rq-page-entered');
       document.body.classList.remove('rq-page-leaving');
+      document.body.removeAttribute('aria-busy');
     });
 
     document.addEventListener(
       'click',
       (event) => {
-        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (event.defaultPrevented || document.body.classList.contains('rq-page-leaving')) return;
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
         const link = event.target.closest('a[href]');
         if (!link) return;
@@ -45,15 +93,47 @@
         if (destination.pathname === window.location.pathname && destination.search === window.location.search && destination.hash) return;
 
         event.preventDefault();
+        setRouteTarget(destination);
+        document.body.setAttribute('aria-busy', 'true');
         document.body.classList.add('rq-page-leaving');
         document.body.classList.remove('rq-page-entered');
 
         window.setTimeout(() => {
           window.location.href = destination.href;
-        }, 430);
+        }, 520);
       },
       true
     );
+  }
+
+  function setupPostDossier() {
+    const post = document.querySelector('.post-page-container .post-content');
+    if (!post) return;
+
+    document.body.classList.add('rq-post-reading');
+
+    const sectionCount = post.querySelectorAll('h1, h2').length;
+    post.dataset.rqSections = String(sectionCount).padStart(2, '0');
+
+    const postNav = document.querySelector('.post-nav');
+    if (postNav) {
+      const links = postNav.querySelectorAll('.prev-post, .next-post');
+      postNav.dataset.rqLinkCount = String(links.length);
+
+      links.forEach((item) => {
+        const isPrevious = item.classList.contains('prev-post');
+        const link = item.querySelector('a');
+        const title = item.querySelector('.post-nav-title-item')?.textContent?.trim();
+        item.dataset.rqDirection = isPrevious ? 'PREVIOUS NOTE' : 'NEXT NOTE';
+        if (link && title) link.setAttribute('aria-label', `${isPrevious ? '上一篇' : '下一篇'}：${title}`);
+      });
+    }
+
+    document.querySelectorAll('.post-tools .tools-item').forEach((tool) => {
+      if (tool.classList.contains('toggle-show-toc')) tool.setAttribute('aria-label', '打开文章目录');
+      if (tool.classList.contains('full-screen')) tool.setAttribute('aria-label', '切换全屏阅读');
+      tool.setAttribute('tabindex', '0');
+    });
   }
 
   function setupNav() {
@@ -686,42 +766,277 @@
   }
 
   function setupSearchConsole() {
-    const overlay = document.querySelector('.search-pop-overlay');
-    const popup = overlay?.querySelector('.search-popup');
-    const input = popup?.querySelector('.search-input');
     const nav = document.querySelector('.rq-nav nav');
+    let overlay = document.querySelector('.search-pop-overlay');
 
-    if (!overlay || !popup) return;
+    if (!overlay) {
+      let host = document.body;
+      if (!document.body.classList.contains('rq-inner-page')) {
+        host = document.querySelector('.rq-search-host');
+        if (!host) {
+          host = document.createElement('div');
+          host.className = 'rq-search-host rq-inner-page';
+          document.body.append(host);
+        }
+      }
+
+      host.insertAdjacentHTML(
+        'beforeend',
+        `<div class="search-pop-overlay rq-search-owned" aria-hidden="true">
+          <section class="popup search-popup" role="dialog" aria-modal="true" aria-label="Search RunnerQuan">
+            <div class="search-header">
+              <span class="search-input-field-pre" role="button" tabindex="0" aria-label="Clear search">
+                <i class="fas fa-keyboard" aria-hidden="true"></i>
+              </span>
+              <div class="search-input-container">
+                <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="search" class="search-input">
+              </div>
+              <button class="close-popup-btn" type="button" aria-label="Close search">
+                <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div id="search-result" aria-live="polite"></div>
+          </section>
+        </div>`
+      );
+      overlay = host.querySelector('.search-pop-overlay');
+    }
+
+    if (!overlay || overlay.dataset.rqSearchReady === '1') return;
+    overlay.dataset.rqSearchReady = '1';
+
+    const popup = overlay.querySelector('.search-popup');
+    const sourceInput = popup?.querySelector('.search-input');
+    const sourceResult = popup?.querySelector('#search-result');
+    if (!popup || !sourceInput || !sourceResult) return;
+
+    // Detach Keep's page-specific listener so every route uses the same complete index.
+    const input = sourceInput.cloneNode(true);
+    const resultContent = sourceResult.cloneNode(false);
+    sourceInput.replaceWith(input);
+    sourceResult.replaceWith(resultContent);
 
     popup.classList.add('rq-search-console');
     popup.dataset.rqLabel = 'SEARCH CONSOLE';
+    popup.setAttribute('role', 'dialog');
+    popup.setAttribute('aria-modal', 'true');
+    popup.setAttribute('aria-label', 'Search RunnerQuan');
+    overlay.setAttribute('aria-hidden', 'true');
 
     if (nav && !nav.querySelector('.rq-nav-search')) {
       const searchButton = document.createElement('button');
       searchButton.type = 'button';
       searchButton.className = 'rq-nav-search search-popup-trigger';
       searchButton.setAttribute('aria-label', 'Search notes, projects, ideas');
+      searchButton.setAttribute('aria-haspopup', 'dialog');
       searchButton.innerHTML = '<span>Search</span>';
       nav.append(searchButton);
     }
 
-    if (input) {
-      input.placeholder = 'Search notes, projects, ideas...';
-      input.setAttribute('aria-label', 'Search notes, projects, ideas');
-    }
+    input.placeholder = 'Search notes, projects, ideas...';
+    input.setAttribute('aria-label', 'Search notes, projects, ideas');
 
-    const setEmptyState = () => {
-      const noResult = popup.querySelector('#no-result');
-      if (!noResult || noResult.dataset.rqEmptyReady === '1') return;
+    const setSearchState = (label, message, state = 'ready') => {
+      resultContent.replaceChildren();
+      const empty = document.createElement('div');
+      empty.id = 'no-result';
+      empty.dataset.state = state;
 
-      noResult.dataset.rqEmptyReady = '1';
-      noResult.innerHTML = '<span>Search console online</span><strong>Type a note, project, or idea.</strong>';
+      const status = document.createElement('span');
+      status.textContent = label;
+      const detail = document.createElement('strong');
+      detail.textContent = message;
+      empty.append(status, detail);
+      resultContent.append(empty);
     };
 
-    const openSearch = () => {
+    const plainText = (html) => {
+      const parsed = new DOMParser().parseFromString(html || '', 'text/html');
+      return (parsed.body.textContent || '').replace(/\s+/g, ' ').trim();
+    };
+
+    let indexPromise;
+    const loadSearchIndex = () => {
+      if (indexPromise) return indexPromise;
+
+      indexPromise = Promise.allSettled([
+        fetch('/search.xml').then((response) => {
+          if (!response.ok) throw new Error(`Search index returned ${response.status}`);
+          return response.text();
+        }),
+        fetch('/projects/').then((response) => {
+          if (!response.ok) throw new Error(`Project index returned ${response.status}`);
+          return response.text();
+        })
+      ]).then(([notesResponse, projectsResponse]) => {
+        const items = [
+          {
+            title: 'Projects',
+            url: '/projects/',
+            content: 'AI-native products, system engineering, reusable tools, and shipped experiments.',
+            kind: 'PAGE'
+          },
+          {
+            title: 'Blog archive',
+            url: '/archives/',
+            content: 'Technical writing, product retrospectives, and engineering notes.',
+            kind: 'PAGE'
+          },
+          {
+            title: 'About RunnerQuan',
+            url: '/about/',
+            content: 'AI-native full-stack builder and agentic product developer.',
+            kind: 'PAGE'
+          }
+        ];
+
+        if (notesResponse.status === 'fulfilled') {
+          const xml = new DOMParser().parseFromString(notesResponse.value, 'text/xml');
+          xml.querySelectorAll('entry').forEach((entry) => {
+            const title = entry.querySelector('title')?.textContent?.trim();
+            const url = entry.querySelector('url')?.textContent?.trim();
+            if (!title || !url) return;
+            items.push({
+              title,
+              url,
+              content: plainText(entry.querySelector('content')?.textContent || ''),
+              kind: 'NOTE'
+            });
+          });
+        }
+
+        if (projectsResponse.status === 'fulfilled') {
+          const projectDocument = new DOMParser().parseFromString(projectsResponse.value, 'text/html');
+          projectDocument.querySelectorAll('.rq-project-showcase').forEach((project, index) => {
+            const title = project.dataset.rqProjectName || project.querySelector('h3')?.textContent?.trim();
+            if (!title) return;
+            const id = project.id || `project-${String(index + 1).padStart(2, '0')}`;
+            const content = [
+              project.querySelector('.rq-project-meta-line')?.textContent,
+              project.querySelector('.rq-project-showcase-copy p')?.textContent,
+              ...[...project.querySelectorAll('.rq-tags span')].map((tag) => tag.textContent)
+            ]
+              .filter(Boolean)
+              .join(' ')
+              .replace(/\s+/g, ' ')
+              .trim();
+            items.push({ title, url: `/projects/#${id}`, content, kind: 'PROJECT' });
+          });
+        }
+
+        const seen = new Set();
+        return items.filter((item) => {
+          const key = `${item.url}|${item.title}`;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      });
+
+      return indexPromise;
+    };
+
+    const appendHighlighted = (target, text, words) => {
+      const usefulWords = [...new Set(words.filter(Boolean))].sort((a, b) => b.length - a.length);
+      if (!usefulWords.length) {
+        target.textContent = text;
+        return;
+      }
+
+      const escaped = usefulWords.map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+      const expression = new RegExp(`(${escaped.join('|')})`, 'ig');
+      text.split(expression).forEach((part) => {
+        if (usefulWords.some((word) => word.toLowerCase() === part.toLowerCase())) {
+          const mark = document.createElement('mark');
+          mark.className = 'search-keyword';
+          mark.textContent = part;
+          target.append(mark);
+        } else {
+          target.append(document.createTextNode(part));
+        }
+      });
+    };
+
+    const renderResults = (items, rawQuery) => {
+      const query = rawQuery.trim().toLowerCase();
+      const words = query.split(/[-\s]+/).filter(Boolean);
+      if (!words.length) {
+        setSearchState('SEARCH CONSOLE ONLINE', 'Type a note, project, or idea.');
+        return;
+      }
+
+      const matches = items
+        .map((item) => {
+          const title = item.title.toLowerCase();
+          const content = item.content.toLowerCase();
+          const searchable = `${title} ${content}`;
+          if (!words.every((word) => searchable.includes(word))) return null;
+          const score = words.reduce((total, word) => {
+            const titleHits = title.split(word).length - 1;
+            const contentHits = content.split(word).length - 1;
+            return total + titleHits * 8 + Math.min(contentHits, 5);
+          }, title.includes(query) ? 16 : 0);
+          return { ...item, score };
+        })
+        .filter(Boolean)
+        .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+        .slice(0, 9);
+
+      if (!matches.length) {
+        setSearchState('NO SIGNAL FOUND', `No result for “${rawQuery.trim()}”.`, 'empty');
+        return;
+      }
+
+      const list = document.createElement('ul');
+      list.className = 'search-result-list';
+      matches.forEach((item) => {
+        const row = document.createElement('li');
+        const kind = document.createElement('span');
+        kind.className = 'rq-search-kind';
+        kind.textContent = item.kind;
+
+        const title = document.createElement('a');
+        title.className = 'search-result-title';
+        title.href = item.url;
+        appendHighlighted(title, item.title, words);
+
+        const firstHit = words.reduce((best, word) => {
+          const index = item.content.toLowerCase().indexOf(word);
+          return index >= 0 && (best < 0 || index < best) ? index : best;
+        }, -1);
+        const start = Math.max(0, firstHit - 34);
+        const excerpt = `${start > 0 ? '...' : ''}${item.content.slice(start, start + 165)}${item.content.length > start + 165 ? '...' : ''}`;
+        const summary = document.createElement('p');
+        summary.className = 'search-result';
+        appendHighlighted(summary, excerpt, words);
+
+        row.append(kind, title, summary);
+        list.append(row);
+      });
+      resultContent.replaceChildren(list);
+    };
+
+    let lastTrigger = null;
+    let previousOverflow = '';
+    const openSearch = (trigger) => {
+      lastTrigger = trigger || document.activeElement;
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
       overlay.classList.add('active');
-      window.setTimeout(() => input?.focus(), 120);
-      setEmptyState();
+      overlay.setAttribute('aria-hidden', 'false');
+      setSearchState('INDEXING SIGNALS', 'Loading notes and project transmissions...', 'loading');
+      loadSearchIndex()
+        .then((items) => renderResults(items, input.value))
+        .catch(() => setSearchState('INDEX OFFLINE', 'The local index could not be loaded.', 'error'));
+      window.setTimeout(() => input.focus(), 120);
+    };
+
+    const closeSearch = () => {
+      if (!overlay.classList.contains('active')) return;
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = previousOverflow;
+      if (lastTrigger instanceof HTMLElement) lastTrigger.focus({ preventScroll: true });
     };
 
     document.querySelectorAll('.search-popup-trigger').forEach((trigger) => {
@@ -730,21 +1045,122 @@
       trigger.dataset.rqSearchBound = '1';
       trigger.addEventListener('click', (event) => {
         event.preventDefault();
-        openSearch();
+        openSearch(trigger);
       });
+    });
+
+    input.addEventListener('input', (event) => {
+      event.stopImmediatePropagation();
+      loadSearchIndex()
+        .then((items) => renderResults(items, input.value))
+        .catch(() => setSearchState('INDEX OFFLINE', 'The local index could not be loaded.', 'error'));
+    }, true);
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowDown') return;
+      const firstResult = resultContent.querySelector('.search-result-title');
+      if (firstResult) {
+        event.preventDefault();
+        firstResult.focus();
+      }
+    });
+
+    resultContent.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+      const links = [...resultContent.querySelectorAll('.search-result-title')];
+      const index = links.indexOf(document.activeElement);
+      if (index < 0) return;
+      event.preventDefault();
+      const next = event.key === 'ArrowDown' ? Math.min(index + 1, links.length - 1) : Math.max(index - 1, 0);
+      links[next]?.focus();
+    });
+
+    resultContent.addEventListener('click', (event) => {
+      if (event.target.closest('a[href]')) closeSearch();
+    });
+
+    const clearControl = popup.querySelector('.search-input-field-pre');
+    const clearSearch = () => {
+      input.value = '';
+      input.focus();
+      loadSearchIndex().then((items) => renderResults(items, ''));
+    };
+    clearControl?.addEventListener('click', clearSearch);
+    clearControl?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        clearSearch();
+      }
+    });
+
+    popup.querySelector('.close-popup-btn')?.addEventListener('click', closeSearch);
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay) closeSearch();
     });
 
     document.addEventListener('keydown', (event) => {
       const target = event.target;
       const isTyping = target?.matches?.('input, textarea, select, [contenteditable="true"]');
+      if (event.key === 'Escape' && overlay.classList.contains('active')) {
+        event.preventDefault();
+        closeSearch();
+        return;
+      }
       if (isTyping) return;
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
-        openSearch();
+        openSearch(document.querySelector('.rq-nav-search'));
       }
     });
 
-    window.setTimeout(setEmptyState, 320);
+    setSearchState('SEARCH CONSOLE ONLINE', 'Type a note, project, or idea.');
+  }
+
+  function setupUtilityLayer() {
+    const labels = [
+      ['.tool-font-adjust-plus', '增大正文字号'],
+      ['.tool-font-adjust-minus', '减小正文字号'],
+      ['.tool-toggle-theme-mode', '切换明暗主题'],
+      ['.tool-scroll-to-bottom', '滚动到页面底部'],
+      ['.toggle-show-toc-tablet', '打开文章目录'],
+      ['.tool-toggle-show', '展开页面工具'],
+      ['.tool-scroll-to-top', '返回页面顶部'],
+      ['.post-tools .toggle-show-toc', '打开文章目录'],
+      ['.post-tools .full-screen', '切换全屏阅读']
+    ];
+
+    labels.forEach(([selector, label]) => {
+      document.querySelectorAll(selector).forEach((tool) => {
+        tool.setAttribute('role', 'button');
+        tool.setAttribute('tabindex', '0');
+        tool.setAttribute('aria-label', label);
+        tool.setAttribute('title', label);
+        tool.querySelector('.fa-spin')?.classList.remove('fa-spin');
+        if (tool.dataset.rqKeyboardReady === '1') return;
+        tool.dataset.rqKeyboardReady = '1';
+        tool.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          tool.click();
+        });
+      });
+    });
+
+    const formatter = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
+    document.querySelectorAll('.footer .count-item .item-value').forEach((value) => {
+      const formatCount = () => {
+        const text = value.textContent.trim();
+        if (!/^\d{4,}$/.test(text)) return;
+        const count = Number(text);
+        if (!Number.isFinite(count)) return;
+        value.title = count.toLocaleString('en');
+        value.textContent = formatter.format(count);
+      };
+      new MutationObserver(formatCount).observe(value, { childList: true, characterData: true, subtree: true });
+      formatCount();
+    });
+
+    document.body.classList.add('rq-utility-ready');
   }
 
   function init() {
@@ -762,9 +1178,11 @@
     setupWarp();
     setupStars();
     setupCoreMap();
+    setupPostDossier();
     setupReadingProgress();
     setupTypewriters();
     setupSearchConsole();
+    setupUtilityLayer();
   }
 
   if (document.readyState === 'loading') {
