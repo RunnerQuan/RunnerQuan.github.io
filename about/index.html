@@ -75,11 +75,30 @@
 
             
         
+            
+                
+<link rel="stylesheet" href="/css/runnerquan-polish-v4.css">
+
+            
+        
     
+    <script>
+        (function () {
+            let theme = localStorage.getItem('KEEP-THEME-STATUS');
+            let classname = "";
+            if (!theme || (JSON.parse(theme).isAutoTheme)){
+                classname = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? "dark-mode" : "light-mode";
+            }
+            else{
+                classname = JSON.parse(theme).isDark ? "dark-mode" : "light-mode";
+            }
+            document.documentElement.classList.add(classname);
+        })();
+    </script>
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
-    KEEP.hexo_config = {"hostname":"runnerquan.github.io","root":"/","language":"zh-CN","path":"search.xml"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#f5f5f5","title":"RunnerQuan","author":"RunnerQuan","avatar":"/images/avatar.jpg","logo":"/images/newlogo.png","favicon":"/images/newlogo.png"},"menu":{"home":"/                       || fa-solid fa-house","projects":"/projects           || fa-solid fa-terminal","blog":"/archives               || fa-solid fa-book","tags":"/tags                   || fa-solid fa-tags","categories":"/categories       || fa-solid fa-layer-group","about":"/about                 || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Developer | Designer | Creator || 用代码构建未来，用设计创造价值","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/RunnerQuan","email":"runnerquan@foxmail.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":["/css/design-tokens.css","/css/components.css","/css/homepage.css","/css/homepage-motion.css","/css/reading.css","/css/projects.css","/css/responsive.css"],"js":["/js/runnerquan-motion.js"]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.hexo_config = {"hostname":"runnerquan.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#f5f5f5","title":"RunnerQuan","author":"RunnerQuan","avatar":"/images/avatar.jpg","logo":"/images/newlogo.png","favicon":"/images/newlogo.png"},"menu":{"home":"/                       || fa-solid fa-house","projects":"/projects           || fa-solid fa-terminal","blog":"/archives               || fa-solid fa-book","tags":"/tags                   || fa-solid fa-tags","categories":"/categories       || fa-solid fa-layer-group","about":"/about                 || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Developer | Designer | Creator || 用代码构建未来，用设计创造价值","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/RunnerQuan","email":"runnerquan@foxmail.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":["/css/design-tokens.css","/css/components.css","/css/homepage.css","/css/homepage-motion.css","/css/reading.css","/css/projects.css","/css/responsive.css","/css/runnerquan-polish-v4.css"],"js":["/js/runnerquan-motion.js"]},"root":"","search_db_path":"keep-search.json","source_data":{},"version":"4.3.0"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -357,38 +376,8 @@
                 
                     <h2 id="about-me"><a class="markdownIt-Anchor" href="#about-me"></a> About me</h2>
 <div class="rq-about-profile">
-  <section class="rq-about-hero rq-reveal">
-    <div class="rq-about-hero-copy">
-      <p class="rq-about-kicker rq-typewriter" data-typewriter="AI-Native Full-Stack Builder · Agentic Product Developer">AI-Native Full-Stack Builder · Agentic Product Developer</p>
-      <p class="rq-about-lead rq-typewriter" data-typewriter="Hi, I'm Jiequan Zheng, also known as RunnerQuan. I turn product ideas into working AI applications, from problem framing and UX to model orchestration, backend APIs, evaluation, and deployment.">Hi, I'm Jiequan Zheng, also known as RunnerQuan. I turn product ideas into working AI applications, from problem framing and UX to model orchestration, backend APIs, evaluation, and deployment.</p>
-      <div class="rq-about-microfacts" aria-label="Profile highlights">
-        <span>AI product engineering</span>
-        <span>Full-stack systems</span>
-        <span>Technical writing</span>
-      </div>
-    </div>
-    <aside class="rq-about-identity" aria-label="RunnerQuan identity panel">
-      <div class="rq-about-portrait">
-        <img    
-                       lazyload
-                       alt="image"
-                       data-src="/images/avatar.jpg"
-                         alt="RunnerQuan portrait" loading="eager" decoding="async"
-                 >
-      </div>
-      <div class="rq-about-signal">
-        <span>RunnerQuan</span>
-        <strong>Build loop</strong>
-        <em>problem -> prototype -> evaluation -> shipping</em>
-      </div>
-      <div class="rq-about-radar" aria-hidden="true">
-        <span>AI</span>
-        <span>UX</span>
-        <span>API</span>
-        <span>OSS</span>
-      </div>
-    </aside>
-  </section>
+  <p class="rq-about-kicker rq-typewriter" data-typewriter="AI-Native Full-Stack Builder · Agentic Product Developer">AI-Native Full-Stack Builder · Agentic Product Developer</p>
+  <p class="rq-about-lead rq-typewriter" data-typewriter="Hi, I'm Jiequan Zheng, also known as RunnerQuan. I turn product ideas into working AI applications, from problem framing and UX to model orchestration, backend APIs, evaluation, and deployment.">Hi, I'm Jiequan Zheng, also known as RunnerQuan. I turn product ideas into working AI applications, from problem framing and UX to model orchestration, backend APIs, evaluation, and deployment.</p>
   <div class="rq-about-grid rq-reveal-group">
     <section class="rq-reveal">
       <h3>Focus</h3>
@@ -400,7 +389,7 @@
       <p>AI for careers and work, multimodal applications, responsible AI, human-AI collaboration, and products that keep architecture, testing, observability, explainability, and fallback paths under human control.</p>
     </section>
   </div>
-  <section class="rq-about-panel rq-about-toolkit rq-reveal">
+  <section class="rq-about-panel rq-reveal">
     <h3>AI-Native Toolkit</h3>
     <div class="rq-about-tags">
       <span>LLM Applications</span>
@@ -424,32 +413,22 @@
       <span>MoonBit</span>
     </div>
   </section>
-  <section class="rq-about-panel rq-about-build rq-reveal">
+  <section class="rq-about-panel rq-reveal">
     <h3>How I Build</h3>
     <ol class="rq-build-flow">
-      <li><span>Signal</span><strong>Real problem</strong></li>
-      <li><span>Frame</span><strong>Product hypothesis</strong></li>
-      <li><span>Draft</span><strong>AI-assisted prototype</strong></li>
-      <li><span>Wire</span><strong>Model, workflow, and interface integration</strong></li>
-      <li><span>Probe</span><strong>Evaluation, fallback, and iteration</strong></li>
-      <li><span>Ship</span><strong>A usable product, not just a demo prompt</strong></li>
+      <li>Real problem</li>
+      <li>Product hypothesis</li>
+      <li>AI-assisted prototype</li>
+      <li>Model, workflow, and interface integration</li>
+      <li>Evaluation, fallback, and iteration</li>
+      <li>A usable product, not just a demo prompt</li>
     </ol>
   </section>
-  <section class="rq-about-contact rq-reveal" aria-label="Contact RunnerQuan">
-    <div class="rq-contact-copy">
-      <span>Open channel</span>
-      <h3>Build something useful.</h3>
-      <p>Send a product idea, engineering question, or collaboration note. I usually turn fuzzy problems into prototypes, evaluation loops, and shippable systems.</p>
-    </div>
-    <div class="rq-about-actions">
-      <a class="rq-contact-primary" href="mailto:runnerquan@foxmail.com">
-        <span>Email signal</span>
-        <strong>runnerquan@foxmail.com</strong>
-      </a>
-      <a class="link"   href="https://github.com/RunnerQuan"  target="_blank" rel="noopener">GitHub -><i class="fas fa-external-link-alt"></i></a>
-      <a href="/">Home -></a>
-    </div>
-  </section>
+  <div class="rq-about-actions rq-reveal">
+    <a class="link"   href="https://github.com/RunnerQuan"  target="_blank" rel="noopener">GitHub -><i class="fas fa-external-link-alt"></i></a>
+    <a class="link"   href="mailto:runnerquan@foxmail.com" >Email -><i class="fas fa-external-link-alt"></i></a>
+    <a href="/">Home -></a>
+  </div>
 </div>
 
                 
@@ -659,36 +638,59 @@
 
 <!-- pjax -->
 
-    
-<script src="/js/libs/pjax.min.js"></script>
-
+    <script id="pjax-script" src="/js/libs/pjax.min.js"></script>
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax'
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-        });
+  (function () {
+    const isGoogleTranslate = location.hostname.includes('.translate.goog')
 
-        document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart()
-        });
+    if (isGoogleTranslate) {
+      document.getElementById('pjax-script')?.remove()
+      return
+    }
 
-        document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd()
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
-            KEEP.initExecute()
-        });
-    });
+    function initPjax () {
+      if (window.pjax) return
+
+      window.pjax = new Pjax({
+        selectors: [
+          'head title',
+          '.page-container',
+          '.pjax'
+        ],
+        history: true,
+        debug: false,
+        cacheBust: false,
+        timeout: 0,
+        analytics: false,
+        currentUrlFullReload: false,
+        scrollRestoration: false
+      })
+
+      document.addEventListener('pjax:send', onPjaxSend)
+      document.addEventListener('pjax:complete', onPjaxComplete)
+    }
+
+    function onPjaxSend () {
+      KEEP?.utils?.pjaxProgressBarStart()
+    }
+
+    function onPjaxComplete () {
+      KEEP?.utils?.pjaxProgressBarEnd()
+
+      window?.pjax?.executeScripts(
+        document.querySelectorAll('script[data-pjax], .pjax script')
+      )
+
+      KEEP?.initExecute()
+    }
+
+    // DOM Ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPjax)
+    } else {
+      initPjax()
+    }
+  })()
 </script>
 
 

@@ -102,70 +102,6 @@
   text-decoration: none;
 }
 
-.rq-nav-search {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.2rem;
-  padding: 0 0.78rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--rq-radius-xs);
-  color: rgba(238, 241, 247, 0.78);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.13), transparent 2.8rem),
-    rgba(255, 255, 255, 0.045);
-  font: inherit;
-  letter-spacing: 0;
-  cursor: pointer;
-  transition:
-    border-color var(--rq-duration-fast) ease,
-    background var(--rq-duration-fast) ease,
-    color var(--rq-duration-fast) ease,
-    transform var(--rq-duration-fast) ease;
-}
-
-.rq-nav-search::before {
-  content: "";
-  width: 0.44rem;
-  height: 0.44rem;
-  margin-right: 0.52rem;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  box-shadow: 0.28rem 0.28rem 0 -0.2rem currentColor;
-  opacity: 0.8;
-}
-
-.rq-nav-search::after {
-  content: "";
-  position: absolute;
-  left: 0.55rem;
-  right: 0.55rem;
-  bottom: 0.38rem;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.58), transparent);
-  opacity: 0;
-  transform: scaleX(0.7);
-  transform-origin: left;
-  transition:
-    opacity var(--rq-duration-fast) ease,
-    transform var(--rq-duration-fast) ease;
-}
-
-.rq-nav-search:hover,
-.rq-nav-search:focus-visible {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.34);
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
-}
-
-.rq-nav-search:hover::after,
-.rq-nav-search:focus-visible::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
 .rq-nav nav a::after {
   content: "";
   position: absolute;
@@ -306,42 +242,14 @@
   border-radius: inherit;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 35%),
-    radial-gradient(circle at var(--rq-pointer-x, 50%) var(--rq-pointer-y, 50%), rgba(255, 255, 255, 0.13), transparent 42%);
+    radial-gradient(circle at calc(50% + var(--rq-x, 0) * 30%), calc(50% + var(--rq-y, 0) * 30%), rgba(255, 255, 255, 0.11), transparent 42%);
   opacity: 0;
   transition: opacity var(--rq-duration-fast) ease;
 }
 
 .rq-project-card:hover::after,
-.rq-project-card.is-pointer-active::after,
 .rq-project-card:focus-visible::after {
   opacity: 1;
-}
-
-.rq-blog-row {
-  isolation: isolate;
-}
-
-.rq-blog-row::after {
-  content: "";
-  position: absolute;
-  inset: 1px 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at var(--rq-pointer-x, 50%) var(--rq-pointer-y, 50%), rgba(255, 255, 255, 0.15), transparent 32rem),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.085), transparent 36%, rgba(255, 255, 255, 0.04));
-  opacity: 0;
-  transform: scaleX(0.985);
-  transition:
-    opacity var(--rq-duration-fast) ease,
-    transform var(--rq-duration-fast) ease;
-}
-
-.rq-blog-row:hover::after,
-.rq-blog-row.is-pointer-active::after,
-.rq-blog-row:focus-visible::after {
-  opacity: 1;
-  transform: scaleX(1);
 }
 
 .rq-project-card::before,
@@ -356,10 +264,8 @@
 }
 
 .rq-project-card:hover::before,
-.rq-project-card.is-pointer-active::before,
 .rq-project-card:focus-visible::before,
 .rq-blog-row:hover::before,
-.rq-blog-row.is-pointer-active::before,
 .rq-blog-row:focus-visible::before {
   animation: rq-scan 900ms ease forwards;
 }

@@ -15,11 +15,6 @@
     transform var(--rq-duration-slow) var(--rq-ease) var(--rq-delay, 0ms);
 }
 
-.rq-home-page.rq-motion-ready .rq-project-grid .rq-project-card:not(:hover):not(.is-pointer-active):not(:focus-visible) {
-  opacity: 1;
-  transform: none;
-}
-
 .rq-agent-orchestrator.is-running::before {
   animation: rq-agent-scan 5.8s linear infinite;
 }
@@ -63,26 +58,6 @@
 .rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(4) { animation-delay: 2.1s; }
 .rq-agent-orchestrator.is-running .rq-agent-terminal span:nth-of-type(5) { animation-delay: 2.8s; }
 
-.rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual::before {
-  animation: rq-system-scope 18s linear infinite;
-}
-
-.rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual::after {
-  animation: rq-system-sweep 5.8s ease-in-out infinite;
-}
-
-.rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual i {
-  animation: rq-system-beam 4.8s ease-in-out infinite;
-}
-
-.rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual i:nth-child(2) {
-  animation-delay: 0.55s;
-}
-
-.rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual i:nth-child(3) {
-  animation-delay: 1.1s;
-}
-
 .rq-footer-signal.is-running span {
   animation: rq-footer-signal 4.8s ease-in-out infinite;
 }
@@ -122,20 +97,6 @@
   34% { opacity: 0.58; }
 }
 
-@keyframes rq-system-scope {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes rq-system-sweep {
-  0%, 100% { opacity: 0.18; transform: translateX(-24%) skewX(-10deg); }
-  48% { opacity: 0.44; transform: translateX(20%) skewX(-10deg); }
-}
-
-@keyframes rq-system-beam {
-  0%, 100% { opacity: 0.42; filter: brightness(0.86); }
-  42% { opacity: 0.86; filter: brightness(1.18); }
-}
-
 @keyframes rq-footer-signal {
   0%, 100% { transform: scaleY(0.82); opacity: 0.52; }
   44% { transform: scaleY(1.08); opacity: 0.92; }
@@ -155,9 +116,6 @@
   .rq-agent-orchestrator.is-running .rq-agent-node,
   .rq-agent-orchestrator.is-running .rq-agent-flow i,
   .rq-agent-orchestrator.is-running .rq-agent-terminal span,
-  .rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual::before,
-  .rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual::after,
-  .rq-orbit-story[data-orbit-section="system"].is-active-panel .rq-orbit-story-visual i,
   .rq-footer-signal.is-running span {
     animation: none;
   }

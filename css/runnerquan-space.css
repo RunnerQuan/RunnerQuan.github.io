@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=ZCOOL+QingKe+HuangYou&display=swap");
 
 :root {
   --rq-bg: #020202;
@@ -10,9 +10,9 @@
   --rq-line: rgba(255, 255, 255, 0.36);
   --rq-line-soft: rgba(255, 255, 255, 0.16);
   --rq-max: 1280px;
-  --rq-pixel: "Press Start 2P", "Share Tech Mono", "Cascadia Mono", "Consolas", "Courier New", monospace;
-  --rq-mono: "Share Tech Mono", "Cascadia Mono", "Consolas", "Courier New", monospace;
-  --rq-cjk-code: "ZCOOL QingKe HuangYou", "Share Tech Mono", "Cascadia Mono", "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", monospace;
+  --rq-pixel: "Press Start 2P", "Share Tech Mono", monospace;
+  --rq-mono: "Share Tech Mono", "Courier New", monospace;
+  --rq-cjk-code: "ZCOOL QingKe HuangYou", "Maple Mono NF CN", "Maple Mono CN", "Sarasa Mono SC", "Noto Sans Mono CJK SC", "Microsoft YaHei Mono", "Microsoft YaHei", monospace;
 }
 
 html {
@@ -641,21 +641,6 @@ a {
 
 .rq-typewriter {
   position: relative;
-  isolation: isolate;
-}
-
-.rq-typewriter.is-typing::before {
-  content: "";
-  position: absolute;
-  inset: -0.08em -0.12em;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent),
-    linear-gradient(180deg, transparent 46%, rgba(255, 255, 255, 0.13) 50%, transparent 54%);
-  mix-blend-mode: screen;
-  opacity: 0;
-  animation: rq-scan 980ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .rq-typewriter.is-typing::after,
