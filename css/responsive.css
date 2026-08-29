@@ -1,3 +1,5 @@
+@import url("/css/runnerquan-polish-v4.css");
+
 @media (max-width: 1180px) {
   :root {
     --rq-cockpit-right: -4vw;
@@ -53,9 +55,7 @@
     opacity: 0;
     pointer-events: none;
     transform: translateY(-0.6rem);
-    transition:
-      opacity var(--rq-duration-fast) ease,
-      transform var(--rq-duration-fast) ease;
+    transition: opacity var(--rq-duration-fast) ease, transform var(--rq-duration-fast) ease;
   }
 
   .rq-nav.rq-menu-open nav {
