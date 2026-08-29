@@ -20,12 +20,13 @@ body.rq-home-page { background: #030507 !important; }
 .rq-home-page::before {
   background: radial-gradient(circle at 76% 18%, rgba(143,231,255,.055), transparent 28rem), radial-gradient(circle at 18% 72%, rgba(143,231,255,.035), transparent 24rem), repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 5px), #030507 !important;
 }
-.rq-home-page .rq-hero h1,
 .rq-home-page .rq-orbit-mission h2,
 .rq-home-page .rq-orbit-warp h2,
 .rq-home-page .rq-orbit-story h2,
 .rq-home-page .rq-orbit-about h2 {
-  font-family: var(--rq-sans) !important; font-weight: 700 !important; letter-spacing: -.045em !important;
+  font-family: var(--rq-pixel) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
 }
 .rq-home-page .rq-hero h1 {
   font-family: var(--rq-pixel) !important;
@@ -36,6 +37,28 @@ body.rq-home-page { background: #030507 !important; }
   text-shadow: 0 0 2rem rgba(255,255,255,.12) !important;
 }
 .rq-home-page .rq-kicker, .rq-home-page .rq-orbit-eyebrow { color: var(--rq-accent) !important; letter-spacing: .2em !important; }
+
+/* Preserve the original pixel / terminal typography across every homepage panel. */
+.rq-home-page .rq-nav,
+.rq-home-page .rq-nav nav,
+.rq-home-page .rq-actions a,
+.rq-home-page .rq-section-head,
+.rq-home-page .rq-section-head a,
+.rq-home-page .rq-project-card,
+.rq-home-page .rq-card-index,
+.rq-home-page .rq-card-arrow,
+.rq-home-page .rq-orbit-eyebrow,
+.rq-home-page .rq-orbit-tags,
+.rq-home-page .rq-orbit-about-actions,
+.rq-home-page .rq-footer-links,
+.rq-home-page .rq-footer-meta {
+  font-family: var(--rq-mono) !important;
+}
+
+.rq-home-page .rq-blog-row strong,
+.rq-home-page .rq-blog-row em {
+  font-family: var(--rq-cjk-code) !important;
+}
 .rq-home-page .rq-hero-cn, .rq-home-page .rq-orbit-mission p, .rq-home-page .rq-orbit-story p, .rq-home-page .rq-orbit-about p { color: rgba(235,244,248,.72) !important; }
 .rq-home-page .rq-actions a { border-color: rgba(143,231,255,.34) !important; background: rgba(143,231,255,.045) !important; border-radius: 999px !important; transition: transform 180ms ease, background 180ms ease, border-color 180ms ease !important; }
 .rq-home-page .rq-actions a:hover { color: #031015 !important; background: var(--rq-accent) !important; border-color: var(--rq-accent) !important; transform: translateY(-2px); }
@@ -44,7 +67,11 @@ body.rq-home-page { background: #030507 !important; }
 .rq-home-page .rq-hero-orbit-core { border-color: var(--rq-accent-line) !important; color: var(--rq-accent-strong) !important; box-shadow: 0 0 2rem rgba(143,231,255,.08), inset 0 0 1.5rem rgba(143,231,255,.06) !important; }
 .rq-home-page .rq-project-card { border-color: rgba(255,255,255,.11) !important; background: linear-gradient(145deg, rgba(16,23,28,.82), rgba(6,9,12,.9)) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 1.8rem 4rem rgba(0,0,0,.22) !important; border-radius: 14px !important; }
 .rq-home-page .rq-project-card:hover { border-color: var(--rq-accent-line) !important; box-shadow: inset 0 1px 0 rgba(143,231,255,.12), 0 1.8rem 4rem rgba(0,0,0,.35), 0 0 2rem rgba(143,231,255,.035) !important; }
-.rq-home-page .rq-project-card h3 { font-family: var(--rq-sans) !important; font-weight: 650 !important; letter-spacing: -.025em !important; }
+.rq-home-page .rq-project-card h3 {
+  font-family: var(--rq-mono) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
 .rq-home-page .rq-project-card p { color: rgba(235,244,248,.62) !important; }
 .rq-home-page .rq-tags span, .rq-home-page .rq-orbit-tags span { border-color: rgba(143,231,255,.2) !important; color: rgba(198,244,255,.78) !important; background: rgba(143,231,255,.045) !important; }
 .rq-home-page .rq-orbit-progress a.is-active { background: var(--rq-accent) !important; box-shadow: 0 0 .9rem rgba(143,231,255,.45) !important; }
