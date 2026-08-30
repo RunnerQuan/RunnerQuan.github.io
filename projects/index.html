@@ -30,9 +30,11 @@
   <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="/css/runnerquan-polish-v4.css?v=20260829-typography">
   <link rel="stylesheet" href="/css/runnerquan-polish-v5.css?v=20260829-interface">
+  <link rel="stylesheet" href="/css/runnerquan-polish-v6.css?v=20260830-proof">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"RunnerQuan Projects","url":"https://runnerquan.github.io/projects/","creator":{"@type":"Person","name":"RunnerQuan","alternateName":"Jiequan Zheng"},"hasPart":[{"@type":"SoftwareSourceCode","name":"PostureFit","codeRepository":"https://github.com/RunnerQuan/Posturefit","description":"Hackathon-winning AI posture coach using body keypoints and a Coze Agent for adaptive feedback.","programmingLanguage":["React","MediaPipe","Coze Agent"]},{"@type":"SoftwareSourceCode","name":"BiasBreaker Career","codeRepository":"https://github.com/RunnerQuan/BiasBreaker-Career","description":"AI career assistant for candidates who may be misread by automated screening systems.","programmingLanguage":["Next.js","LLM","Embeddings"]},{"@type":"SoftwareSourceCode","name":"Quan-RPC","codeRepository":"https://github.com/RunnerQuan/Quan-RPC-Framework","description":"Java TCP RPC framework with custom protocol, service registry, heartbeat checks, and Docker support.","programmingLanguage":["Java 11","TCP","RPC"]},{"@type":"SoftwareSourceCode","name":"TalentFlow","codeRepository":"https://github.com/RunnerQuan/talentflow","description":"Multi-agent recruitment decision platform for resume parsing, skill graphs, JD matching, and hiring evidence.","programmingLanguage":["Next.js","Vercel AI SDK","Agents"]},{"@type":"SoftwareSourceCode","name":"MoonLimit","codeRepository":"https://github.com/RunnerQuan/moonlimit","description":"Composable, deterministic rate-limiting toolkit for MoonBit with policies, simulations, tests, and CI.","programmingLanguage":["MoonBit","Policy Engine","CI"]},{"@type":"SoftwareSourceCode","name":"AI Writing SaaS Skill","codeRepository":"https://github.com/RunnerQuan/ai-writing-assistant-saas-skill","description":"Reusable Skill that generates a deployable AI writing SaaS template with Edge Functions, KV, payments, and AI chat.","programmingLanguage":["React","Edge Functions","AI SaaS"]}]}</script>
 </head>
 <body class="rq-inner-page rq-projects-page">
+  <a class="rq-skip-link" href="#rq-main">Skip to content</a>
   <div class="rq-projects-shell">
     <header class="rq-nav rq-site-nav">
       <a class="rq-brand" href="/">
@@ -43,23 +45,28 @@
         <a href="/">Home</a><a href="/projects/" class="active">Projects</a><a href="/archives/">Blog</a><a href="/about/">About</a><a href="mailto:runnerquan@foxmail.com">Contact</a>
       </nav>
     </header>
-    <main class="rq-projects-main">
+    <main class="rq-projects-main" id="rq-main">
       <section class="rq-projects-hero">
         <p class="rq-projects-kicker">PROJECT ARCHIVE</p>
         <h1>Projects</h1>
-        <p>把 AI-native 产品、系统工程和可复用工具整理成一个可以继续扩展的作品档案。</p>
+        <p>从真实问题出发，展示我承担的角色、构建过程和可验证结果。</p>
+        <div class="rq-proof-rail" aria-label="Portfolio proof">
+          <span><strong>06</strong> public builds</span>
+          <span><strong>02</strong> live products</span>
+          <span><strong>01</strong> published toolkit</span>
+        </div>
       </section>
 
       <section class="rq-projects-section" aria-labelledby="open-source-title">
         <div class="rq-projects-section-head">
           <span>FEATURED BUILDS</span>
           <h2 id="open-source-title">Six project transmissions</h2>
-          <p>按项目推进顺序纵向展开，每一段都保留真实截图、工程线索和可访问的仓库入口。</p>
+          <p>每个项目都回答四个问题：我负责什么、解决什么问题、具体构建了什么，以及如何验证结果。</p>
         </div>
         <div class="rq-project-showcase-stack">
-          <article class="rq-project-showcase rq-reveal" style="--rq-project-index:0; --rq-project-image: url('/images/projects/posturefit.png'); --rq-image-focus: 50% 48%">
+          <article id="posturefit" class="rq-project-showcase rq-reveal" style="--rq-project-index:0; --rq-project-image: url('/images/projects/posturefit.webp'); --rq-image-focus: 50% 48%">
     <div class="rq-project-shot">
-      <img src="/images/projects/posturefit.png" alt="PostureFit AI posture coach landing page" loading="eager" decoding="async">
+      <img src="/images/projects/posturefit.webp" alt="PostureFit AI posture coach landing page" loading="eager" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -70,9 +77,12 @@
       <h3>PostureFit</h3>
       <span class="rq-project-meta-line">AI health · shipped prototype</span>
       <p>Hackathon-winning AI posture coach using body keypoints and a Coze Agent for adaptive feedback.</p>
-      <div class="rq-project-metrics">
-    <span><strong>Vision</strong><em>posture tracking</em></span><span><strong>Agent</strong><em>adaptive feedback</em></span><span><strong>Ship</strong><em>working prototype</em></span>
-  </div>
+      <dl class="rq-project-evidence">
+    <div><dt>Role</dt><dd>Product engineer · AI / CV</dd></div>
+    <div><dt>Problem</dt><dd>Make posture feedback immediate and understandable without specialist hardware.</dd></div>
+    <div><dt>Built</dt><dd>MediaPipe keypoints and a Coze Agent feedback loop inside a browser prototype.</dd></div>
+    <div><dt>Proof</dt><dd>Hackathon winner · live prototype</dd></div>
+  </dl>
       <div class="rq-tags"><span>React</span><span>MediaPipe</span><span>Coze Agent</span></div>
       <div class="rq-project-flow" aria-hidden="true">
     <span style="--i:0">Camera</span><span style="--i:1">Keypoints</span><span style="--i:2">Coach</span><span style="--i:3">Feedback</span>
@@ -81,9 +91,9 @@
     <a class="rq-project-link--primary" href="https://posturefitness.netlify.app/" target="_blank" rel="noopener">Live Demo -></a><a class="" href="https://github.com/RunnerQuan/Posturefit" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:1; --rq-project-image: url('/images/projects/biasbreaker-career.png'); --rq-image-focus: 50% 38%">
+  </article><article id="biasbreaker-career" class="rq-project-showcase rq-reveal" style="--rq-project-index:1; --rq-project-image: url('/images/projects/biasbreaker-career.webp'); --rq-image-focus: 50% 38%">
     <div class="rq-project-shot">
-      <img src="/images/projects/biasbreaker-career.png" alt="BiasBreaker Career resume analysis product page" loading="eager" decoding="async">
+      <img src="/images/projects/biasbreaker-career.webp" alt="BiasBreaker Career resume analysis product page" loading="eager" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -94,9 +104,12 @@
       <h3>BiasBreaker Career</h3>
       <span class="rq-project-meta-line">Responsible AI · career tooling</span>
       <p>AI career assistant for candidates who may be misread by automated screening systems.</p>
-      <div class="rq-project-metrics">
-    <span><strong>Mode</strong><em>career agent</em></span><span><strong>Core</strong><em>screening bias</em></span><span><strong>Output</strong><em>action plan</em></span>
-  </div>
+      <dl class="rq-project-evidence">
+    <div><dt>Role</dt><dd>AI product engineer</dd></div>
+    <div><dt>Problem</dt><dd>Help candidates see where automated screening may misread their experience.</dd></div>
+    <div><dt>Built</dt><dd>Resume analysis, embeddings, and actionable career guidance.</dd></div>
+    <div><dt>Proof</dt><dd>Open-source responsible-AI prototype</dd></div>
+  </dl>
       <div class="rq-tags"><span>Next.js</span><span>LLM</span><span>Embeddings</span></div>
       <div class="rq-project-flow" aria-hidden="true">
     <span style="--i:0">Resume</span><span style="--i:1">Signals</span><span style="--i:2">LLM</span><span style="--i:3">Plan</span>
@@ -105,9 +118,9 @@
     <a class="" href="https://github.com/RunnerQuan/BiasBreaker-Career" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:2; --rq-project-image: url('/images/projects/quan-rpc.png'); --rq-image-focus: 50% 50%">
+  </article><article id="quan-rpc" class="rq-project-showcase rq-reveal" style="--rq-project-index:2; --rq-project-image: url('/images/projects/quan-rpc.webp'); --rq-image-focus: 50% 50%">
     <div class="rq-project-shot">
-      <img src="/images/projects/quan-rpc.png" alt="Quan-RPC framework architecture diagram" loading="lazy" decoding="async">
+      <img src="/images/projects/quan-rpc.webp" alt="Quan-RPC framework architecture diagram" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -118,9 +131,12 @@
       <h3>Quan-RPC</h3>
       <span class="rq-project-meta-line">Distributed systems · framework</span>
       <p>Java TCP RPC framework with custom protocol, service registry, heartbeat checks, and Docker support.</p>
-      <div class="rq-project-metrics">
-    <span><strong>Protocol</strong><em>custom TCP</em></span><span><strong>Registry</strong><em>service discovery</em></span><span><strong>Runtime</strong><em>heartbeat</em></span>
-  </div>
+      <dl class="rq-project-evidence">
+    <div><dt>Role</dt><dd>Backend engineer</dd></div>
+    <div><dt>Problem</dt><dd>Make service discovery and resilient RPC behavior explicit instead of framework magic.</dd></div>
+    <div><dt>Built</dt><dd>Custom TCP protocol, registry, heartbeat checks, and Docker support.</dd></div>
+    <div><dt>Proof</dt><dd>Source code · architecture</dd></div>
+  </dl>
       <div class="rq-tags"><span>Java 11</span><span>TCP</span><span>RPC</span></div>
       <div class="rq-project-flow" aria-hidden="true">
     <span style="--i:0">Provider</span><span style="--i:1">Registry</span><span style="--i:2">Consumer</span><span style="--i:3">Invoke</span>
@@ -129,9 +145,9 @@
     <a class="" href="https://github.com/RunnerQuan/Quan-RPC-Framework" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:3; --rq-project-image: url('/images/projects/talentflow.png'); --rq-image-focus: 28% 46%">
+  </article><article id="talentflow" class="rq-project-showcase rq-reveal" style="--rq-project-index:3; --rq-project-image: url('/images/projects/talentflow.webp'); --rq-image-focus: 28% 46%">
     <div class="rq-project-shot">
-      <img src="/images/projects/talentflow.png" alt="TalentFlow AI recruiting decision platform interface" loading="lazy" decoding="async">
+      <img src="/images/projects/talentflow.webp" alt="TalentFlow AI recruiting decision platform interface" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -142,9 +158,12 @@
       <h3>TalentFlow</h3>
       <span class="rq-project-meta-line">Agent workflow · decision support</span>
       <p>Multi-agent recruitment decision platform for resume parsing, skill graphs, JD matching, and hiring evidence.</p>
-      <div class="rq-project-metrics">
-    <span><strong>Parse</strong><em>resume evidence</em></span><span><strong>Graph</strong><em>skill matching</em></span><span><strong>Decision</strong><em>audit trail</em></span>
-  </div>
+      <dl class="rq-project-evidence">
+    <div><dt>Role</dt><dd>Full-stack · agent systems</dd></div>
+    <div><dt>Problem</dt><dd>Turn scattered resume and JD signals into auditable hiring evidence.</dd></div>
+    <div><dt>Built</dt><dd>Multi-agent parsing, skill graph, matching, and review workflow.</dd></div>
+    <div><dt>Proof</dt><dd>Live product · source code</dd></div>
+  </dl>
       <div class="rq-tags"><span>Next.js</span><span>Vercel AI SDK</span><span>Agents</span></div>
       <div class="rq-project-flow" aria-hidden="true">
     <span style="--i:0">Resume</span><span style="--i:1">Graph</span><span style="--i:2">Match</span><span style="--i:3">Review</span>
@@ -153,9 +172,9 @@
     <a class="rq-project-link--primary" href="https://ai-talentflow.netlify.app/" target="_blank" rel="noopener">Live Demo -></a><a class="" href="https://github.com/RunnerQuan/talentflow" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:4; --rq-project-image: url('/images/projects/moonlimit.png'); --rq-image-focus: 50% 34%">
+  </article><article id="moonlimit" class="rq-project-showcase rq-reveal" style="--rq-project-index:4; --rq-project-image: url('/images/projects/moonlimit.webp'); --rq-image-focus: 50% 34%">
     <div class="rq-project-shot">
-      <img src="/images/projects/moonlimit.png" alt="MoonLimit documentation page on mooncakes.io" loading="lazy" decoding="async">
+      <img src="/images/projects/moonlimit.webp" alt="MoonLimit documentation page on mooncakes.io" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -166,9 +185,12 @@
       <h3>MoonLimit</h3>
       <span class="rq-project-meta-line">MoonBit · deterministic toolkit</span>
       <p>Composable, deterministic rate-limiting toolkit for MoonBit with policies, simulations, tests, and CI.</p>
-      <div class="rq-project-metrics">
-    <span><strong>Policy</strong><em>composable</em></span><span><strong>Sim</strong><em>deterministic</em></span><span><strong>CI</strong><em>tested</em></span>
-  </div>
+      <dl class="rq-project-evidence">
+    <div><dt>Role</dt><dd>Library author</dd></div>
+    <div><dt>Problem</dt><dd>Offer predictable rate limiting without hiding policy decisions.</dd></div>
+    <div><dt>Built</dt><dd>Composable policies, deterministic simulations, tests, and CI.</dd></div>
+    <div><dt>Proof</dt><dd>Published Mooncakes package</dd></div>
+  </dl>
       <div class="rq-tags"><span>MoonBit</span><span>Policy Engine</span><span>CI</span></div>
       <div class="rq-project-flow" aria-hidden="true">
     <span style="--i:0">Rule</span><span style="--i:1">Bucket</span><span style="--i:2">Decision</span><span style="--i:3">Trace</span>
@@ -177,9 +199,9 @@
     <a class="rq-project-link--primary" href="https://mooncakes.io/docs/RunnerQuan/moonlimit" target="_blank" rel="noopener">Mooncakes -></a><a class="" href="https://github.com/RunnerQuan/moonlimit" target="_blank" rel="noopener">GitHub -></a>
   </div>
     </div>
-  </article><article class="rq-project-showcase rq-reveal" style="--rq-project-index:5; --rq-project-image: url('/images/projects/ai-writing-saas-skill.png'); --rq-image-focus: 50% 28%">
+  </article><article id="ai-writing-saas-skill" class="rq-project-showcase rq-reveal" style="--rq-project-index:5; --rq-project-image: url('/images/projects/ai-writing-saas-skill.webp'); --rq-image-focus: 50% 28%">
     <div class="rq-project-shot">
-      <img src="/images/projects/ai-writing-saas-skill.png" alt="AI Writing SaaS Skill dark landing page" loading="lazy" decoding="async">
+      <img src="/images/projects/ai-writing-saas-skill.webp" alt="AI Writing SaaS Skill dark landing page" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -190,9 +212,12 @@
       <h3>AI Writing SaaS Skill</h3>
       <span class="rq-project-meta-line">Reusable skill · SaaS starter</span>
       <p>Reusable Skill that generates a deployable AI writing SaaS template with Edge Functions, KV, payments, and AI chat.</p>
-      <div class="rq-project-metrics">
-    <span><strong>Stack</strong><em>full SaaS</em></span><span><strong>Edge</strong><em>functions + KV</em></span><span><strong>AI</strong><em>chat workflow</em></span>
-  </div>
+      <dl class="rq-project-evidence">
+    <div><dt>Role</dt><dd>Skill author</dd></div>
+    <div><dt>Problem</dt><dd>Reduce repeated setup work for production-shaped AI writing products.</dd></div>
+    <div><dt>Built</dt><dd>Reusable scaffold with Edge Functions, KV, payments, and AI chat.</dd></div>
+    <div><dt>Proof</dt><dd>Open-source reusable skill</dd></div>
+  </dl>
       <div class="rq-tags"><span>React</span><span>Edge Functions</span><span>AI SaaS</span></div>
       <div class="rq-project-flow" aria-hidden="true">
     <span style="--i:0">Prompt</span><span style="--i:1">Template</span><span style="--i:2">Edge</span><span style="--i:3">Deploy</span>
