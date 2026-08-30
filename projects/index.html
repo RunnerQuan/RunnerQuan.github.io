@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="/css/runnerquan-polish-v4.css?v=20260829-typography">
   <link rel="stylesheet" href="/css/runnerquan-polish-v5.css?v=20260829-interface">
   <link rel="stylesheet" href="/css/runnerquan-polish-v6.css?v=20260830-proof2">
+  <link rel="stylesheet" href="/css/runnerquan-polish-v7.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"RunnerQuan Projects","url":"https://runnerquan.github.io/projects/","creator":{"@type":"Person","name":"RunnerQuan","alternateName":"Jiequan Zheng"},"hasPart":[{"@type":"SoftwareSourceCode","name":"PostureFit","codeRepository":"https://github.com/RunnerQuan/Posturefit","description":"Hackathon-winning AI posture coach using body keypoints and a Coze Agent for adaptive feedback.","programmingLanguage":["React","MediaPipe","Coze Agent"]},{"@type":"SoftwareSourceCode","name":"BiasBreaker Career","codeRepository":"https://github.com/RunnerQuan/BiasBreaker-Career","description":"AI career assistant for candidates who may be misread by automated screening systems.","programmingLanguage":["Next.js","LLM","Embeddings"]},{"@type":"SoftwareSourceCode","name":"Quan-RPC","codeRepository":"https://github.com/RunnerQuan/Quan-RPC-Framework","description":"Java TCP RPC framework with custom protocol, service registry, heartbeat checks, and Docker support.","programmingLanguage":["Java 11","TCP","RPC"]},{"@type":"SoftwareSourceCode","name":"TalentFlow","codeRepository":"https://github.com/RunnerQuan/talentflow","description":"Multi-agent recruitment decision platform for resume parsing, skill graphs, JD matching, and hiring evidence.","programmingLanguage":["Next.js","Vercel AI SDK","Agents"]},{"@type":"SoftwareSourceCode","name":"MoonLimit","codeRepository":"https://github.com/RunnerQuan/moonlimit","description":"Composable, deterministic rate-limiting toolkit for MoonBit with policies, simulations, tests, and CI.","programmingLanguage":["MoonBit","Policy Engine","CI"]},{"@type":"SoftwareSourceCode","name":"AI Writing SaaS Skill","codeRepository":"https://github.com/RunnerQuan/ai-writing-assistant-saas-skill","description":"Reusable Skill that generates a deployable AI writing SaaS template with Edge Functions, KV, payments, and AI chat.","programmingLanguage":["React","Edge Functions","AI SaaS"]}]}</script>
 </head>
 <body class="rq-inner-page rq-projects-page">
@@ -45,6 +46,10 @@
         <a href="/">Home</a><a href="/projects/" class="active">Projects</a><a href="/archives/">Blog</a><a href="/about/">About</a><a href="mailto:runnerquan@foxmail.com">Contact</a>
       </nav>
     </header>
+    <nav class="rq-project-index" aria-label="Project index">
+      <span>INDEX</span>
+      <a href="#posturefit" data-project-target="posturefit"><b>01</b><em>PostureFit</em></a><a href="#biasbreaker-career" data-project-target="biasbreaker-career"><b>02</b><em>BiasBreaker Career</em></a><a href="#quan-rpc" data-project-target="quan-rpc"><b>03</b><em>Quan-RPC</em></a><a href="#talentflow" data-project-target="talentflow"><b>04</b><em>TalentFlow</em></a><a href="#moonlimit" data-project-target="moonlimit"><b>05</b><em>MoonLimit</em></a><a href="#ai-writing-saas-skill" data-project-target="ai-writing-saas-skill"><b>06</b><em>AI Writing SaaS Skill</em></a>
+    </nav>
     <main class="rq-projects-main" id="rq-main">
       <section class="rq-projects-hero">
         <p class="rq-projects-kicker">PROJECT ARCHIVE</p>
@@ -246,5 +251,6 @@
     </main>
   </div>
   <script src="/js/runnerquan-motion.js" defer></script>
+  <script src="/js/runnerquan-interface-v7.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,437 @@
+/* RunnerQuan polish v7 — orbital navigation and signal surfaces */
+
+/* Orbit progress becomes readable without losing its minimal dot form. */
+.rq-orbit-progress a {
+  position: relative;
+}
+
+.rq-orbit-progress a::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  min-width: max-content;
+  padding: 0.38rem 0.55rem;
+  border: 1px solid rgba(143, 231, 255, 0.16);
+  border-radius: 0.3rem;
+  color: rgba(216, 248, 255, 0.78);
+  background: rgba(3, 8, 11, 0.86);
+  font: 0.58rem/1 var(--rq-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0.45rem, -50%);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.rq-orbit-progress a:hover::before,
+.rq-orbit-progress a:focus-visible::before,
+.rq-orbit-progress a.is-active::before {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.rq-orbit-progress a.is-active::before {
+  opacity: 0.5;
+}
+
+.rq-orbit-progress:hover a.is-active:not(:hover)::before {
+  opacity: 0;
+}
+
+/* Homepage project cards behave like dim signal windows. */
+.rq-home-page .rq-project-card {
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at var(--rq-pointer-x, 50%) var(--rq-pointer-y, 50%), rgba(143, 231, 255, 0.1), transparent 34%),
+    linear-gradient(145deg, rgba(10, 18, 23, 0.95), rgba(3, 7, 10, 0.98)) !important;
+}
+
+.rq-project-card-visual {
+  position: absolute !important;
+  inset: 0 0 0 42%;
+  z-index: -1 !important;
+  display: block;
+  background-image: var(--rq-card-image);
+  background-position: var(--rq-card-focus, 50% 50%);
+  background-size: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.52);
+  opacity: 0.1;
+  transform: scale(1.06);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%);
+  mask-image: linear-gradient(90deg, transparent, #000 40%);
+  transition: opacity 320ms ease, filter 320ms ease, transform 600ms var(--rq-ease);
+}
+
+.rq-project-card-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.22) 4px),
+    linear-gradient(90deg, transparent, rgba(143, 231, 255, 0.08));
+}
+
+.rq-home-page .rq-project-card > :not(.rq-project-card-visual) {
+  position: relative;
+  z-index: 1;
+}
+
+.rq-home-page .rq-project-card:hover .rq-project-card-visual,
+.rq-home-page .rq-project-card:focus-visible .rq-project-card-visual {
+  filter: grayscale(0.72) contrast(1.08) brightness(0.72);
+  opacity: 0.28;
+  transform: scale(1.01);
+}
+
+.rq-home-page .rq-project-card:hover,
+.rq-home-page .rq-project-card:focus-visible {
+  border-color: rgba(143, 231, 255, 0.42) !important;
+  box-shadow: inset 0 0 0 1px rgba(143, 231, 255, 0.05), 0 1.4rem 4rem rgba(0, 0, 0, 0.3);
+}
+
+/* Fixed project index: a compact mission selector on wide screens. */
+.rq-project-index {
+  position: fixed;
+  right: 0.8rem;
+  top: 50%;
+  z-index: 82;
+  display: grid;
+  justify-items: end;
+  gap: 0.36rem;
+  transform: translateY(-50%);
+}
+
+.rq-project-index > span {
+  margin: 0 0.35rem 0.25rem 0;
+  color: rgba(143, 231, 255, 0.48);
+  font: 0.58rem/1 var(--rq-mono);
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+}
+
+.rq-project-index a {
+  display: grid;
+  grid-template-columns: 2.55rem 0fr;
+  align-items: center;
+  min-height: 2.55rem;
+  overflow: hidden;
+  border: 1px solid rgba(143, 231, 255, 0.12);
+  border-radius: 0.38rem;
+  color: rgba(223, 238, 242, 0.5);
+  background: rgba(3, 8, 11, 0.76);
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: grid-template-columns 220ms ease, color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.rq-project-index a b {
+  text-align: center;
+  font: 0.66rem/1 var(--rq-pixel);
+}
+
+.rq-project-index a em {
+  min-width: 0;
+  padding-right: 0;
+  overflow: hidden;
+  font: normal 0.68rem/1 var(--rq-mono);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 150ms ease, padding-right 220ms ease;
+}
+
+.rq-project-index a:hover,
+.rq-project-index a:focus-visible {
+  grid-template-columns: 2.55rem 8.8rem;
+  color: #fff;
+  border-color: rgba(143, 231, 255, 0.44);
+  background: rgba(7, 18, 23, 0.94);
+}
+
+.rq-project-index a:hover em,
+.rq-project-index a:focus-visible em {
+  padding-right: 0.8rem;
+  opacity: 1;
+}
+
+.rq-project-index a.is-current {
+  color: var(--rq-accent-strong, #d8f8ff);
+  border-color: rgba(143, 231, 255, 0.58);
+  box-shadow: 0 0 1.2rem rgba(143, 231, 255, 0.12);
+}
+
+/* Inner pages become full members of the orbital visual system. */
+body.rq-inner-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 12rem, rgba(143, 231, 255, 0.035), transparent 31rem),
+    #030506 !important;
+}
+
+.rq-inner-page > .rq-inner-hero {
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+  display: grid !important;
+  align-content: center;
+  justify-items: center;
+  width: min(1180px, calc(100vw - 3rem));
+  min-height: clamp(17rem, 30vw, 23rem);
+  margin: clamp(2.1rem, 4.5vw, 4rem) auto clamp(2.5rem, 5vw, 4.5rem) !important;
+  padding: clamp(2.4rem, 6vw, 5rem) !important;
+  overflow: hidden;
+  border: 1px solid rgba(143, 231, 255, 0.13);
+  border-radius: 0.85rem;
+  background:
+    linear-gradient(rgba(143, 231, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 231, 255, 0.022) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(143, 231, 255, 0.085), transparent 35%),
+    linear-gradient(145deg, rgba(9, 17, 21, 0.96), rgba(3, 6, 8, 0.98));
+  background-size: 2.2rem 2.2rem, 2.2rem 2.2rem, auto, auto;
+  text-align: center;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 2rem 7rem rgba(0, 0, 0, 0.28);
+}
+
+.rq-inner-page > .rq-inner-hero::before,
+.rq-inner-page > .rq-inner-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.rq-inner-page > .rq-inner-hero::before {
+  width: clamp(16rem, 34vw, 29rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(143, 231, 255, 0.13);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3rem rgba(143, 231, 255, 0.018), 0 0 0 7rem rgba(143, 231, 255, 0.012);
+}
+
+.rq-inner-page > .rq-inner-hero::after {
+  inset: auto 1.2rem 1rem auto;
+  content: "COORD / RQ-2026";
+  color: rgba(143, 231, 255, 0.3);
+  font: 0.56rem/1 var(--rq-mono);
+  letter-spacing: 0.16em;
+}
+
+.rq-inner-hero__eyebrow {
+  color: var(--rq-accent, #8fe7ff) !important;
+  font: 0.7rem/1 var(--rq-mono) !important;
+  letter-spacing: 0.22em !important;
+}
+
+.rq-inner-page > .rq-inner-hero h1 {
+  margin: 1rem 0 1.1rem !important;
+  color: #fff !important;
+  font-family: var(--rq-pixel) !important;
+  font-size: clamp(2.45rem, 6.2vw, 5.2rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 0 2.2rem rgba(255, 255, 255, 0.12);
+}
+
+.rq-inner-page > .rq-inner-hero p {
+  max-width: 45rem;
+  margin: 0 !important;
+  color: rgba(224, 234, 238, 0.62) !important;
+  font: 0.95rem/1.8 var(--rq-cjk-code) !important;
+}
+
+.rq-inner-hero__orbit {
+  position: absolute !important;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  width: clamp(12rem, 27vw, 23rem) !important;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(-16deg);
+  animation: rq-v7-orbit 28s linear infinite;
+}
+
+.rq-inner-hero__orbit i {
+  position: absolute;
+  inset: calc(var(--rq-ring, 0) * 13%);
+  border: 1px solid rgba(143, 231, 255, 0.14);
+  border-radius: 50%;
+}
+
+.rq-inner-hero__orbit i:nth-child(1) { --rq-ring: 0; }
+.rq-inner-hero__orbit i:nth-child(2) { --rq-ring: 1; }
+.rq-inner-hero__orbit i:nth-child(3) { --rq-ring: 2; }
+
+.rq-inner-hero__orbit i:first-child::after {
+  content: "";
+  position: absolute;
+  right: 11%;
+  top: 17%;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--rq-accent, #8fe7ff);
+  box-shadow: 0 0 1rem rgba(143, 231, 255, 0.65);
+}
+
+@keyframes rq-v7-orbit { to { transform: translate(-50%, -50%) rotate(344deg); } }
+
+/* Archives: transmission deck rather than a default timeline. */
+.rq-blog-page .archives-container {
+  width: min(1040px, calc(100vw - 3rem)) !important;
+  margin: 0 auto clamp(5rem, 9vw, 8rem) !important;
+}
+
+.rq-blog-page .archives-timeline {
+  padding: clamp(1.2rem, 3vw, 2rem) !important;
+  border: 1px solid rgba(143, 231, 255, 0.14) !important;
+  border-radius: 0.8rem !important;
+  background:
+    radial-gradient(circle at var(--rq-pointer-x, 50%) var(--rq-pointer-y, 50%), rgba(143, 231, 255, 0.08), transparent 34%),
+    linear-gradient(145deg, rgba(10, 16, 20, 0.94), rgba(4, 7, 9, 0.98)) !important;
+  box-shadow: 0 2rem 7rem rgba(0, 0, 0, 0.26);
+}
+
+.rq-blog-page .archive-item {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.25fr) 1fr;
+  border: 0 !important;
+}
+
+.rq-blog-page .archive-item-header {
+  padding: 1rem !important;
+  border-right: 1px solid rgba(143, 231, 255, 0.13);
+}
+
+.rq-blog-page .archive-year {
+  color: #fff !important;
+  font: 1.6rem/1 var(--rq-pixel) !important;
+}
+
+.rq-blog-page .archive-item-body {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.rq-blog-page .post-item {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 4rem 1fr 2rem;
+  align-items: center;
+  min-height: 4.6rem;
+  padding: 0 1rem !important;
+  border-bottom: 1px solid rgba(143, 231, 255, 0.09);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.rq-blog-page .post-item:last-child { border-bottom: 0; }
+
+.rq-blog-page .post-item::after {
+  content: "->";
+  color: rgba(143, 231, 255, 0.35);
+  font: 0.8rem/1 var(--rq-mono);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.rq-blog-page .post-item:hover,
+.rq-blog-page .post-item:focus-within {
+  background: rgba(143, 231, 255, 0.055);
+  transform: translateX(0.25rem);
+}
+
+.rq-blog-page .post-item:hover::after,
+.rq-blog-page .post-item:focus-within::after {
+  color: var(--rq-accent, #8fe7ff);
+  transform: translateX(0.2rem);
+}
+
+.rq-blog-page .starting-point { display: none !important; }
+
+.rq-blog-page .post-date {
+  color: rgba(143, 231, 255, 0.56) !important;
+  font: 0.72rem/1 var(--rq-mono) !important;
+}
+
+.rq-blog-page .post-title {
+  color: rgba(238, 243, 245, 0.78) !important;
+  font: 0.95rem/1.5 var(--rq-cjk-code) !important;
+  text-decoration: none !important;
+}
+
+.rq-blog-page .post-item:hover .post-title,
+.rq-blog-page .post-title:focus-visible { color: #fff !important; }
+
+/* About and project panels receive a subtle pointer-reactive glow. */
+.rq-about-grid section,
+.rq-about-panel,
+.rq-project-showcase-copy {
+  background-image: radial-gradient(circle at var(--rq-pointer-x, 50%) var(--rq-pointer-y, 50%), rgba(143, 231, 255, 0.075), transparent 36%);
+}
+
+.rq-about-grid section:hover,
+.rq-about-panel:hover {
+  border-color: rgba(143, 231, 255, 0.3) !important;
+}
+
+@media (max-width: 1280px) {
+  .rq-project-index { display: none; }
+}
+
+@media (max-width: 760px) {
+  .rq-orbit-progress a::before { display: none; }
+
+  .rq-project-card-visual {
+    left: 52%;
+    opacity: 0.08;
+  }
+
+  .rq-inner-page > .rq-inner-hero {
+    width: calc(100vw - 1.5rem);
+    min-height: 15rem;
+    margin: 1rem auto 2rem !important;
+    padding: 2.2rem 1.1rem !important;
+  }
+
+  .rq-inner-page > .rq-inner-hero::after { display: none; }
+
+  .rq-inner-page > .rq-inner-hero h1 {
+    font-size: clamp(2rem, 11vw, 3.15rem) !important;
+  }
+
+  .rq-inner-page > .rq-inner-hero p { font-size: 0.82rem !important; }
+
+  .rq-blog-page .archives-container { width: calc(100vw - 1.5rem) !important; }
+
+  .rq-blog-page .archives-timeline { padding: 0.75rem !important; }
+
+  .rq-blog-page .archive-item { grid-template-columns: 1fr; }
+
+  .rq-blog-page .archive-item-header {
+    padding: 1rem 0.75rem 1.2rem !important;
+    border-right: 0;
+    border-bottom: 1px solid rgba(143, 231, 255, 0.13);
+  }
+
+  .rq-blog-page .post-item {
+    grid-template-columns: 3.2rem 1fr 1.3rem;
+    min-height: 4.25rem;
+    padding: 0 0.6rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rq-inner-hero__orbit { animation: none !important; }
+
+  .rq-project-card-visual,
+  .rq-project-index a,
+  .rq-project-index a em,
+  .rq-blog-page .post-item,
+  .rq-blog-page .post-item::after {
+    transition: none !important;
+  }
+}
