@@ -279,7 +279,44 @@
     if (reticle) reticle.classList.remove('is-visible', 'is-target');
   }
 
+  function handleCrossShellNavigation(event) {
+    if (
+      !window.pjax ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) return;
+
+    const link = event.target instanceof Element
+      ? event.target.closest('a[href]')
+      : null;
+
+    if (
+      !link ||
+      link.hasAttribute('download') ||
+      (link.target && link.target !== '_self')
+    ) return;
+
+    const target = new URL(link.href, window.location.href);
+    if (target.origin !== window.location.origin) return;
+
+    const entersCustomShell = target.pathname === '/' || target.pathname.startsWith('/projects/');
+    if (!entersCustomShell) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.assign(target.href);
+  }
+
   function bindGlobalEvents() {
+    if (!state.crossShellBound) {
+      state.crossShellBound = true;
+      document.addEventListener('click', handleCrossShellNavigation, true);
+    }
+
     if (state.bound) return;
     state.bound = true;
 
