@@ -97,7 +97,7 @@
 
   function onScroll() {
     const now = performance.now();
-    const elapsed = Math.max(12, now - state.lastScrollAt);
+    const elapsed = clamp(now - state.lastScrollAt, 12, 64);
     const delta = window.scrollY - state.lastScrollY;
     const impulse = clamp(delta / elapsed, -4.5, 4.5);
 
