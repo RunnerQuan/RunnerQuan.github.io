@@ -1,0 +1,288 @@
+/* RunnerQuan dynamics v10 — aperture, hyperlane, depth and focus systems */
+
+:root {
+  --rq-v10-scroll: 0;
+  --rq-v10-speed: 0;
+  --rq-v10-scan-y: 50vh;
+  --rq-v10-cyan: #8fe7ff;
+  --rq-v10-ice: #e8fbff;
+  --rq-v10-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html.rq-interface-v10 {
+  background: #010304;
+}
+
+/* One brief aperture sequence establishes the cockpit without delaying access. */
+.rq-boot-sequence {
+  position: fixed !important;
+  inset: 0;
+  z-index: 210 !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rq-boot-blade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25.25%;
+  background:
+    linear-gradient(90deg, rgba(143, 231, 255, 0.04), transparent 12%, transparent 88%, rgba(143, 231, 255, 0.04)),
+    linear-gradient(180deg, #020506, #010203);
+  border-inline: 1px solid rgba(143, 231, 255, 0.08);
+  transition: transform 720ms var(--rq-v10-ease);
+  will-change: transform;
+}
+
+.rq-boot-blade:nth-child(1) { left: 0; transition-delay: 100ms; }
+.rq-boot-blade:nth-child(2) { left: 25%; transition-delay: 40ms; }
+.rq-boot-blade:nth-child(3) { left: 50%; transition-delay: 40ms; }
+.rq-boot-blade:nth-child(4) { left: 75%; transition-delay: 100ms; }
+
+.rq-boot-sequence.is-launching .rq-boot-blade:nth-child(odd) {
+  transform: translateY(-102%);
+}
+
+.rq-boot-sequence.is-launching .rq-boot-blade:nth-child(even) {
+  transform: translateY(102%);
+}
+
+.rq-boot-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  min-width: 13rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(143, 231, 255, 0.24);
+  color: rgba(232, 251, 255, 0.8);
+  background: rgba(2, 7, 9, 0.92);
+  font: 0.58rem/1.65 var(--rq-mono, "Share Tech Mono", monospace);
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  transition: opacity 260ms ease, transform 520ms var(--rq-v10-ease);
+}
+
+.rq-boot-core::before {
+  content: "";
+  width: 2.4rem;
+  height: 1px;
+  margin-bottom: 0.42rem;
+  background: var(--rq-v10-cyan);
+  box-shadow: 0 0 1rem rgba(143, 231, 255, 0.72);
+}
+
+.rq-boot-core b {
+  color: var(--rq-v10-cyan);
+  font-weight: 400;
+}
+
+.rq-boot-sequence.is-launching .rq-boot-core {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* A route-aware orbital lane connects the page as one navigable system. */
+.rq-hyperlane {
+  position: fixed !important;
+  inset: 0;
+  z-index: 1 !important;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  opacity: 0.62;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.rq-hyperlane-base,
+.rq-hyperlane-progress {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.rq-hyperlane-base {
+  stroke: rgba(143, 231, 255, 0.055);
+  stroke-width: 1;
+  stroke-dasharray: 4 13;
+}
+
+.rq-hyperlane-progress {
+  stroke: rgba(143, 231, 255, calc(0.12 + var(--rq-v10-speed) * 0.28));
+  stroke-width: calc(0.65px + var(--rq-v10-speed) * 1.1px);
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--rq-v10-scroll));
+  filter: drop-shadow(0 0 calc(0.2rem + var(--rq-v10-speed) * 0.7rem) rgba(143, 231, 255, 0.52));
+}
+
+.rq-hyperlane-node {
+  fill: #020608;
+  stroke: var(--rq-v10-cyan);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 0.55rem rgba(143, 231, 255, 0.8));
+}
+
+.rq-phase-scan {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1 !important;
+  height: 5.5rem;
+  opacity: calc(0.08 + var(--rq-v10-speed) * 0.28);
+  background: linear-gradient(180deg, transparent, rgba(143, 231, 255, 0.055), rgba(143, 231, 255, 0.18), transparent);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform: translate3d(0, calc(var(--rq-v10-scan-y) - 2.75rem), 0);
+  transition: opacity 120ms linear;
+  will-change: transform;
+}
+
+.rq-interface-v10 .rq-page-shell,
+.rq-interface-v10 .rq-projects-shell,
+.rq-interface-v10 body.rq-inner-page > :not(.rq-system-grid):not(.rq-tactical-hud):not(.rq-reticle):not(.rq-warp-field):not(.rq-hyperlane):not(.rq-phase-scan):not(.rq-boot-sequence) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Nodes unlock in depth as they enter the calibrated viewport. */
+.rq-v10-ready .rq-depth-node {
+  opacity: 0.18;
+  filter: blur(4px) saturate(0.72);
+  transition:
+    opacity 680ms var(--rq-v10-ease),
+    filter 680ms var(--rq-v10-ease),
+    transform 700ms var(--rq-v10-ease);
+}
+
+.rq-v10-ready .rq-depth-node.is-v10-visible {
+  opacity: 1;
+  filter: none;
+}
+
+.rq-v10-ready .rq-depth-node[data-rq-depth="1"] { transition-delay: 35ms; }
+.rq-v10-ready .rq-depth-node[data-rq-depth="2"] { transition-delay: 90ms; }
+.rq-v10-ready .rq-depth-node[data-rq-depth="3"] { transition-delay: 145ms; }
+.rq-v10-ready .rq-depth-node[data-rq-depth="4"] { transition-delay: 200ms; }
+
+.rq-parallax-node {
+  transform: translate3d(0, var(--rq-depth-y, 0), 0);
+  will-change: transform;
+}
+
+.rq-v10-active {
+  --rq-active-signal: 1;
+}
+
+.rq-v10-active > .rq-panel-corners,
+.rq-v10-active .rq-panel-corners {
+  filter: drop-shadow(0 0 calc(0.25rem + var(--rq-v10-speed) * 0.7rem) rgba(143, 231, 255, 0.42));
+}
+
+.rq-v10-active h1,
+.rq-v10-active h2 {
+  text-shadow:
+    0 0 calc(0.18rem + var(--rq-v10-speed) * 0.5rem) rgba(143, 231, 255, 0.16),
+    calc(var(--rq-v10-speed) * 1px) 0 rgba(143, 231, 255, 0.16);
+}
+
+/* Pointer-aware focus surfaces: perspective, specular bloom and a lock frame. */
+.rq-focus-surface {
+  --rq-focus-x: 50%;
+  --rq-focus-y: 50%;
+  --rq-tilt-x: 0deg;
+  --rq-tilt-y: 0deg;
+  isolation: isolate;
+  transform-style: preserve-3d;
+}
+
+.rq-focus-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  opacity: 0;
+  border: 1px solid transparent;
+  background:
+    radial-gradient(circle at var(--rq-focus-x) var(--rq-focus-y), rgba(216, 248, 255, 0.15), rgba(143, 231, 255, 0.045) 18%, transparent 48%) padding-box,
+    linear-gradient(115deg, transparent 18%, rgba(143, 231, 255, 0.46), transparent 78%) border-box;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.rq-focus-surface.is-rq-focused .rq-focus-glow {
+  opacity: calc(0.38 + var(--rq-v10-speed) * 0.28);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rq-interface-v10 .rq-project-card.rq-focus-surface.is-rq-focused {
+    transform:
+      perspective(900px)
+      translateY(-0.24rem)
+      rotateX(var(--rq-tilt-x))
+      rotateY(var(--rq-tilt-y));
+    box-shadow:
+      0 1.3rem 3rem rgba(0, 0, 0, 0.38),
+      0 0 1.4rem rgba(143, 231, 255, 0.11) !important;
+  }
+
+  .rq-interface-v10 .rq-project-showcase.rq-focus-surface.is-rq-focused {
+    transform:
+      perspective(1200px)
+      translateY(-0.12rem)
+      rotateX(var(--rq-tilt-x))
+      rotateY(var(--rq-tilt-y));
+    box-shadow: 0 1.8rem 4rem rgba(0, 0, 0, 0.42), 0 0 1.8rem rgba(143, 231, 255, 0.08);
+  }
+}
+
+@media (max-width: 760px) {
+  .rq-hyperlane {
+    opacity: 0.28;
+  }
+
+  .rq-phase-scan {
+    height: 3.5rem;
+    opacity: calc(0.035 + var(--rq-v10-speed) * 0.1);
+  }
+
+  .rq-v10-ready .rq-depth-node {
+    filter: blur(2px) saturate(0.82);
+    transition-duration: 460ms;
+  }
+
+  .rq-focus-glow {
+    display: none;
+  }
+
+  .rq-boot-core {
+    min-width: 11rem;
+    font-size: 0.52rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rq-boot-sequence,
+  .rq-hyperlane,
+  .rq-phase-scan,
+  .rq-focus-glow {
+    display: none !important;
+  }
+
+  .rq-v10-ready .rq-depth-node {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .rq-focus-surface {
+    transform: none !important;
+  }
+}
