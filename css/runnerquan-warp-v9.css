@@ -1,0 +1,116 @@
+/* RunnerQuan warp v9 — scroll-coupled deep-space transit layer */
+
+:root {
+  --rq-warp-energy: 0;
+  --rq-warp-direction: 1;
+  --rq-warp-cyan: #8fe7ff;
+  --rq-warp-white: #e8fbff;
+}
+
+html.rq-interface-v9 {
+  background: #010304;
+}
+
+.rq-warp-field {
+  position: fixed !important;
+  inset: 0;
+  z-index: 1 !important;
+  width: 100%;
+  height: 100%;
+  opacity: 0.76;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  contain: strict;
+  transform: translateZ(0);
+}
+
+.rq-interface-v9 .rq-system-grid {
+  z-index: 1;
+}
+
+.rq-interface-v9 .rq-page-shell,
+.rq-interface-v9 .rq-projects-shell,
+.rq-interface-v9 body.rq-inner-page > :not(.rq-system-grid):not(.rq-tactical-hud):not(.rq-reticle):not(.rq-warp-field) {
+  position: relative;
+  z-index: 2;
+}
+
+/* The fixed HUD becomes a live warp controller readout. */
+.rq-interface-v9 .rq-tactical-hud {
+  border-color: rgba(143, 231, 255, calc(0.13 + var(--rq-warp-energy) * 0.16));
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.025),
+    0 0.8rem 2rem rgba(0, 0, 0, 0.28),
+    0 0 calc(var(--rq-warp-energy) * 1.4rem) rgba(143, 231, 255, 0.12);
+}
+
+.rq-warp-meter em {
+  min-width: 2.8rem;
+  color: rgba(232, 251, 255, calc(0.58 + var(--rq-warp-energy) * 0.42)) !important;
+}
+
+.rq-warp-meter b::before {
+  content: "";
+  display: inline-block;
+  width: 0.28rem;
+  height: 0.28rem;
+  margin-right: 0.34rem;
+  border: 1px solid rgba(143, 231, 255, 0.68);
+  transform: rotate(calc(45deg + var(--rq-warp-energy) * 180deg));
+}
+
+/* The viewport edge briefly energises during a fast scroll impulse. */
+.rq-interface-v9 body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  opacity: calc(var(--rq-warp-energy) * 0.34);
+  border: 1px solid rgba(143, 231, 255, 0.28);
+  background:
+    radial-gradient(circle at var(--rq-warp-x, 50%) var(--rq-warp-y, 48%), transparent 0 42%, rgba(143, 231, 255, 0.025) 72%, rgba(143, 231, 255, 0.1) 100%);
+  box-shadow: inset 0 0 calc(2rem + var(--rq-warp-energy) * 5rem) rgba(143, 231, 255, 0.12);
+  pointer-events: none;
+  transition: opacity 80ms linear;
+}
+
+/* Panels gain a restrained depth response without disturbing document flow. */
+.rq-interface-v9 .rq-tactical-panel {
+  transform: translateZ(0);
+}
+
+.rq-interface-v9 .rq-tactical-panel.is-rq-current > .rq-panel-corners {
+  filter: drop-shadow(0 0 calc(0.2rem + var(--rq-warp-energy) * 0.8rem) rgba(143, 231, 255, 0.34));
+}
+
+.rq-interface-v9 .rq-hud-track::before {
+  height: calc(1px + var(--rq-warp-energy) * 1px);
+}
+
+@media (max-width: 760px) {
+  .rq-warp-field {
+    opacity: 0.42;
+  }
+
+  .rq-interface-v9 body::after {
+    opacity: calc(var(--rq-warp-energy) * 0.16);
+    box-shadow: inset 0 0 calc(1rem + var(--rq-warp-energy) * 2rem) rgba(143, 231, 255, 0.08);
+  }
+
+  .rq-warp-meter {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rq-warp-field,
+  .rq-interface-v9 body::after {
+    display: none !important;
+  }
+
+  .rq-interface-v9 .rq-tactical-hud,
+  .rq-interface-v9 .rq-warp-meter b::before {
+    transition: none !important;
+  }
+}
+
