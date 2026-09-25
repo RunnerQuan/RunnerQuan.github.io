@@ -1,0 +1,44 @@
+/* Procedural signal diagrams: an original, lightweight ASCII field inspired by terminal graphics. */
+.rq-home-page .rq-orbit-mission,
+.rq-home-page .rq-orbit-story[data-orbit-section="system"] { isolation: isolate; }
+.rq-signal-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .8;
+  mask-image: linear-gradient(90deg, #000 6%, #000 61%, transparent 92%);
+}
+.rq-home-page .rq-orbit-mission-copy,
+.rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-copy { position: relative; z-index: 3; }
+.rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-visual { position: relative; z-index: 2; }
+.rq-home-page .rq-orbit-mission::before,
+.rq-home-page .rq-orbit-story[data-orbit-section="system"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 49.94%, rgba(143,231,255,.11) 50%, transparent 50.06%),
+    linear-gradient(transparent 49.94%, rgba(143,231,255,.09) 50%, transparent 50.06%);
+}
+.rq-home-page .rq-orbit-mission-copy::before,
+.rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-copy::before {
+  content: 'SIGNAL / ' attr(data-orbit-label);
+  display: block;
+  margin: 0 0 2rem;
+  padding: .7rem 0;
+  border-top: 1px solid rgba(143,231,255,.26);
+  color: rgba(143,231,255,.68);
+  font: 10px/1.4 'Share Tech Mono', monospace;
+  letter-spacing: .22em;
+}
+.rq-home-page .rq-orbit-mission-copy::before { content: 'SIGNAL / 01    ·    TRAJECTORY LOCKED'; }
+.rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-copy::before { content: 'SIGNAL / 02    ·    SYSTEM MAPPED'; }
+@media (max-width: 760px) {
+  .rq-signal-field { opacity: .38; mask-image: linear-gradient(90deg, #000, transparent 82%); }
+  .rq-home-page .rq-orbit-mission-copy::before,
+  .rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-copy::before { margin-bottom: 1rem; }
+}
