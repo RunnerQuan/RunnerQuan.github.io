@@ -9,7 +9,7 @@
   z-index: 1;
   pointer-events: none;
   opacity: .8;
-  mask-image: linear-gradient(90deg, #000 6%, #000 61%, transparent 92%);
+  mask-image: linear-gradient(90deg, #000 5%, rgba(0,0,0,.52) 44%, transparent 62%);
 }
 .rq-home-page .rq-orbit-mission-copy,
 .rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-copy { position: relative; z-index: 3; }
