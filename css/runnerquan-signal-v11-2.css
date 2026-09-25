@@ -42,3 +42,14 @@
   .rq-home-page .rq-orbit-mission-copy::before,
   .rq-home-page .rq-orbit-story[data-orbit-section="system"] .rq-orbit-story-copy::before { margin-bottom: 1rem; }
 }
+
+/* Preserve the keyboard skip link without leaving a visible fragment at rest. */
+body > .rq-skip-link:not(:focus-visible) {
+  position: fixed !important;
+  top: 0 !important;
+  transform: translateY(-200%) !important;
+}
+body > .rq-skip-link:focus-visible {
+  position: fixed !important;
+  transform: translateY(0) !important;
+}
