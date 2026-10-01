@@ -60,14 +60,7 @@
       document.body.append(hud);
     }
 
-    if (
-      window.matchMedia('(pointer: fine)').matches &&
-      !document.querySelector('.rq-reticle')
-    ) {
-      const reticle = makeElement('div', 'rq-reticle', { 'aria-hidden': 'true' });
-      reticle.append(makeElement('i', ''));
-      document.body.append(reticle);
-    }
+    // The shared runtime owns the immediate pointer reticle.
   }
 
   function ensureHeroTelemetry() {
@@ -210,14 +203,14 @@
     const viewportText = `${window.innerWidth}×${window.innerHeight}`;
     const activeLabel = currentModule();
 
-    document.documentElement.style.setProperty('--rq-scroll', `${percent.toFixed(2)}%`);
-
-    document.querySelectorAll('.rq-tactical-panel.is-rq-current').forEach((panel) => {
-      panel.classList.remove('is-rq-current');
-    });
+    document.querySelector('.rq-hud-track')?.style.setProperty('--rq-scroll', `${percent.toFixed(2)}%`);
 
     const activePanel = state.modules.find((panel) => panel.dataset.rqModule === activeLabel);
-    if (activePanel) activePanel.classList.add('is-rq-current');
+    if (activePanel !== state.activePanel) {
+      state.activePanel?.classList.remove('is-rq-current');
+      activePanel?.classList.add('is-rq-current');
+      state.activePanel = activePanel;
+    }
 
     const moduleNode = document.querySelector('[data-rq-hud-module]');
     const routeNode = document.querySelector('[data-rq-hud-route]');
@@ -227,17 +220,18 @@
     const heroView = document.querySelector('[data-rq-hero-view]');
     const heroScroll = document.querySelector('[data-rq-hero-scroll]');
 
-    if (moduleNode) moduleNode.textContent = activeLabel;
-    if (routeNode) routeNode.textContent = routeLabel();
-    if (viewNode) viewNode.textContent = viewportText;
-    if (scrollNode) scrollNode.textContent = percentText;
-    if (heroRoute) heroRoute.textContent = routeLabel();
-    if (heroView) heroView.textContent = viewportText;
-    if (heroScroll) heroScroll.textContent = percentText;
+    const setText = (node, text) => { if (node && node.textContent !== text) node.textContent = text; };
+    setText(moduleNode, activeLabel);
+    setText(routeNode, routeLabel());
+    setText(viewNode, viewportText);
+    setText(scrollNode, percentText);
+    setText(heroRoute, routeLabel());
+    setText(heroView, viewportText);
+    setText(heroScroll, percentText);
   }
 
   function queueTelemetry() {
-    if (state.frame) return;
+    if (state.frame || document.hidden) return;
     state.frame = window.requestAnimationFrame(updateTelemetry);
   }
 
@@ -322,11 +316,6 @@
 
     window.addEventListener('scroll', queueTelemetry, { passive: true });
     window.addEventListener('resize', queueTelemetry, { passive: true });
-    document.addEventListener('pointermove', queueReticle, { passive: true });
-    document.addEventListener('pointerover', updateReticleTarget, { passive: true });
-    document.addEventListener('pointerout', updateReticleTarget, { passive: true });
-    document.documentElement.addEventListener('mouseleave', hideReticle);
-    window.addEventListener('blur', hideReticle);
     document.addEventListener('pjax:complete', initTacticalInterface);
     document.addEventListener('pjax:success', initTacticalInterface);
 

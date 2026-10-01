@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="RunnerQuan, Zheng Jiequan, AI Native, Full Stack, Hexo, Blog, Portfolio">
   <meta name="description" content="RunnerQuan 的个人博客、AI 产品工程作品集与技术写作实验室。">
   <meta name="author" content="RunnerQuan">
   <link rel="canonical" href="https://runnerquan.github.io/">
@@ -13,34 +12,17 @@
   <meta property="og:url" content="https://runnerquan.github.io/">
   <meta property="og:image" content="https://runnerquan.github.io/images/newlogo.png">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="RunnerQuan">
-  <meta name="twitter:description" content="RunnerQuan 的个人博客、AI 产品工程作品集与技术写作实验室。">
-  <link rel="icon" href="/images/newlogo.png">
+  <link rel="icon" type="image/svg+xml" href="/images/runnerquan-logo.svg">
   <title>RunnerQuan</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font/css/fontawesome.min.css">
-  <link rel="stylesheet" href="/font/css/solid.min.css">
-  <link rel="stylesheet" href="/font/css/brands.min.css">
-  <link rel="stylesheet" href="/css/design-tokens.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/homepage.css">
-  <link rel="stylesheet" href="/css/homepage-motion.css">
-  <link rel="stylesheet" href="/css/reading.css">
-  <link rel="stylesheet" href="/css/projects.css">
-  <link rel="stylesheet" href="/css/responsive.css">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v4.css?v=20260829-typography">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v5.css?v=20260829-interface">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v6.css?v=20260830-proof2">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v7.css">
-  <link rel="stylesheet" href="/css/runnerquan-tactical-v8.css">
-  <link rel="stylesheet" href="/css/runnerquan-warp-v9.css">
-  <link rel="stylesheet" href="/css/runnerquan-dynamics-v10.css">
-  <link rel="stylesheet" href="/css/runnerquan-signal-v11-2.css">
+  <script>try{document.documentElement.dataset.rqTheme=localStorage.getItem('rq-theme-space')==='light'?'light':'dark'}catch(e){document.documentElement.dataset.rqTheme='dark'}</script>
+  <link rel="preload" href="/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/share-tech-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/runnerquan-site.16034f996543.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"RunnerQuan","alternateName":"Jiequan Zheng","url":"https://runnerquan.github.io","email":"mailto:runnerquan@foxmail.com","sameAs":["https://github.com/RunnerQuan"]}</script>
 </head>
 <body class="rq-home-page">
   <a class="rq-skip-link" href="#rq-main">Skip to content</a>
-  <canvas class="rq-orbit-canvas" aria-hidden="true"></canvas>
+
   <div class="rq-page-shell">
     <header class="rq-nav ">
       <a class="rq-brand" href="/">
@@ -48,8 +30,16 @@
         <span>RunnerQuan</span>
       </a>
       <nav aria-label="Primary">
-        <a href="/" class="active">Home</a><a href="/projects/">Projects</a><a href="/archives/">Blog</a><a href="/about/">About</a><a href="mailto:runnerquan@foxmail.com">Contact</a>
+        <a href="/" class="active" aria-current="page">Home</a><a href="/projects/">Projects</a><a href="/archives/">Blog</a><a href="/about/">About</a><a href="mailto:runnerquan@foxmail.com">Contact</a>
       </nav>
+      <div class="rq-nav-tools">
+        <button class="rq-search-button search-popup-trigger" type="button" aria-label="搜索文章" title="搜索文章 / Search" data-search-url="/archives/?search=1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+        <button class="rq-theme-button" type="button" aria-label="切换到夜间主题" aria-pressed="false">
+          <svg class="rq-sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></svg>
+          <svg class="rq-moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20.4 14.5A9 9 0 0 1 9.5 3.6 9 9 0 1 0 20.4 14.5Z"/></svg>
+        </button>
+        <button class="rq-menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
     </header>
 
     <main id="rq-main">
@@ -60,8 +50,8 @@
             <h1>RunnerQuan</h1>
             <p class="rq-hero-cn">用代码构建未来，用设计创造价值</p>
             <div class="rq-actions">
-              <a href="/projects/"><i class="fa-solid fa-terminal"></i>View Projects</a>
-              <a href="https://github.com/RunnerQuan" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>GitHub</a>
+              <a href="/projects/"><i class="fa-solid fa-terminal" aria-hidden="true"></i>View Projects</a>
+              <a href="https://github.com/RunnerQuan" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
             </div>
             <div class="rq-proof-rail rq-proof-rail--home" aria-label="Portfolio proof">
               <span><strong>06</strong> public builds</span>
@@ -69,24 +59,16 @@
               <span><strong>01</strong> published toolkit</span>
             </div>
           </div>
-          <div class="rq-cockpit" aria-hidden="true">
-            <div class="rq-stars"></div>
-            <div class="rq-window">
-              <div class="rq-moon"></div>
-              <span class="rq-shoot rq-shoot-1"></span>
-              <span class="rq-shoot rq-shoot-2"></span>
-            </div>
-            <div class="rq-console">
-              <div class="rq-chair"></div>
-              <div class="rq-keyboard"></div>
-              <div class="rq-screen"></div>
-            </div>
-          </div>
+          <picture class="rq-cockpit" aria-hidden="true">
+            <source type="image/webp" srcset="/images/runnerquan-cockpit-1064.webp 1064w, /images/runnerquan-cockpit.webp 1774w" sizes="(max-width: 980px) 118vw, (max-width: 1180px) 88vw, min(76vw, 1632px)">
+            <img src="/images/runnerquan-cockpit.png" alt="" width="1774" height="887" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
+          <div class="rq-day-orbit" data-rq-field="moon" aria-hidden="true"></div>
         </div>
       </section>
 
       <section class="rq-orbit-mission" id="orbit-mission" data-orbit-section="mission">
-        <div class="rq-orbit-mission-moon" aria-hidden="true"></div>
+        <div class="rq-orbit-mission-moon" aria-hidden="true"><img class="rq-lunar-art" src="/images/runnerquan-moon-detail.webp" alt="" width="260" height="260" loading="lazy" decoding="async"></div>
         <div class="rq-orbit-mission-copy rq-orbit-reveal">
           <span class="rq-orbit-eyebrow">MISSION</span>
           <h2>From idea<br>to orbit.</h2>
@@ -110,70 +92,70 @@
 
       <section class="rq-section" id="projects" data-orbit-section="projects">
         <div class="rq-section-head">
-          <h2>/ 01 Projects</h2>
+          <h2><span>01 /</span> Selected work</h2>
           <a href="/projects/">Project Archive -></a>
         </div>
         <div class="rq-project-grid">
           
     <a class="rq-project-card" href="/projects/#posturefit" aria-label="View PostureFit case study">
-      <span class="rq-project-card-visual" style="--rq-card-image: url('/images/projects/posturefit.webp'); --rq-card-focus: 50% 48%" aria-hidden="true"></span>
+      <span class="rq-project-card-visual" style="--rq-card-focus: 50% 48%" aria-hidden="true"><img src="/images/projects/posturefit.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
       <span class="rq-card-index">01</span>
-      <i class="fa-solid fa-person-running"></i>
+      <i class="fa-solid fa-person-running" aria-hidden="true"></i>
       <h3>PostureFit</h3>
       <span class="rq-project-meta">AI health · shipped prototype</span>
       <p>Hackathon-winning AI posture coach using body keypoints and a Coze Agent for adaptive feedback.</p>
       <div class="rq-tags"><span>React</span><span>MediaPipe</span><span>Coze Agent</span></div>
-      <span class="rq-card-arrow" aria-hidden="true">-></span>
+      <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
     <a class="rq-project-card" href="/projects/#biasbreaker-career" aria-label="View BiasBreaker Career case study">
-      <span class="rq-project-card-visual" style="--rq-card-image: url('/images/projects/biasbreaker-career.webp'); --rq-card-focus: 50% 38%" aria-hidden="true"></span>
+      <span class="rq-project-card-visual" style="--rq-card-focus: 50% 38%" aria-hidden="true"><img src="/images/projects/biasbreaker-career.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
       <span class="rq-card-index">02</span>
-      <i class="fa-solid fa-code-branch"></i>
+      <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
       <h3>BiasBreaker Career</h3>
       <span class="rq-project-meta">Responsible AI · career tooling</span>
       <p>AI career assistant for candidates who may be misread by automated screening systems.</p>
       <div class="rq-tags"><span>Next.js</span><span>LLM</span><span>Embeddings</span></div>
-      <span class="rq-card-arrow" aria-hidden="true">-></span>
+      <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
     <a class="rq-project-card" href="/projects/#quan-rpc" aria-label="View Quan-RPC case study">
-      <span class="rq-project-card-visual" style="--rq-card-image: url('/images/projects/quan-rpc.webp'); --rq-card-focus: 50% 50%" aria-hidden="true"></span>
+      <span class="rq-project-card-visual" style="--rq-card-focus: 50% 50%" aria-hidden="true"><img src="/images/projects/quan-rpc.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
       <span class="rq-card-index">03</span>
-      <i class="fa-solid fa-network-wired"></i>
+      <i class="fa-solid fa-network-wired" aria-hidden="true"></i>
       <h3>Quan-RPC</h3>
       <span class="rq-project-meta">Distributed systems · framework</span>
       <p>Java TCP RPC framework with custom protocol, service registry, heartbeat checks, and Docker support.</p>
       <div class="rq-tags"><span>Java 11</span><span>TCP</span><span>RPC</span></div>
-      <span class="rq-card-arrow" aria-hidden="true">-></span>
+      <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
     <a class="rq-project-card" href="/projects/#talentflow" aria-label="View TalentFlow case study">
-      <span class="rq-project-card-visual" style="--rq-card-image: url('/images/projects/talentflow.webp'); --rq-card-focus: 28% 46%" aria-hidden="true"></span>
+      <span class="rq-project-card-visual" style="--rq-card-focus: 28% 46%" aria-hidden="true"><img src="/images/projects/talentflow.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
       <span class="rq-card-index">04</span>
-      <i class="fa-solid fa-diagram-project"></i>
+      <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
       <h3>TalentFlow</h3>
       <span class="rq-project-meta">Agent workflow · decision support</span>
       <p>Multi-agent recruitment decision platform for resume parsing, skill graphs, JD matching, and hiring evidence.</p>
       <div class="rq-tags"><span>Next.js</span><span>Vercel AI SDK</span><span>Agents</span></div>
-      <span class="rq-card-arrow" aria-hidden="true">-></span>
+      <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
     <a class="rq-project-card" href="/projects/#moonlimit" aria-label="View MoonLimit case study">
-      <span class="rq-project-card-visual" style="--rq-card-image: url('/images/projects/moonlimit.webp'); --rq-card-focus: 50% 34%" aria-hidden="true"></span>
+      <span class="rq-project-card-visual" style="--rq-card-focus: 50% 34%" aria-hidden="true"><img src="/images/projects/moonlimit.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
       <span class="rq-card-index">05</span>
-      <i class="fa-solid fa-moon"></i>
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
       <h3>MoonLimit</h3>
       <span class="rq-project-meta">MoonBit · deterministic toolkit</span>
       <p>Composable, deterministic rate-limiting toolkit for MoonBit with policies, simulations, tests, and CI.</p>
       <div class="rq-tags"><span>MoonBit</span><span>Policy Engine</span><span>CI</span></div>
-      <span class="rq-card-arrow" aria-hidden="true">-></span>
+      <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
     <a class="rq-project-card" href="/projects/#ai-writing-saas-skill" aria-label="View AI Writing SaaS Skill case study">
-      <span class="rq-project-card-visual" style="--rq-card-image: url('/images/projects/ai-writing-saas-skill.webp'); --rq-card-focus: 50% 28%" aria-hidden="true"></span>
+      <span class="rq-project-card-visual" style="--rq-card-focus: 50% 28%" aria-hidden="true"><img src="/images/projects/ai-writing-saas-skill.webp" alt="" width="1280" height="800" loading="lazy" decoding="async"></span>
       <span class="rq-card-index">06</span>
-      <i class="fa-solid fa-pen-nib"></i>
+      <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
       <h3>AI Writing SaaS Skill</h3>
       <span class="rq-project-meta">Reusable skill · SaaS starter</span>
       <p>Reusable Skill that generates a deployable AI writing SaaS template with Edge Functions, KV, payments, and AI chat.</p>
       <div class="rq-tags"><span>React</span><span>Edge Functions</span><span>AI SaaS</span></div>
-      <span class="rq-card-arrow" aria-hidden="true">-></span>
+      <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
         </div>
       </section>
@@ -221,24 +203,24 @@
 
       <section class="rq-section" id="blog" data-orbit-section="blog">
         <div class="rq-section-head">
-          <h2>/ 02 Blog</h2>
+          <h2><span>02 /</span> Field notes</h2>
           <a href="/archives/">View All -></a>
         </div>
         <div class="rq-blog-list">
           
-    <a class="rq-blog-row" href="https://runnerquan.github.io/2025/03/21/how-to-highlight-in-markdown/">
+    <a class="rq-blog-row" href="/2025/03/21/how-to-highlight-in-markdown/">
       <span>2025-03-21</span>
       <strong>如何使用 Markdown 进行荧光高亮</strong>
       <em>在使用 Markdown 做笔记时，为了能让重点突出，我经常会使用本地的 Typora 编辑器支持双等号的高亮逻辑：==想要高亮的文本==。但是 Markdown 的基本语法不支持文字</em>
       <i aria-hidden="true">-></i>
     </a>
-    <a class="rq-blog-row" href="https://runnerquan.github.io/2025/03/08/build-a-blog-from-scratch/">
+    <a class="rq-blog-row" href="/2025/03/08/build-a-blog-from-scratch/">
       <span>2025-03-08</span>
       <strong>从零开始搭建一个博客</strong>
       <em>从零开始搭建一个博客 前言 作为一个计算机专业的学生，每当我遇到一些问题时，在 Google 等搜索引擎上寻找解答，往往别人的技术博客都能解开我的疑惑，让我豁然开朗。当我看到别人精美、</em>
       <i aria-hidden="true">-></i>
     </a>
-    <a class="rq-blog-row" href="https://runnerquan.github.io/2025/03/07/welcome-to-my-blog/">
+    <a class="rq-blog-row" href="/2025/03/07/welcome-to-my-blog/">
       <span>2025-03-07</span>
       <strong>Welcome to my blog</strong>
       <em>Welcome to my blog! 欢迎来到我的博客！ 我是RunnerQuan，来自中山大学软件工程学院（SYSU-SSE），目前是一名大三的学生，这是我的第一篇博文。 我喜欢跑</em>
@@ -248,7 +230,7 @@
       </section>
 
       <section class="rq-about-strip rq-orbit-about" id="about" data-orbit-section="about">
-        <div class="rq-orbit-about-moon" aria-hidden="true"></div>
+        <div class="rq-orbit-about-moon" aria-hidden="true"><img class="rq-lunar-art" src="/images/runnerquan-moon-detail.webp" alt="" width="260" height="260" loading="lazy" decoding="async"><div class="rq-day-lunar" data-rq-field="moon"></div></div>
         <div class="rq-orbit-about-copy rq-orbit-reveal">
           <h2>Keep building.<br>Keep exploring.</h2>
           <p>中山大学本科生，关注 AI 应用、全栈开发、算法系统与产品体验。我把博客当成实验室，也把 GitHub 当成持续公开的作品台。</p>
@@ -280,11 +262,6 @@
       </footer>
     </main>
   </div>
-  <script src="/js/runnerquan-motion.js" defer></script>
-  <script src="/js/runnerquan-interface-v7.js" defer></script>
-  <script src="/js/runnerquan-tactical-v8-1.js" defer></script>
-  <script src="/js/runnerquan-warp-v9-1.js" defer></script>
-  <script src="/js/runnerquan-dynamics-v10.js" defer></script>
-  <script src="/js/runnerquan-signal-v11.js" defer></script>
+  <script src="/js/runnerquan-site.8086b1ca318d.js" defer></script>
 </body>
 </html>

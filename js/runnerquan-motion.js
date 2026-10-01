@@ -398,9 +398,10 @@
     setupReveal();
     setupPointerMotion();
     setupWarp();
-    setupStars();
+    // The v9 warp field renders the production starfield. Avoid a second,
+    // invisible full-screen canvas doing the same work.
     setupCoreMap();
-    setupReadingProgress();
+    // The shared runtime owns the article progress bar.
     setupTypewriters();
   }
 

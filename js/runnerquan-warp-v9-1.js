@@ -19,6 +19,12 @@
     scrollProgress: 0,
     pointerX: 0.5,
     pointerY: 0.48,
+    centerX: 0.5,
+    centerY: 0.48,
+    hud: null,
+    meter: null,
+    edge: null,
+    lastHudAt: 0,
     width: 0,
     height: 0,
     dpr: 1,
@@ -72,13 +78,25 @@
   }
 
   function ensureMeter() {
+    state.hud = document.querySelector('.rq-tactical-hud');
     const data = document.querySelector('.rq-hud-data');
-    if (!data || data.querySelector('.rq-warp-meter')) return;
+    if (data && !data.querySelector('.rq-warp-meter')) {
+      const meter = document.createElement('span');
+      meter.className = 'rq-warp-meter';
+      meter.innerHTML = '<b>WARP</b><em data-rq-warp-meter>0.00c</em>';
+      data.prepend(meter);
+    }
+    state.meter = document.querySelector('[data-rq-warp-meter]');
+  }
 
-    const meter = document.createElement('span');
-    meter.className = 'rq-warp-meter';
-    meter.innerHTML = '<b>WARP</b><em data-rq-warp-meter>0.00c</em>';
-    data.prepend(meter);
+  function ensureEdge() {
+    state.edge = document.querySelector('.rq-warp-edge');
+    if (!state.edge) {
+      state.edge = document.createElement('div');
+      state.edge.className = 'rq-warp-edge';
+      state.edge.setAttribute('aria-hidden', 'true');
+      document.body.prepend(state.edge);
+    }
   }
 
   function resize() {
@@ -86,7 +104,9 @@
 
     state.width = window.innerWidth;
     state.height = window.innerHeight;
-    state.dpr = Math.min(window.devicePixelRatio || 1, coarsePointer.matches ? 1.15 : 1.6);
+    // Decorative trails do not need a full retina-sized viewport buffer.
+    const pixelBudget = Math.sqrt(1990000 / Math.max(1, state.width * state.height));
+    state.dpr = Math.min(window.devicePixelRatio || 1, coarsePointer.matches ? 1.15 : 1.3, pixelBudget);
     state.canvas.width = Math.round(state.width * state.dpr);
     state.canvas.height = Math.round(state.height * state.dpr);
     state.canvas.style.width = `${state.width}px`;
@@ -126,7 +146,7 @@
     };
   }
 
-  function drawRings(ctx, centerX, centerY, maxRadius, dt) {
+  function drawRings(ctx, centerX, centerY, maxRadius, dt, ink) {
     ctx.save();
     ctx.translate(centerX, centerY);
     ctx.lineWidth = 0.7;
@@ -145,7 +165,7 @@
       ctx.setLineDash([Math.max(3, radius * 0.026), Math.max(8, radius * 0.074)]);
       ctx.lineDashOffset = state.scrollProgress * 180 * state.direction + ring.offset * 32;
       ctx.ellipse(0, 0, radius, radius * 0.72, state.scrollProgress * 0.36, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(143,231,255,${0.025 + state.energy * 0.105 + index * 0.006})`;
+      ctx.strokeStyle = `rgba(${ink},${0.025 + state.energy * 0.105 + index * 0.006})`;
       ctx.stroke();
     });
 
@@ -153,8 +173,9 @@
   }
 
   function drawFrame(now) {
+    state.frame = 0;
+    if (state.hidden || reducedMotion.matches || !state.context || !state.canvas) return;
     state.frame = window.requestAnimationFrame(drawFrame);
-    if (state.hidden || !state.context || !state.canvas) return;
 
     const minFrame = coarsePointer.matches ? 32 : 15;
     if (now - state.lastFrame < minFrame) return;
@@ -169,8 +190,12 @@
     const ctx = state.context;
     const width = state.width;
     const height = state.height;
-    const centerX = width * mix(0.5, state.pointerX, 0.36);
-    const centerY = height * mix(0.48, state.pointerY, 0.22);
+    // Ease the origin itself: raw pointer samples must not teleport all trails.
+    const pointerBlend = 1 - Math.exp(-dt / 100);
+    state.centerX = mix(state.centerX, state.pointerX, pointerBlend);
+    state.centerY = mix(state.centerY, state.pointerY, pointerBlend);
+    const centerX = width * mix(0.5, state.centerX, 0.36);
+    const centerY = height * mix(0.48, state.centerY, 0.22);
     const maxRadius = Math.hypot(width, height) * 0.72;
     const speed = 0.000015 + state.energy * 0.000115 * state.direction;
     const twist = state.direction * (0.52 + state.energy * 2.6) + state.scrollProgress * Math.PI * 1.6;
@@ -178,14 +203,16 @@
     ctx.clearRect(0, 0, width, height);
 
     const horizon = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, Math.min(width, height) * 0.28);
-    horizon.addColorStop(0, `rgba(143,231,255,${0.055 + state.energy * 0.06})`);
-    horizon.addColorStop(0.08, `rgba(143,231,255,${0.015 + state.energy * 0.035})`);
-    horizon.addColorStop(0.62, 'rgba(143,231,255,0.006)');
-    horizon.addColorStop(1, 'rgba(143,231,255,0)');
+    const light = document.documentElement.dataset.rqTheme === 'light';
+    const ink = light ? '139,106,69' : '143,231,255';
+    horizon.addColorStop(0, `rgba(${ink},${0.055 + state.energy * 0.06})`);
+    horizon.addColorStop(0.08, `rgba(${ink},${0.015 + state.energy * 0.035})`);
+    horizon.addColorStop(0.62, `rgba(${ink},0.006)`);
+    horizon.addColorStop(1, `rgba(${ink},0)`);
     ctx.fillStyle = horizon;
     ctx.fillRect(0, 0, width, height);
 
-    drawRings(ctx, centerX, centerY, maxRadius, dt);
+    drawRings(ctx, centerX, centerY, maxRadius, dt, ink);
 
     ctx.save();
     ctx.translate(centerX, centerY);
@@ -212,25 +239,37 @@
       ctx.beginPath();
       ctx.moveTo(previous.x, previous.y);
       ctx.lineTo(current.x, current.y);
-      ctx.strokeStyle = `rgba(${star.lane > 0.72 ? '232,251,255' : '143,231,255'},${clamp(alpha, 0, 0.86)})`;
+      ctx.strokeStyle = `rgba(${light ? ink : star.lane > 0.72 ? '232,251,255' : ink},${clamp(alpha, 0, 0.86)})`;
       ctx.lineWidth = Math.min(2.2, 0.28 + travel * star.weight + state.energy * 0.48);
       ctx.stroke();
     });
 
     ctx.restore();
 
-    document.documentElement.style.setProperty('--rq-warp-energy', state.energy.toFixed(3));
-    document.documentElement.style.setProperty('--rq-warp-direction', String(state.direction));
-    document.documentElement.style.setProperty('--rq-warp-x', `${(centerX / width * 100).toFixed(2)}%`);
-    document.documentElement.style.setProperty('--rq-warp-y', `${(centerY / height * 100).toFixed(2)}%`);
-
-    const meter = document.querySelector('[data-rq-warp-meter]');
-    if (meter) meter.textContent = `${(state.energy * 0.92).toFixed(2)}c`;
+    // Keep inherited variables out of the document root. The edge has a static
+    // painted glow; only its compositor opacity changes while stars are moving.
+    if (state.edge) state.edge.style.opacity = String(state.energy * 0.34);
+    if (now - state.lastHudAt >= 100) {
+      state.lastHudAt = now;
+      const energy = state.energy.toFixed(2);
+      if (state.hud && state.hudEnergy !== energy) {
+        state.hud.style.setProperty('--rq-warp-energy', energy);
+        state.hudEnergy = energy;
+      }
+      const reading = `${(state.energy * 0.92).toFixed(2)}c`;
+      if (state.meter && state.meter.textContent !== reading) state.meter.textContent = reading;
+    }
   }
 
   function onVisibilityChange() {
     state.hidden = document.hidden;
-    if (!state.hidden) state.lastFrame = performance.now();
+    if (state.hidden) {
+      window.cancelAnimationFrame(state.frame);
+      state.frame = 0;
+    } else if (!reducedMotion.matches && state.context && !state.frame) {
+      state.lastFrame = performance.now();
+      state.frame = window.requestAnimationFrame(drawFrame);
+    }
   }
 
   function bindEvents() {
@@ -256,6 +295,7 @@
     }
 
     ensureCanvas();
+    ensureEdge();
     if (!state.frame) state.frame = window.requestAnimationFrame(drawFrame);
   }
 

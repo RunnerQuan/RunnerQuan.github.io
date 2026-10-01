@@ -31,26 +31,33 @@
     const cx = type === 'mission' ? width * .39 : width * .31;
     const cy = height * .49;
     const radius = Math.min(width * .31, height * .42);
+    if (field.cacheWidth !== width || field.cacheHeight !== height) {
+      field.cacheWidth = width;
+      field.cacheHeight = height;
+      field.samples = [];
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          if ((col + row * 3) % 11 === 0) continue;
+          const x = (col + .5) * step;
+          const y = (row + .5) * step;
+          const dx = (x - cx) / radius;
+          const dy = (y - cy) / radius;
+          field.samples.push({ x, y, r: Math.hypot(dx, dy), theta: Math.atan2(dy, dx), noise: Math.sin(col * 17.17 + row * 41.91) * Math.cos(col * 7.11 - row * 13.63) });
+        }
+      }
+    }
     ctx.font = `${Math.max(9, step - 3)}px monospace`;
     ctx.textBaseline = 'middle';
-    for (let row = 0; row < rows; row++) {
-      const y = (row + .5) * step;
-      for (let col = 0; col < cols; col++) {
-        const x = (col + .5) * step;
-        const dx = (x - cx) / radius;
-        const dy = (y - cy) / radius;
-        const r = Math.hypot(dx, dy);
-        const theta = Math.atan2(dy, dx);
+    const channels = document.documentElement.dataset.rqTheme === 'light' ? '136,100,64' : '143,231,255';
+    for (const { x, y, r, theta, noise } of field.samples) {
         const spiral = Math.sin(theta * (type === 'mission' ? 3 : 5) + r * 17 - phase * 3.4);
         const band = Math.exp(-Math.pow((r - .72 - spiral * .105) * 6, 2));
         const core = Math.exp(-Math.pow(r * 2.5, 2)) * .28;
-        const noise = Math.sin(col * 17.17 + row * 41.91) * Math.cos(col * 7.11 - row * 13.63);
         const strength = Math.max(0, band * (.62 + noise * .22) + core);
-        if (strength < .13 || (col + row * 3) % 11 === 0) continue;
+        if (strength < .13) continue;
         const index = Math.min(glyphs.length - 1, Math.floor(strength * (glyphs.length - 1)));
-        ctx.fillStyle = `rgba(143,231,255,${Math.min(.64, strength * .56).toFixed(2)})`;
+        ctx.fillStyle = `rgba(${channels},${Math.min(.64, strength * .56).toFixed(2)})`;
         ctx.fillText(glyphs[index], x, y);
-      }
     }
   }
 
@@ -60,7 +67,7 @@
   }
 
   function requestRender() {
-    if (!state.frame) state.frame = requestAnimationFrame(render);
+    if (!state.frame && !document.hidden) state.frame = requestAnimationFrame(render);
   }
 
   function initialize() {
@@ -80,6 +87,11 @@
     state.bound = true;
     addEventListener('scroll', requestRender, { passive: true });
     addEventListener('resize', requestRender, { passive: true });
+    document.addEventListener('rq:themechange', requestRender);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { cancelAnimationFrame(state.frame); state.frame = 0; }
+      else requestRender();
+    });
     document.addEventListener('pjax:complete', initialize);
     document.addEventListener('pjax:success', initialize);
   }

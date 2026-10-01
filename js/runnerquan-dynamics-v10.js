@@ -14,6 +14,10 @@
     sectionObserver: null,
     path: null,
     tracer: null,
+    pathLength: 0,
+    scan: null,
+    focusFrame: 0,
+    focusSample: null,
     parallaxNodes: []
   };
 
@@ -50,7 +54,7 @@
     document.body.append(boot);
 
     requestAnimationFrame(() => requestAnimationFrame(() => boot.classList.add('is-launching')));
-    window.setTimeout(() => boot.remove(), 1100);
+    window.setTimeout(() => boot.remove(), 650);
   }
 
   function createSvgElement(name, attributes = {}) {
@@ -83,11 +87,15 @@
 
     state.path = svg.querySelector('.rq-hyperlane-progress');
     state.tracer = svg.querySelector('.rq-hyperlane-node');
+    state.pathLength = state.path?.getTotalLength() || 0;
   }
 
   function ensurePhaseScan() {
-    if (document.querySelector('.rq-phase-scan')) return;
-    document.body.prepend(makeElement('div', 'rq-phase-scan', { 'aria-hidden': 'true' }));
+    state.scan = document.querySelector('.rq-phase-scan');
+    if (!state.scan) {
+      state.scan = makeElement('div', 'rq-phase-scan', { 'aria-hidden': 'true' });
+      document.body.prepend(state.scan);
+    }
   }
 
   function addFocusLayer(surface) {
@@ -165,45 +173,46 @@
   function updateHyperlane() {
     if (!state.path || !state.tracer) return;
 
+    const point = state.path.getPointAtLength(state.pathLength * state.progress);
     state.path.style.strokeDashoffset = String(1 - state.progress);
-    const length = state.path.getTotalLength();
-    const point = state.path.getPointAtLength(length * state.progress);
+    state.path.style.setProperty('--rq-v10-speed', state.speed.toFixed(3));
     state.tracer.setAttribute('cx', point.x.toFixed(2));
     state.tracer.setAttribute('cy', point.y.toFixed(2));
     state.tracer.setAttribute('r', (2.6 + state.speed * 2.4).toFixed(2));
   }
 
-  function updateParallax() {
-    if (reducedMotion.matches) return;
+  function measureParallax() {
+    if (reducedMotion.matches) return [];
     const viewportCenter = window.innerHeight * 0.5;
-
-    state.parallaxNodes.forEach((node, index) => {
+    return state.parallaxNodes.map((node, index) => {
       const rect = node.getBoundingClientRect();
-      if (rect.bottom < -120 || rect.top > window.innerHeight + 120) return;
+      if (rect.bottom < -120 || rect.top > window.innerHeight + 120) return null;
       const distance = (rect.top + rect.height * 0.5 - viewportCenter) / Math.max(1, window.innerHeight);
       const amount = clamp(-distance * (index % 2 ? 13 : 9), -13, 13);
-      node.style.setProperty('--rq-depth-y', `${amount.toFixed(2)}px`);
-    });
+      return { node, value: `${amount.toFixed(2)}px` };
+    }).filter(Boolean);
   }
 
   function renderScrollState() {
     state.frame = 0;
     const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     state.progress = clamp(window.scrollY / scrollable, 0, 1);
-
-    document.documentElement.style.setProperty('--rq-v10-scroll', state.progress.toFixed(4));
-    document.documentElement.style.setProperty('--rq-v10-speed', state.speed.toFixed(3));
-    document.documentElement.style.setProperty(
-      '--rq-v10-scan-y',
-      `${(window.innerHeight * (0.12 + state.progress * 0.76)).toFixed(1)}px`
-    );
-
+    // Complete geometry reads before writing SVG or CSS styles.
+    const parallax = measureParallax();
     updateHyperlane();
-    updateParallax();
+    if (state.scan) {
+      state.scan.style.transform = `translate3d(0,${(window.innerHeight * (0.12 + state.progress * 0.76) - 44).toFixed(1)}px,0)`;
+      state.scan.style.opacity = String(0.08 + state.speed * 0.28);
+    }
+    parallax.forEach(({ node, value }) => {
+      if (node.dataset.rqDepthY === value) return;
+      node.style.setProperty('--rq-depth-y', value);
+      node.dataset.rqDepthY = value;
+    });
   }
 
   function queueRender() {
-    if (state.frame) return;
+    if (state.frame || document.hidden) return;
     state.frame = requestAnimationFrame(renderScrollState);
   }
 
@@ -230,15 +239,27 @@
   }
 
   function updateFocus(event) {
-    if (!finePointer.matches || !(event.target instanceof Element)) return;
-    const surface = event.target.closest('.rq-focus-surface');
+    if (reducedMotion.matches || !finePointer.matches || document.hidden || !(event.target instanceof Element)) return;
+    const surface = event.target.closest('.rq-focus-surface') || event.target.closest('.rq-about-grid section, .rq-about-panel, .rq-project-showcase-copy, .archives-timeline');
     if (!surface) return;
+    const samples = event.getCoalescedEvents?.();
+    const point = samples?.length ? samples[samples.length - 1] : event;
+    const spotlight = event.target.closest('.rq-project-showcase-copy') || surface;
+    state.focusSample = { surface, spotlight, clientX: point.clientX, clientY: point.clientY };
+    if (!state.focusFrame) state.focusFrame = requestAnimationFrame(renderFocus);
+  }
 
+  function renderFocus() {
+    state.focusFrame = 0;
+    if (!state.focusSample || document.hidden) return;
+    const { surface, spotlight, clientX, clientY } = state.focusSample;
     const rect = surface.getBoundingClientRect();
-    const x = clamp((event.clientX - rect.left) / Math.max(1, rect.width), 0, 1);
-    const y = clamp((event.clientY - rect.top) / Math.max(1, rect.height), 0, 1);
+    const spotRect = spotlight === surface ? rect : spotlight.getBoundingClientRect();
+    const x = clamp((clientX - rect.left) / Math.max(1, rect.width), 0, 1);
+    const y = clamp((clientY - rect.top) / Math.max(1, rect.height), 0, 1);
     const tiltScale = surface.classList.contains('rq-project-showcase') ? 0.36 : 1;
-
+    spotlight.style.setProperty('--rq-pointer-x', `${(clamp((clientX - spotRect.left) / Math.max(1, spotRect.width), 0, 1) * 100).toFixed(2)}%`);
+    spotlight.style.setProperty('--rq-pointer-y', `${(clamp((clientY - spotRect.top) / Math.max(1, spotRect.height), 0, 1) * 100).toFixed(2)}%`);
     surface.style.setProperty('--rq-focus-x', `${(x * 100).toFixed(2)}%`);
     surface.style.setProperty('--rq-focus-y', `${(y * 100).toFixed(2)}%`);
     surface.style.setProperty('--rq-tilt-x', `${((0.5 - y) * 5.2 * tiltScale).toFixed(2)}deg`);
@@ -248,11 +269,20 @@
 
   function clearFocus(event) {
     if (!(event.target instanceof Element)) return;
-    const surface = event.target.closest('.rq-focus-surface');
+    const surface = event.target.closest('.rq-focus-surface') || event.target.closest('.rq-about-grid section, .rq-about-panel, .rq-project-showcase-copy, .archives-timeline');
     if (!surface || surface.contains(event.relatedTarget)) return;
+    if (state.focusSample?.surface === surface) {
+      state.focusSample.spotlight.style.removeProperty('--rq-pointer-x');
+      state.focusSample.spotlight.style.removeProperty('--rq-pointer-y');
+      state.focusSample = null;
+      cancelAnimationFrame(state.focusFrame);
+      state.focusFrame = 0;
+    }
     surface.classList.remove('is-rq-focused');
     surface.style.setProperty('--rq-tilt-x', '0deg');
     surface.style.setProperty('--rq-tilt-y', '0deg');
+    surface.style.removeProperty('--rq-pointer-x');
+    surface.style.removeProperty('--rq-pointer-y');
   }
 
   function bindEvents() {
@@ -262,6 +292,15 @@
     window.addEventListener('resize', queueRender, { passive: true });
     document.addEventListener('pointermove', updateFocus, { passive: true });
     document.addEventListener('pointerout', clearFocus, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) { queueRender(); return; }
+      state.focusSample?.surface.classList.remove('is-rq-focused');
+      cancelAnimationFrame(state.focusFrame);
+      cancelAnimationFrame(state.frame);
+      state.focusFrame = state.frame = 0;
+      state.focusSample = null;
+      window.clearTimeout(state.decayTimer);
+    });
     document.addEventListener('pjax:complete', initDynamics);
     document.addEventListener('pjax:success', initDynamics);
   }

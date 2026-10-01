@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="RunnerQuan, Zheng Jiequan, AI Native, Full Stack, Hexo, Blog, Portfolio">
   <meta name="description" content="RunnerQuan 的项目档案：AI 产品、Agent 工作流、分布式系统、MoonBit 工具和可复用开发 Skill。">
   <meta name="author" content="RunnerQuan">
   <link rel="canonical" href="https://runnerquan.github.io/projects/">
@@ -13,29 +12,12 @@
   <meta property="og:url" content="https://runnerquan.github.io/projects/">
   <meta property="og:image" content="https://runnerquan.github.io/images/newlogo.png">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Projects | RunnerQuan">
-  <meta name="twitter:description" content="RunnerQuan 的项目档案：AI 产品、Agent 工作流、分布式系统、MoonBit 工具和可复用开发 Skill。">
-  <link rel="icon" href="/images/newlogo.png">
+  <link rel="icon" type="image/svg+xml" href="/images/runnerquan-logo.svg">
   <title>Projects | RunnerQuan</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font/css/fontawesome.min.css">
-  <link rel="stylesheet" href="/font/css/solid.min.css">
-  <link rel="stylesheet" href="/font/css/brands.min.css">
-  <link rel="stylesheet" href="/css/design-tokens.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/homepage.css">
-  <link rel="stylesheet" href="/css/homepage-motion.css">
-  <link rel="stylesheet" href="/css/reading.css">
-  <link rel="stylesheet" href="/css/projects.css">
-  <link rel="stylesheet" href="/css/responsive.css">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v4.css?v=20260829-typography">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v5.css?v=20260829-interface">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v6.css?v=20260830-proof2">
-  <link rel="stylesheet" href="/css/runnerquan-polish-v7.css">
-  <link rel="stylesheet" href="/css/runnerquan-tactical-v8.css">
-  <link rel="stylesheet" href="/css/runnerquan-warp-v9.css">
-  <link rel="stylesheet" href="/css/runnerquan-dynamics-v10.css">
-  <link rel="stylesheet" href="/css/runnerquan-signal-v11-2.css">
+  <script>try{document.documentElement.dataset.rqTheme=localStorage.getItem('rq-theme-space')==='light'?'light':'dark'}catch(e){document.documentElement.dataset.rqTheme='dark'}</script>
+  <link rel="preload" href="/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/share-tech-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/runnerquan-site.16034f996543.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"RunnerQuan Projects","url":"https://runnerquan.github.io/projects/","creator":{"@type":"Person","name":"RunnerQuan","alternateName":"Jiequan Zheng"},"hasPart":[{"@type":"SoftwareSourceCode","name":"PostureFit","codeRepository":"https://github.com/RunnerQuan/Posturefit","description":"Hackathon-winning AI posture coach using body keypoints and a Coze Agent for adaptive feedback.","programmingLanguage":["React","MediaPipe","Coze Agent"]},{"@type":"SoftwareSourceCode","name":"BiasBreaker Career","codeRepository":"https://github.com/RunnerQuan/BiasBreaker-Career","description":"AI career assistant for candidates who may be misread by automated screening systems.","programmingLanguage":["Next.js","LLM","Embeddings"]},{"@type":"SoftwareSourceCode","name":"Quan-RPC","codeRepository":"https://github.com/RunnerQuan/Quan-RPC-Framework","description":"Java TCP RPC framework with custom protocol, service registry, heartbeat checks, and Docker support.","programmingLanguage":["Java 11","TCP","RPC"]},{"@type":"SoftwareSourceCode","name":"TalentFlow","codeRepository":"https://github.com/RunnerQuan/talentflow","description":"Multi-agent recruitment decision platform for resume parsing, skill graphs, JD matching, and hiring evidence.","programmingLanguage":["Next.js","Vercel AI SDK","Agents"]},{"@type":"SoftwareSourceCode","name":"MoonLimit","codeRepository":"https://github.com/RunnerQuan/moonlimit","description":"Composable, deterministic rate-limiting toolkit for MoonBit with policies, simulations, tests, and CI.","programmingLanguage":["MoonBit","Policy Engine","CI"]},{"@type":"SoftwareSourceCode","name":"AI Writing SaaS Skill","codeRepository":"https://github.com/RunnerQuan/ai-writing-assistant-saas-skill","description":"Reusable Skill that generates a deployable AI writing SaaS template with Edge Functions, KV, payments, and AI chat.","programmingLanguage":["React","Edge Functions","AI SaaS"]}]}</script>
 </head>
 <body class="rq-inner-page rq-projects-page">
@@ -47,8 +29,16 @@
         <span>RunnerQuan</span>
       </a>
       <nav aria-label="Primary">
-        <a href="/">Home</a><a href="/projects/" class="active">Projects</a><a href="/archives/">Blog</a><a href="/about/">About</a><a href="mailto:runnerquan@foxmail.com">Contact</a>
+        <a href="/">Home</a><a href="/projects/" class="active" aria-current="page">Projects</a><a href="/archives/">Blog</a><a href="/about/">About</a><a href="mailto:runnerquan@foxmail.com">Contact</a>
       </nav>
+      <div class="rq-nav-tools">
+        <button class="rq-search-button search-popup-trigger" type="button" aria-label="搜索文章" title="搜索文章 / Search" data-search-url="/archives/?search=1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+        <button class="rq-theme-button" type="button" aria-label="切换到夜间主题" aria-pressed="false">
+          <svg class="rq-sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></svg>
+          <svg class="rq-moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20.4 14.5A9 9 0 0 1 9.5 3.6 9 9 0 1 0 20.4 14.5Z"/></svg>
+        </button>
+        <button class="rq-menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
+      </div>
     </header>
     <nav class="rq-project-index" aria-label="Project index">
       <span>INDEX</span>
@@ -75,7 +65,7 @@
         <div class="rq-project-showcase-stack">
           <article id="posturefit" class="rq-project-showcase rq-reveal" style="--rq-project-index:0; --rq-project-image: url('/images/projects/posturefit.webp'); --rq-image-focus: 50% 48%">
     <div class="rq-project-shot">
-      <img src="/images/projects/posturefit.webp" alt="PostureFit AI posture coach landing page" loading="eager" decoding="async">
+      <img src="/images/projects/posturefit.webp" alt="PostureFit AI posture coach landing page" width="1280" height="800" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -102,7 +92,7 @@
     </div>
   </article><article id="biasbreaker-career" class="rq-project-showcase rq-reveal" style="--rq-project-index:1; --rq-project-image: url('/images/projects/biasbreaker-career.webp'); --rq-image-focus: 50% 38%">
     <div class="rq-project-shot">
-      <img src="/images/projects/biasbreaker-career.webp" alt="BiasBreaker Career resume analysis product page" loading="eager" decoding="async">
+      <img src="/images/projects/biasbreaker-career.webp" alt="BiasBreaker Career resume analysis product page" width="1280" height="800" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -129,7 +119,7 @@
     </div>
   </article><article id="quan-rpc" class="rq-project-showcase rq-reveal" style="--rq-project-index:2; --rq-project-image: url('/images/projects/quan-rpc.webp'); --rq-image-focus: 50% 50%">
     <div class="rq-project-shot">
-      <img src="/images/projects/quan-rpc.webp" alt="Quan-RPC framework architecture diagram" loading="lazy" decoding="async">
+      <img src="/images/projects/quan-rpc.webp" alt="Quan-RPC framework architecture diagram" width="1280" height="800" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -156,7 +146,7 @@
     </div>
   </article><article id="talentflow" class="rq-project-showcase rq-reveal" style="--rq-project-index:3; --rq-project-image: url('/images/projects/talentflow.webp'); --rq-image-focus: 28% 46%">
     <div class="rq-project-shot">
-      <img src="/images/projects/talentflow.webp" alt="TalentFlow AI recruiting decision platform interface" loading="lazy" decoding="async">
+      <img src="/images/projects/talentflow.webp" alt="TalentFlow AI recruiting decision platform interface" width="1280" height="800" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -183,7 +173,7 @@
     </div>
   </article><article id="moonlimit" class="rq-project-showcase rq-reveal" style="--rq-project-index:4; --rq-project-image: url('/images/projects/moonlimit.webp'); --rq-image-focus: 50% 34%">
     <div class="rq-project-shot">
-      <img src="/images/projects/moonlimit.webp" alt="MoonLimit documentation page on mooncakes.io" loading="lazy" decoding="async">
+      <img src="/images/projects/moonlimit.webp" alt="MoonLimit documentation page on mooncakes.io" width="1280" height="800" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -210,7 +200,7 @@
     </div>
   </article><article id="ai-writing-saas-skill" class="rq-project-showcase rq-reveal" style="--rq-project-index:5; --rq-project-image: url('/images/projects/ai-writing-saas-skill.webp'); --rq-image-focus: 50% 28%">
     <div class="rq-project-shot">
-      <img src="/images/projects/ai-writing-saas-skill.webp" alt="AI Writing SaaS Skill dark landing page" loading="lazy" decoding="async">
+      <img src="/images/projects/ai-writing-saas-skill.webp" alt="AI Writing SaaS Skill dark landing page" width="1280" height="800" loading="lazy" decoding="async">
     </div>
     <div class="rq-project-showcase-copy">
       <div class="rq-project-card-meta">
@@ -254,11 +244,6 @@
       </section>
     </main>
   </div>
-  <script src="/js/runnerquan-motion.js" defer></script>
-  <script src="/js/runnerquan-interface-v7.js" defer></script>
-  <script src="/js/runnerquan-tactical-v8-1.js" defer></script>
-  <script src="/js/runnerquan-warp-v9-1.js" defer></script>
-  <script src="/js/runnerquan-dynamics-v10.js" defer></script>
-  <script src="/js/runnerquan-signal-v11.js" defer></script>
+  <script src="/js/runnerquan-site.8086b1ca318d.js" defer></script>
 </body>
 </html>

@@ -23,32 +23,6 @@
     });
   }
 
-  function bindSpotlights() {
-    if (!window.matchMedia('(pointer: fine)').matches) return;
-
-    const targets = document.querySelectorAll(
-      '.rq-project-card, .rq-about-grid section, .rq-about-panel, .rq-project-showcase-copy, .archives-timeline'
-    );
-
-    targets.forEach((target) => {
-      if (target.dataset.rqSpotlightBound === 'true') return;
-      target.dataset.rqSpotlightBound = 'true';
-
-      target.addEventListener('pointermove', (event) => {
-        const rect = target.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-        target.style.setProperty('--rq-pointer-x', `${x.toFixed(2)}%`);
-        target.style.setProperty('--rq-pointer-y', `${y.toFixed(2)}%`);
-      });
-
-      target.addEventListener('pointerleave', () => {
-        target.style.removeProperty('--rq-pointer-x');
-        target.style.removeProperty('--rq-pointer-y');
-      });
-    });
-  }
-
   function bindProjectIndex() {
     if (projectObserver) {
       projectObserver.disconnect();
@@ -88,7 +62,7 @@
   function initInterface() {
     document.documentElement.classList.add('rq-interface-v7');
     bindOrbitLabels();
-    bindSpotlights();
+    // Dynamics owns the shared, frame-coalesced spotlight and tilt handler.
     bindProjectIndex();
   }
 

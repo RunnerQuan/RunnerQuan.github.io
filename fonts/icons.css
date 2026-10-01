@@ -1,0 +1,10 @@
+@font-face{font-family:'RQ Icons solid';src:url('/fonts/icons-solid.woff2') format('woff2');font-display:swap}.rq-home-page .fa-solid,.rq-projects-page .fa-solid{font-family:'RQ Icons solid';font-style:normal}
+.fa-terminal::before{content:"\f120"}
+.fa-person-running::before{content:"\f70c"}
+.fa-code-branch::before{content:"\f126"}
+.fa-network-wired::before{content:"\f6ff"}
+.fa-diagram-project::before{content:"\f542"}
+.fa-moon::before{content:"\f186"}
+.fa-pen-nib::before{content:"\f5ad"}
+@font-face{font-family:'RQ Icons brands';src:url('/fonts/icons-brands.woff2') format('woff2');font-display:swap}.rq-home-page .fa-brands,.rq-projects-page .fa-brands{font-family:'RQ Icons brands';font-style:normal}
+.fa-github::before{content:"\f09b"}

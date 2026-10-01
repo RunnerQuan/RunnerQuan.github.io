@@ -1,0 +1,188 @@
+/* Production layouts remain in the original orbital cascade. */
+@font-face { font-family: 'Press Start 2P'; src: url('/fonts/press-start-2p.woff2') format('woff2'); font-display: swap; font-weight: 400; }
+@font-face { font-family: 'Share Tech Mono'; src: url('/fonts/share-tech-mono.woff2') format('woff2'); font-display: swap; font-weight: 400; }
+@font-face { font-family: 'RQ CJK'; src: url('/fonts/sarasa-mono-sc-ui.woff2') format('woff2'); font-display: swap; font-weight: 100 900; unicode-range: U+2E80-FFFF; }
+:root {
+  color-scheme: dark;
+  --rq-home-bg: #000; --rq-read-bg: #08090b; --rq-bg: #000; --rq-paper: #080b0e;
+  --rq-text: #f3f6fa; --rq-text-2: #b7c0ca; --rq-text-3: #909ca8;
+  --rq-soft: #0b1117; --rq-accent: #8fe7ff;
+  --rq-pixel: 'Press Start 2P', monospace;
+  --rq-mono: 'Share Tech Mono', 'RQ CJK', Consolas, monospace;
+  --rq-cjk-code: 'RQ CJK', 'Share Tech Mono', 'Microsoft YaHei', monospace;
+  --rq-sans: 'Share Tech Mono', 'RQ CJK', 'Microsoft YaHei', sans-serif;
+}
+html { background: var(--rq-bg) !important; }
+body.rq-home-page { background: var(--rq-bg) !important; }
+button { font: inherit; }
+html.rq-page-hidden *, html.rq-page-hidden *::before, html.rq-page-hidden *::after { animation-play-state: paused !important; }
+*, *::before, *::after { box-sizing: border-box; }
+.rq-nav { gap: 1.3rem; overflow: visible !important; }
+.rq-interface-v9 body.rq-inner-page > .rq-nav { position: sticky !important; top: 0; z-index: 120 !important; }
+.rq-nav.rq-menu-open nav { z-index: 121; }
+.rq-nav nav { margin-left: auto; }
+.rq-nav-tools { display: flex; align-items: center; gap: .5rem; }
+.rq-theme-button, .rq-search-button, .rq-menu-button { display: grid; place-items: center; flex: 0 0 40px; width: 40px; height: 40px; padding: 0; border: 1px solid var(--rq-line); border-radius: 6px; background: transparent; color: var(--rq-text); cursor: pointer; }
+.rq-theme-button:hover, .rq-search-button:hover, .rq-menu-button:hover { color: var(--rq-accent); background: var(--rq-soft); }
+.rq-theme-button svg, .rq-search-button svg { width: 18px; height: 18px; }
+.rq-theme-button .rq-moon-icon { display: none; }
+html[data-rq-theme='dark'] .rq-theme-button .rq-sun-icon { display: none; }
+html[data-rq-theme='dark'] .rq-theme-button .rq-moon-icon { display: block; }
+.rq-menu-button { display: none; }
+.rq-menu-button span { display: block; width: 18px; height: 1px; background: currentColor; }
+.rq-home-page .rq-cockpit { background: none !important; }
+.rq-cockpit img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.rq-orbit-mission-moon, .rq-orbit-about-moon { background: none !important; }
+.rq-lunar-art { display: block; width: 100%; height: 100%; aspect-ratio: 1; border-radius: 50%; }
+.rq-project-card-visual { background-image: none; }
+.rq-project-card-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--rq-card-focus, center); }
+.rq-project-shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--rq-image-focus, center); }
+.rq-boot-blade { transition-duration: 420ms; }
+.rq-boot-core { font-family: var(--rq-mono); }
+.rq-day-orbit, .rq-day-lunar { display: none; }
+/* Isolated moving layers: no inherited page-wide variables or live blur. */
+.rq-interface-v9 body::after { display: none !important; }
+.rq-warp-edge { position: fixed !important; inset: 0; z-index: 110 !important; pointer-events: none; opacity: 0; contain: strict; will-change: opacity; background: radial-gradient(ellipse at 50% 48%, transparent 48%, rgba(143,231,255,.06) 82%, rgba(143,231,255,.13)); box-shadow: inset 0 0 5rem rgba(143,231,255,.1); }
+.rq-inner-page :is(.rq-nav, .rq-tactical-hud), .rq-inner-page .rq-nav nav { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background-color: rgba(5,9,12,.96); }
+.rq-inner-page .rq-hyperlane-progress, .rq-inner-page .rq-hyperlane-node { filter: none; }
+.rq-inner-page .rq-parallax-node { transition: opacity 500ms var(--rq-ease), filter 500ms var(--rq-ease) !important; }
+.rq-inner-page .rq-focus-surface.is-rq-focused { will-change: transform; }
+.rq-interface-v10 .rq-v10-active :is(h1,h2) { text-shadow: none; }
+.rq-interface-v10 .rq-v10-active .rq-panel-corners { filter: none; }
+/* One immediate pointer owner, without transform easing. */
+.rq-reticle { width: 24px; height: 24px; z-index: 160; border: 1px solid var(--rq-accent); will-change: transform; contain: layout style; transition: opacity 120ms !important; }
+.rq-reticle.is-target { width: 24px; height: 24px; border-radius: 50%; }
+.rq-reticle::before { left: -4px; top: 50%; width: calc(100% + 8px); height: 1px; transform: none; }
+.rq-reticle::after { top: -4px; left: 50%; height: calc(100% + 8px); width: 1px; transform: none; }
+.rq-reticle.is-target::before, .rq-reticle.is-target::after { opacity: 0; }
+.rq-inner-page .page-main-content-middle { z-index: 2 !important; }
+.rq-inner-page .search-pop-overlay { z-index: 180; }
+.rq-inner-page .search-pop-overlay:not(.active) { pointer-events: none !important; }
+.rq-inner-page .search-pop-overlay.active { pointer-events: auto; }
+.rq-interface-v9 body.rq-inner-page > .search-pop-overlay { position: fixed !important; z-index: 180 !important; }
+.rq-inner-page .search-popup { background: var(--rq-paper); border: 1px solid var(--rq-line); color: var(--rq-text-2); }
+.rq-inner-page .search-header { background: var(--rq-soft); }
+.rq-inner-page .search-input, .rq-inner-page .search-input-field-pre, .rq-inner-page .close-popup-btn, .rq-inner-page #search-result { color: var(--rq-text-2); }
+.rq-inner-page .search-keyword { color: var(--rq-accent) !important; background: var(--rq-soft); font-weight: 600; }
+.rq-inner-page .tool-toggle-theme-mode { display: none !important; }
+.rq-reading-progress { width: 100%; transform: scaleX(var(--rq-progress, 0)); transform-origin: left; }
+html[data-rq-theme='light'] {
+  color-scheme: light;
+  --rq-bg: #f5f2eb; --rq-home-bg: #f5f2eb; --rq-read-bg: #f5f2eb; --rq-paper: #fcfaf5;
+  --rq-text: #27251f; --rq-text-2: #575349; --rq-text-3: #6d665b; --rq-soft: #eae5da;
+  --rq-line: #d7cfc0; --rq-line-strong: #b9ac96; --rq-accent: #886440; --rq-accent-soft: #eee1cc; --rq-accent-line: #bc9c73;
+  --rq-glass-bg: #fcfaf5f0; --rq-glass-bg-deep: #eee9df; --rq-panel: #eee9df;
+  --rq-surface: #fcfaf5; --rq-surface-strong: #eae5da; --rq-surface-soft: #eee9df;
+  --rq-tactical-cyan: #886440; --rq-tactical-ice: #575349; --rq-tactical-dim: #756e61; --rq-tactical-line: #d7cfc0; --rq-tactical-panel: #fcfaf5;
+  --rq-v10-cyan: #886440; --rq-v10-ice: #575349;
+  --rq-dim: #6d665b; --rq-accent-strong: #575349; --rq-focus-ring: #886440;
+  --rq-glass-bg-solid: #fcfaf5; --rq-glass-border: #d7cfc0;
+  --rq-glass-highlight: #eae5da; --rq-glass-noise: #88644008; --rq-warp-white: #575349;
+  --rq-warp-cyan: #886440; --rq-grid-faint: #8864400b;
+}
+html[data-rq-theme='light'] body,
+html[data-rq-theme='light'] .rq-orbit-panel,
+html[data-rq-theme='light'] .rq-projects-page { background: var(--rq-bg) !important; }
+html[data-rq-theme='light'] :is(.rq-nav, .rq-project-card, .rq-proof-rail, .rq-project-shot, .rq-project-showcase-copy, .rq-agent-orchestrator, .rq-agent-core, .rq-agent-node, .rq-agent-terminal, .rq-tactical-hud, .rq-hero-telemetry, .rq-orbit-progress) { background: var(--rq-paper) !important; border-color: var(--rq-line) !important; box-shadow: none !important; }
+html[data-rq-theme='light'] :is(.rq-home-page, .rq-inner-page) :is(h1, h2, h3, p, a, strong, em, b, .rq-tags span, .rq-orbit-tags span, .rq-agent-node span, .rq-card-index, .rq-project-meta) { color: var(--rq-text-2) !important; }
+html[data-rq-theme='light'] body:is(.rq-home-page, .rq-inner-page) :is(h1, h2, h3, strong, .rq-brand) { color: var(--rq-text) !important; }
+html[data-rq-theme='light'] .rq-inner-page .rq-nav nav { background: var(--rq-paper) !important; }
+html[data-rq-theme='light'] .rq-home-page .rq-cockpit { display: none !important; }
+/* Day mode is drawn in ink on paper, instead of a negative of the night photo. */
+html[data-rq-theme='light'] .rq-day-orbit { display: block; position: absolute; z-index: 1; width: min(44vw,650px); aspect-ratio: 1; right: 3%; top: 50%; transform: translateY(-50%); color: #8d7255; opacity: .8; pointer-events: none; }
+.rq-day-orbit::before { content: ''; position: absolute; inset: 10%; border: 1px solid #c7b99f; border-radius: 50%; transform: rotate(-24deg) scaleY(.4); }
+.rq-day-orbit::after { content: 'LUNAR / 01'; position: absolute; bottom: 11%; right: 15%; font: 11px var(--rq-mono); letter-spacing: .18em; color: var(--rq-text-3); }
+.rq-day-orbit .rq-ascii-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+html[data-rq-theme='light'] .rq-lunar-art { display: none; }
+html[data-rq-theme='light'] .rq-orbit-mission-moon { display: none; }
+html[data-rq-theme='light'] .rq-orbit-about-moon { right: 2%; width: min(50vw, 680px); filter: none; box-shadow: none; opacity: 1; }
+html[data-rq-theme='light'] .rq-day-lunar { display: block; width: 100%; height: 100%; color: var(--rq-accent); }
+html[data-rq-theme='light'] .rq-day-lunar canvas { width: 100%; height: 100%; }
+html[data-rq-theme='light'] .rq-brand-mark { filter: invert(1); }
+html[data-rq-theme='light'] .rq-home-page::before { background: none !important; }
+html[data-rq-theme='light'] .rq-warp-field { mix-blend-mode: multiply; opacity: .26; }
+html[data-rq-theme='light'] .rq-warp-edge { background: radial-gradient(ellipse at 50% 48%, transparent 48%, rgba(139,106,69,.05) 82%, rgba(139,106,69,.12)); box-shadow: none; }
+html[data-rq-theme='light'] .rq-hero-stage::before { opacity: .05; }
+html[data-rq-theme='light'] .rq-hero-copy { z-index: 3; }
+html[data-rq-theme='light'] :is(.rq-hero-telemetry, .rq-orbit-progress, .rq-tactical-hud, .rq-panel-code) { color: var(--rq-text-3) !important; backdrop-filter: none !important; }
+html[data-rq-theme='light'] .rq-panel-code { background: var(--rq-soft) !important; border-color: var(--rq-line) !important; }
+html[data-rq-theme='light'] .rq-panel-corners i { border-color: var(--rq-accent-line) !important; }
+html[data-rq-theme='light'] .rq-hero-telemetry span { background: transparent !important; border-bottom: 1px solid var(--rq-line); }
+html[data-rq-theme='light'] .rq-hero-telemetry b { color: var(--rq-text-3); }
+html[data-rq-theme='light'] .rq-hero-telemetry em { color: var(--rq-text-2) !important; }
+html[data-rq-theme='light'] .rq-proof-rail span { color: var(--rq-text-3) !important; border-color: var(--rq-line) !important; }
+html[data-rq-theme='light'] :is(.rq-actions a, .rq-tags span, .rq-orbit-tags span, .rq-about-tags span, .rq-build-flow li) { border-color: var(--rq-line) !important; background: var(--rq-paper) !important; }
+html[data-rq-theme='light'] .rq-actions a:hover { background: var(--rq-soft) !important; }
+html[data-rq-theme='light'] :is(.rq-kicker, .rq-orbit-eyebrow, .rq-projects-kicker, .rq-projects-section-head > span, .rq-agent-terminal > b, .rq-project-icon) { color: var(--rq-accent) !important; }
+html[data-rq-theme='light'] .rq-hud-track { border-color: var(--rq-line); background: repeating-linear-gradient(90deg, transparent 0 17px, #d7cfc0 18px, transparent 19px) center / auto 8px no-repeat; }
+html[data-rq-theme='light'] .rq-hud-track::before { background: var(--rq-accent); box-shadow: none; }
+html[data-rq-theme='light'] .rq-hud-track::after { background: var(--rq-paper); box-shadow: none; }
+html[data-rq-theme='light'] .rq-warp-meter :is(b,em) { color: var(--rq-accent) !important; }
+html[data-rq-theme='light'] .rq-orbit-progress a { background: var(--rq-line); border-color: var(--rq-line); }
+html[data-rq-theme='light'] .rq-orbit-progress a.is-active { background: var(--rq-accent); box-shadow: none; }
+html[data-rq-theme='light'] .rq-orbit-progress a::before { background: var(--rq-paper); color: var(--rq-text-2); border-color: var(--rq-line); }
+html[data-rq-theme='light'] .rq-system-grid::before { background: linear-gradient(#8b6a4510 1px, transparent 1px), linear-gradient(90deg,#8b6a4510 1px,transparent 1px); background-size: 48px 48px; }
+html[data-rq-theme='light'] .rq-system-grid::after,
+html[data-rq-theme='light'] :is(.rq-hyperlane, .rq-phase-scan) { opacity: .25; }
+html[data-rq-theme='light'] .rq-signal-field { opacity: .85; }
+html[data-rq-theme='light'] :is(.rq-project-index a, .rq-projects-stats, .rq-project-metrics div, .rq-agent-node, .rq-agent-core, .rq-about-panel, .rq-about-grid section) { background: var(--rq-paper) !important; border-color: var(--rq-line) !important; }
+html[data-rq-theme='light'] .rq-project-index a { color: var(--rq-text-3) !important; }
+html[data-rq-theme='light'] .rq-project-index a.is-current { color: var(--rq-accent) !important; border-color: var(--rq-accent-line) !important; }
+html[data-rq-theme='light'] .rq-home-page .rq-project-card { background: var(--rq-paper) !important; }
+html[data-rq-theme='light'] .rq-project-showcase { border-color: var(--rq-line) !important; background: var(--rq-paper) !important; box-shadow: none !important; }
+html[data-rq-theme='light'] .rq-focus-glow { mix-blend-mode: multiply; background: radial-gradient(circle at var(--rq-focus-x) var(--rq-focus-y), #88644014, transparent 48%); }
+html[data-rq-theme='light'] .rq-project-card-visual { filter: grayscale(.5); opacity: .12; }
+html[data-rq-theme='light'] .rq-project-card:hover .rq-project-card-visual { opacity: .22; }
+html[data-rq-theme='light'] :focus-visible { outline-color: var(--rq-accent) !important; }
+html[data-rq-theme='light'] ::selection { color: var(--rq-text); background: #e2d2b7; }
+html[data-rq-theme='light'] .rq-inner-page :is(.archives-container, .archive-container, .tag-container, .category-container, .post-content-container, .page-template-content, .rq-about-panel, .rq-about-grid section) { background: var(--rq-paper) !important; color: var(--rq-text-2) !important; border-color: var(--rq-line) !important; box-shadow: none !important; }
+html[data-rq-theme='light'] .rq-inner-page .keep-markdown-body { color: var(--rq-text-2); }
+html[data-rq-theme='light'] .rq-inner-page :is(pre, code, blockquote, .highlight, .code-block) { background: var(--rq-soft) !important; color: var(--rq-text-2) !important; }
+@media (max-width: 980px) {
+  .rq-nav { gap: .6rem; }
+  .rq-nav-tools { margin-left: auto; }
+  .rq-menu-button { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+  html[data-rq-theme='light'] .rq-nav.rq-menu-open nav { background: var(--rq-paper) !important; }
+  html[data-rq-theme='light'] .rq-day-orbit { width: min(75vw,580px); right: -12%; top: 60%; opacity: .3; }
+}
+@media (max-width: 440px) {
+  .rq-nav .rq-brand { gap: .45rem; font-size: .9rem; }
+  .rq-nav-tools { gap: .3rem; }
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { .rq-reticle { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  html.rq-home-orbit { scroll-behavior: auto; scroll-snap-type: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Day component states share the same paper, ink and bronze hierarchy. */
+html[data-rq-theme='light'] :is(.rq-button, .rq-orbit-about-actions a, .rq-footer-links a, .rq-about-actions a) { background: var(--rq-paper); color: var(--rq-text-2); border-color: var(--rq-line); box-shadow: none; }
+html[data-rq-theme='light'] :is(.rq-button, .rq-orbit-about-actions a, .rq-footer-links a, .rq-about-actions a):is(:hover,:focus-visible) { background: var(--rq-soft); border-color: var(--rq-accent); }
+html[data-rq-theme='light'] .rq-blog-row:is(:hover,:focus-visible) { background: var(--rq-soft); outline: 1px solid var(--rq-accent-line); outline-offset: -1px; }
+html[data-rq-theme='light'] .rq-project-metrics { background: var(--rq-line); border-color: var(--rq-line); }
+html[data-rq-theme='light'] .rq-project-metrics > div { background: var(--rq-soft) !important; border-color: var(--rq-line); }
+html[data-rq-theme='light'] .rq-project-metrics dd { color: var(--rq-text-2); }
+html[data-rq-theme='light'] .rq-project-shot img { filter: none !important; }
+html[data-rq-theme='light'] .rq-orbit-story-visual i { background: linear-gradient(90deg,transparent,var(--rq-accent),transparent); box-shadow: none; }
+html[data-rq-theme='light'] .rq-orbit-footer::before { color: var(--rq-text-2); text-shadow: none; opacity: 1; }
+html[data-rq-theme='light'] .rq-footer-signal { opacity: .65; }
+html[data-rq-theme='light'] .rq-footer-signal span { background: linear-gradient(180deg,#bc9c7340,#bc9c730a); border-color: var(--rq-accent-line); }
+html[data-rq-theme='light'] .rq-footer-meta { color: var(--rq-text-2); }
+html[data-rq-theme='light'] .rq-reticle::before, html[data-rq-theme='light'] .rq-reticle::after { background: var(--rq-accent); }
+@media (max-width: 980px) {
+  html[data-rq-theme='light'] .rq-orbit-about-moon { right: -12%; width: 80vw; opacity: .2; }
+  html[data-rq-theme='light'] .rq-signal-field { opacity: .35; }
+}
+
+/* Keep reading and search controls use the same daylight component palette. */
+html[data-rq-theme='light'] .rq-inner-page :is(.author-badge,.code-header,.search-header,.search-input-field-pre,.toc-container) { background: var(--rq-soft) !important; color: var(--rq-text-2) !important; border-color: var(--rq-line); }
+html[data-rq-theme='light'] .rq-inner-page :is(.nav-text,.nav-number,.code-header i,.code-language) { color: var(--rq-text-2) !important; }
+html[data-rq-theme='light'] .rq-inner-page .search-input { background: transparent !important; color: var(--rq-text) !important; }
+html[data-rq-theme='light'] .rq-inner-page .search-pop-overlay { background: #27251f4d; }
+
+html[data-rq-theme='light'] .rq-skip-link { background: var(--rq-paper); color: var(--rq-text) !important; border: 1px solid var(--rq-accent); }
+html[data-rq-theme='light'] .rq-inner-page :is(.copyright-post-link,.post-copyright-info-container .type,.footer,.footer .info-item,.footer .info-item span) { color: var(--rq-text-2) !important; }
+
+.rq-search-empty { margin: 1.25rem auto 0; padding: 0 1rem; max-width: 26rem; font-size: 1rem; line-height: 1.8; text-align: center; color: var(--rq-text-2); }
+.rq-inner-page .search-popup #no-result { text-align: center; }
+html[data-rq-theme='light'] #no-result { color: var(--rq-text-3) !important; }
