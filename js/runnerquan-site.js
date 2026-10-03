@@ -9,7 +9,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const root = document.documentElement;
-  const state = { fields: [], frame: 0, observer: null, sections: null, index: null, reticle: null, pointer: null };
+  const state = { fields: [], frame: 0, observer: null, sections: null, reticle: null, pointer: null };
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
   function theme() {
@@ -255,7 +255,6 @@
 
   function initialize() {
     state.observer?.disconnect();
-    state.index?.disconnect();
     state.fields = [...document.querySelectorAll('[data-rq-field]')].map(host => createField(host, host.dataset.rqField));
     if ('IntersectionObserver' in window) {
       state.observer = new IntersectionObserver(entries => {
@@ -315,21 +314,6 @@
         state.searchObserver.observe(result, { childList: true, subtree: true });
         describeEmptyResult();
       }
-    }
-    const links = [...document.querySelectorAll('[data-project-target]')];
-    if (links.length && 'IntersectionObserver' in window) {
-      const select = id => links.forEach(link => {
-        const active = link.dataset.projectTarget === id;
-        link.classList.toggle('is-current', active);
-        if (active) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
-      });
-      select(links[0].dataset.projectTarget);
-      state.index = new IntersectionObserver(entries => {
-        const current = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (current) select(current.target.id);
-      }, { rootMargin: '-20% 0px -45%', threshold: [0, .1, .3] });
-      document.querySelectorAll('.rq-project-showcase[id]').forEach(project => state.index.observe(project));
     }
     if (document.querySelector('.post-content') && !document.querySelector('.rq-reading-progress')) {
       const progress = document.createElement('div');

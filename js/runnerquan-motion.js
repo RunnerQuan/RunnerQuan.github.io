@@ -84,16 +84,7 @@
 
     document.documentElement.classList.add('rq-home-orbit');
 
-    const panels = [
-      document.querySelector('.rq-hero-stage'),
-      document.querySelector('.rq-orbit-mission'),
-      document.querySelector('.rq-orbit-warp-stage'),
-      document.querySelector('#projects'),
-      ...document.querySelectorAll('.rq-orbit-story'),
-      document.querySelector('#blog'),
-      document.querySelector('.rq-orbit-about'),
-      document.querySelector('.rq-orbit-footer')
-    ].filter(Boolean);
+    const panels = [...document.querySelectorAll('main [data-orbit-section]')];
 
     panels.forEach((panel, index) => {
       panel.classList.add('rq-orbit-panel');
@@ -108,37 +99,7 @@
       panels.map((panel, index) => `<a href="#${panel.id}" data-panel="${index}" aria-label="Section ${index + 1}"></a>`).join('');
     document.body.append(progress);
 
-    let ticking = false;
-    const sync = () => {
-      const viewportCenter = window.innerHeight / 2;
-      let activeIndex = 0;
-      let nearest = Number.POSITIVE_INFINITY;
-
-      panels.forEach((panel, index) => {
-        const rect = panel.getBoundingClientRect();
-        const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
-        if (distance < nearest) {
-          nearest = distance;
-          activeIndex = index;
-        }
-      });
-
-      panels.forEach((panel, index) => panel.classList.toggle('is-active-panel', index === activeIndex));
-      progress.querySelectorAll('a').forEach((dot, index) => dot.classList.toggle('is-active', index === activeIndex));
-      ticking = false;
-    };
-
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(sync);
-      },
-      { passive: true }
-    );
-
-    sync();
+    // Active dots and panels are updated by the shared scroll controller.
   }
 
   function setupReveal() {

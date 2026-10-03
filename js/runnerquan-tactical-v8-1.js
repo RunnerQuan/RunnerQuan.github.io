@@ -15,14 +15,14 @@
 
   const moduleNames = {
     home: 'HOME / 00',
-    mission: 'MISSION / 01',
-    warp: 'BUILD MODE / 02',
-    projects: 'PROJECTS / 03',
-    system: 'SYSTEMS / 04',
-    agent: 'AGENT CORE / 05',
-    blog: 'TRANSMISSION / 06',
-    about: 'OPERATOR / 07',
-    footer: 'SIGNAL / 08'
+    mission: 'MISSION / 02',
+    lab: 'TRAFFIC LAB / 02',
+    projects: 'PROJECTS / 01',
+    system: 'SYSTEMS / 03',
+    agent: 'AGENT CORE / 04',
+    blog: 'TRANSMISSION / 05',
+    about: 'OPERATOR / 06',
+    footer: 'SIGNAL / 07'
   };
 
   function makeElement(tag, className, attributes = {}) {

@@ -13,21 +13,24 @@
     const width = Math.round(host.clientWidth);
     const height = Math.round(host.clientHeight);
     if (!width || !height) return;
-    const scale = Math.min(devicePixelRatio || 1, 2);
+    const scale = Math.min(devicePixelRatio || 1, 1.5, Math.sqrt(1200000 / (width * height)));
+    const phase = reduced.matches ? 0 : Math.max(-1, Math.min(1, (innerHeight * .5 - (rect.top + rect.height * .5)) / innerHeight));
+    // Cache the raster artwork. Scroll changes only a composited transform,
+    // not thousands of glyph paints and transcendental calculations per frame.
+    canvas.style.transform = `translate3d(0,${(phase * 12).toFixed(2)}px,0) rotate(${(phase * 1.2).toFixed(2)}deg)`;
+    const theme = document.documentElement.dataset.rqTheme;
+    const key = `${width}:${height}:${scale}:${theme}`;
+    if (field.paintKey === key) return;
     const pixelWidth = Math.round(width * scale);
     const pixelHeight = Math.round(height * scale);
-    if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
-      canvas.width = pixelWidth;
-      canvas.height = pixelHeight;
-    }
+    canvas.width = pixelWidth; canvas.height = pixelHeight;
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
+    field.paintKey = key;
     ctx.setTransform(scale, 0, 0, scale, 0, 0);
     ctx.clearRect(0, 0, width, height);
     const step = width < 700 ? 13 : 15;
-    const cols = Math.ceil(width / step);
-    const rows = Math.ceil(height / step);
-    const phase = reduced.matches ? 0 : Math.max(-1, Math.min(1, (innerHeight * .5 - (rect.top + rect.height * .5)) / innerHeight));
+    const cols = Math.ceil(width / step), rows = Math.ceil(height / step);
     const cx = type === 'mission' ? width * .39 : width * .31;
     const cy = height * .49;
     const radius = Math.min(width * .31, height * .42);
@@ -50,7 +53,7 @@
     ctx.textBaseline = 'middle';
     const channels = document.documentElement.dataset.rqTheme === 'light' ? '136,100,64' : '143,231,255';
     for (const { x, y, r, theta, noise } of field.samples) {
-        const spiral = Math.sin(theta * (type === 'mission' ? 3 : 5) + r * 17 - phase * 3.4);
+        const spiral = Math.sin(theta * (type === 'mission' ? 3 : 5) + r * 17);
         const band = Math.exp(-Math.pow((r - .72 - spiral * .105) * 6, 2));
         const core = Math.exp(-Math.pow(r * 2.5, 2)) * .28;
         const strength = Math.max(0, band * (.62 + noise * .22) + core);

@@ -17,7 +17,7 @@
   <script>try{document.documentElement.dataset.rqTheme=localStorage.getItem('rq-theme-space')==='light'?'light':'dark'}catch(e){document.documentElement.dataset.rqTheme='dark'}</script>
   <link rel="preload" href="/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/share-tech-mono.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/runnerquan-site.16034f996543.css">
+  <link rel="stylesheet" href="/css/runnerquan-site.7faf039c19da.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"RunnerQuan","alternateName":"Jiequan Zheng","url":"https://runnerquan.github.io","email":"mailto:runnerquan@foxmail.com","sameAs":["https://github.com/RunnerQuan"]}</script>
 </head>
 <body class="rq-home-page">
@@ -46,11 +46,11 @@
       <section class="rq-hero-stage" id="orbit-home" data-orbit-section="home">
         <div class="rq-hero" id="home">
           <div class="rq-hero-copy rq-orbit-reveal">
-            <p class="rq-kicker">Developer | Designer | Creator</p>
+            <p class="rq-kicker">AI PRODUCTS / SYSTEMS / EXPERIMENTS</p>
             <h1>RunnerQuan</h1>
-            <p class="rq-hero-cn">用代码构建未来，用设计创造价值</p>
+            <p class="rq-hero-cn">构建 AI 产品，也深入系统背后的工程。</p>
             <div class="rq-actions">
-              <a href="/projects/"><i class="fa-solid fa-terminal" aria-hidden="true"></i>View Projects</a>
+              <a href="#projects"><i class="fa-solid fa-terminal" aria-hidden="true"></i>View Projects</a>
               <a href="https://github.com/RunnerQuan" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
             </div>
             <div class="rq-proof-rail rq-proof-rail--home" aria-label="Portfolio proof">
@@ -64,29 +64,7 @@
             <img src="/images/runnerquan-cockpit.png" alt="" width="1774" height="887" loading="eager" fetchpriority="high" decoding="async">
           </picture>
           <div class="rq-day-orbit" data-rq-field="moon" aria-hidden="true"></div>
-        </div>
-      </section>
-
-      <section class="rq-orbit-mission" id="orbit-mission" data-orbit-section="mission">
-        <div class="rq-orbit-mission-moon" aria-hidden="true"><img class="rq-lunar-art" src="/images/runnerquan-moon-detail.webp" alt="" width="260" height="260" loading="lazy" decoding="async"></div>
-        <div class="rq-orbit-mission-copy rq-orbit-reveal">
-          <span class="rq-orbit-eyebrow">MISSION</span>
-          <h2>From idea<br>to orbit.</h2>
-          <p>把问题拆解成可以运行的系统，把想法推进到真实世界。</p>
-          <div class="rq-orbit-tags"><span>AI Native</span><span>Full Stack</span><span>Agentic Product</span></div>
-        </div>
-      </section>
-
-      <section class="rq-orbit-warp-stage" data-orbit-section="warp">
-        <div class="rq-orbit-warp">
-          <div class="rq-orbit-warp-lines" aria-hidden="true">
-            <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i><i style="--i:24"></i><i style="--i:25"></i><i style="--i:26"></i><i style="--i:27"></i>
-          </div>
-          <div class="rq-orbit-warp-copy rq-orbit-reveal">
-            <span class="rq-orbit-eyebrow">ENTER / BUILD MODE</span>
-            <h2>Build your own work.</h2>
-            <p>Products · Systems · Experiments · Writing</p>
-          </div>
+          <button class="rq-deck-trigger" type="button" data-open-deck aria-haspopup="dialog" aria-controls="rq-flight-deck"><span>● RQ / FLIGHT DECK</span><strong>探索我的作品 ↗</strong><small>PostureFit · BiasBreaker Career · Quan-RPC</small></button>
         </div>
       </section>
 
@@ -157,6 +135,17 @@
       <div class="rq-tags"><span>React</span><span>Edge Functions</span><span>AI SaaS</span></div>
       <span class="rq-card-arrow" aria-hidden="true">↗</span>
     </a>
+        </div>
+      </section>
+
+
+      <section class="rq-orbit-mission" id="orbit-mission" data-orbit-section="mission">
+        <div class="rq-orbit-mission-moon" aria-hidden="true"><img class="rq-lunar-art" src="/images/runnerquan-moon-detail.webp" alt="" width="260" height="260" loading="lazy" decoding="async"></div>
+        <div class="rq-orbit-mission-copy rq-orbit-reveal">
+          <span class="rq-orbit-eyebrow">MISSION</span>
+          <h2>From idea<br>to orbit.</h2>
+          <p>把问题拆解成可以运行的系统，把想法推进到真实世界。</p>
+          <div class="rq-orbit-tags"><span>AI Native</span><span>Full Stack</span><span>Agentic Product</span></div>
         </div>
       </section>
 
@@ -262,6 +251,25 @@
       </footer>
     </main>
   </div>
-  <script src="/js/runnerquan-site.8086b1ca318d.js" defer></script>
+  <dialog id="rq-flight-deck" class="rq-flight-deck" aria-labelledby="deck-title">
+    <div class="rq-deck-head"><span>RQ / MISSION CONTROL</span><button type="button" data-close-deck aria-label="关闭作品控制台">关闭 ×</button></div>
+    <h2 id="deck-title">选择下一站</h2><p>3 个代表作品，从产品到系统。</p>
+    <div class="rq-deck-switch" role="group" aria-label="选择代表项目"><button type="button" data-deck-select="posturefit" aria-pressed="true"><small>01</small>PostureFit</button><button type="button" data-deck-select="biasbreaker-career" aria-pressed="false"><small>02</small>BiasBreaker Career</button><button type="button" data-deck-select="quan-rpc" aria-pressed="false"><small>03</small>Quan-RPC</button></div>
+    <section data-deck-panel="posturefit" >
+      <span class="rq-deck-code">AI / VISION</span><h3>把姿态识别变成可用的反馈。</h3><p>从视觉关键点到动作反馈，查看 PostureFit 的产品与实现。</p>
+      <div class="rq-deck-route" aria-label="实现路径"><span>Camera</span><b aria-hidden="true">→</b><span>Keypoints</span><b aria-hidden="true">→</b><span>Coach</span><b aria-hidden="true">→</b><span>Feedback</span></div>
+      <div class="rq-deck-links"><a href="/projects/#posturefit">查看 PostureFit 案例 ↗</a></div>
+    </section><section data-deck-panel="biasbreaker-career" hidden>
+      <span class="rq-deck-code">AI / CAREER</span><h3>让简历中的能力被更准确地看见。</h3><p>从简历分析到职业建议，探索 BiasBreaker Career 如何帮助候选人理解自动筛选。</p>
+      <div class="rq-deck-route" aria-label="实现路径"><span>Resume</span><b aria-hidden="true">→</b><span>Signals</span><b aria-hidden="true">→</b><span>LLM</span><b aria-hidden="true">→</b><span>Plan</span></div>
+      <div class="rq-deck-links"><a href="/projects/#biasbreaker-career">查看 BiasBreaker Career 案例 ↗</a></div>
+    </section><section data-deck-panel="quan-rpc" hidden>
+      <span class="rq-deck-code">SYSTEM / PROTOCOL</span><h3>看懂一次远程调用的旅程。</h3><p>服务发现、自定义 TCP 协议与心跳检查，进入 Quan-RPC 工程案例。</p>
+      <div class="rq-deck-route" aria-label="实现路径"><span>Provider</span><b aria-hidden="true">→</b><span>Registry</span><b aria-hidden="true">→</b><span>Consumer</span><b aria-hidden="true">→</b><span>Invoke</span></div>
+      <div class="rq-deck-links"><a href="/projects/#quan-rpc">查看 Quan-RPC 案例 ↗</a></div>
+    </section>
+    <span class="rq-deck-hint">ESC 关闭 · TAB 切换控件 · ENTER 确认</span>
+  </dialog>
+  <script src="/js/runnerquan-site.b42eafa33947.js" defer></script>
 </body>
 </html>
