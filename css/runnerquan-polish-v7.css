@@ -41,58 +41,6 @@
   opacity: 0;
 }
 
-/* Homepage project cards behave like dim signal windows. */
-.rq-home-page .rq-project-card {
-  isolation: isolate;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at var(--rq-pointer-x, 50%) var(--rq-pointer-y, 50%), rgba(143, 231, 255, 0.1), transparent 34%),
-    linear-gradient(145deg, rgba(10, 18, 23, 0.95), rgba(3, 7, 10, 0.98)) !important;
-}
-
-.rq-project-card-visual {
-  position: absolute !important;
-  inset: 0 0 0 42%;
-  z-index: -1 !important;
-  display: block;
-  background-image: var(--rq-card-image);
-  background-position: var(--rq-card-focus, 50% 50%);
-  background-size: cover;
-  filter: grayscale(1) contrast(1.08) brightness(0.52);
-  opacity: 0.1;
-  transform: scale(1.06);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%);
-  mask-image: linear-gradient(90deg, transparent, #000 40%);
-  transition: opacity 320ms ease, filter 320ms ease, transform 600ms var(--rq-ease);
-}
-
-.rq-project-card-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.22) 4px),
-    linear-gradient(90deg, transparent, rgba(143, 231, 255, 0.08));
-}
-
-.rq-home-page .rq-project-card > :not(.rq-project-card-visual) {
-  position: relative;
-  z-index: 1;
-}
-
-.rq-home-page .rq-project-card:hover .rq-project-card-visual,
-.rq-home-page .rq-project-card:focus-visible .rq-project-card-visual {
-  filter: grayscale(0.72) contrast(1.08) brightness(0.72);
-  opacity: 0.28;
-  transform: scale(1.01);
-}
-
-.rq-home-page .rq-project-card:hover,
-.rq-home-page .rq-project-card:focus-visible {
-  border-color: rgba(143, 231, 255, 0.42) !important;
-  box-shadow: inset 0 0 0 1px rgba(143, 231, 255, 0.05), 0 1.4rem 4rem rgba(0, 0, 0, 0.3);
-}
-
 /* Fixed project index: a compact mission selector on wide screens. */
 .rq-project-index {
   position: fixed;
@@ -384,11 +332,6 @@ body.rq-inner-page {
 
 @media (max-width: 760px) {
   .rq-orbit-progress a::before { display: none; }
-
-  .rq-project-card-visual {
-    left: 52%;
-    opacity: 0.08;
-  }
 
   .rq-inner-page > .rq-inner-hero {
     width: calc(100vw - 1.5rem);
